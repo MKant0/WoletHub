@@ -1,0 +1,2 @@
+class RecipientAccount < ApplicationRecord
+end
