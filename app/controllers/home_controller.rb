@@ -1,4 +1,4 @@
-class BankAccountsController < ApplicationController
+class HomeController < ApplicationController
 
   def index
     @bank_accounts = BankAccount.all
