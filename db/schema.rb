@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_23_131131) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_24_190650) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -37,8 +37,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_23_131131) do
     t.string "name"
     t.decimal "amount"
     t.string "currency"
-    t.integer "number"
-    t.string "type"
+    t.string "number"
+    t.string "account_type"
     t.text "widget_token"
     t.string "official_name"
     t.string "holder_id"
@@ -56,7 +56,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_23_131131) do
     t.string "description"
     t.date "transaction_date"
     t.string "reference_id"
-    t.string "type"
+    t.string "movement_type"
     t.boolean "pending"
     t.bigint "recipient_account_id", null: false
     t.string "comment"
@@ -84,6 +84,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_23_131131) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "preferred_currency"
+    t.string "name"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
