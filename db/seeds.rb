@@ -55,7 +55,7 @@ valentina_bank_account.save!
 sebastian_bank_account = BankAccount.new(user: sebastian)
 sebastian_bank_account.save!
 
-camila_bank_account = BankAccount.new(user: sebastian, general_balance: "5921200")
+camila_bank_account = BankAccount.new(user: camila)
 camila_bank_account.save!
 
 
@@ -97,4 +97,4 @@ puts "fintoc accounts finished"
 
 puts "creating movements"
 
-movement1 = Movement.new(fintoc_account: sofia_fintoc_account, currency: "BTC", amount: 0.000487, description: "La plata que le debia al Pedro", transaction_date: 2023-06-19, )
+movement1 = Movement.new(fintoc_account: sofia_fintoc_account, currency: "BTC", amount: 0.000487, description: "La plata que le debia a Pedro", transaction_date: 2023-06-19, )
