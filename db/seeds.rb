@@ -8,9 +8,9 @@
 
 puts "destroying seeds"
 Balance.destroy_all
-BankAccount.destroy_all
-FintocAccount.destroy_all
 Movement.destroy_all
+FintocAccount.destroy_all
+BankAccount.destroy_all
 User.destroy_all
 RecipientAccount.destroy_all
 
@@ -55,46 +55,93 @@ valentina_bank_account.save!
 sebastian_bank_account = BankAccount.new(user: sebastian)
 sebastian_bank_account.save!
 
-camila_bank_account = BankAccount.new(user: sebastian, general_balance: "5921200")
+camila_bank_account = BankAccount.new(user: camila)
 camila_bank_account.save!
 
 
 puts "bank accounts finished"
 
+
 puts "creating fintoc account seeds"
 
 alejandro_fintoc_account = FintocAccount.new(bank_account: alejandro_bank_account, name: "Cuenta Corriente",
-  amount: 1254500, currency: alejandro.preferred_currency, number: "5678901234567890", account_type: "checking_account",
+  currency: alejandro.preferred_currency, number: "5678901234567890", account_type: "checking_account",
   official_name: "Cuneta Corriente Moneda Local", holder_id: "12.345.678-9", holder_name: alejandro.name)
 alejandro_fintoc_account.save!
 
 sofia_fintoc_account = FintocAccount.new(bank_account: sofia_bank_account, name: "Cuenta Corriente",
-  amount: 4678900, currency: sofia.preferred_currency, number: "9876543210987654", account_type: "checking_account",
+  currency: sofia.preferred_currency, number: "9876543210987654", account_type: "checking_account",
   official_name: "Cuneta Corriente Moneda Local", holder_id: "98.765.432-1", holder_name: sofia.name)
 sofia_fintoc_account.save!
 
 diego_fintoc_account = FintocAccount.new(bank_account: diego_bank_account, name: "Cuenta de Ahorro",
-  amount: 0.54238129, currency: diego.preferred_currency, number: "5678901234567890", account_type: "saving_account",
+  currency: diego.preferred_currency, number: "5678901234567890", account_type: "saving_account",
   official_name: "Cuneta De Ahorro Moneda Local", holder_id: "56.789.012-3", holder_name: diego.name)
 diego_fintoc_account.save!
 
 valentina_fintoc_account = FintocAccount.new(bank_account: valentina_bank_account, name: "Cuenta Corriente",
-  amount: 1.87654321, currency: valentina.preferred_currency, number: "3210987654321098", account_type: "checking_account",
+  currency: valentina.preferred_currency, number: "3210987654321098", account_type: "checking_account",
   official_name: "Cuneta Corriente Moneda Local", holder_id: "32.109.876-5", holder_name: valentina.name)
 valentina_fintoc_account.save!
 
 sebastian_fintoc_account = FintocAccount.new(bank_account: sebastian_bank_account, name: "Cuenta Corriente",
-  amount: 2376800, currency: sebastian.preferred_currency, number: "7890123456789012", account_type: "checking_account",
+  currency: sebastian.preferred_currency, number: "7890123456789012", account_type: "checking_account",
   official_name: "Cuneta Corriente Moneda Local", holder_id: "78.901.234-6", holder_name: sebastian.name)
 sebastian_fintoc_account.save!
 
 camila_fintoc_account = FintocAccount.new(bank_account: camila_bank_account, name: "Cuenta Corriente",
-  amount: 5921200, currency: camila.preferred_currency, number: "2109876543210987", account_type: "checking_account",
+  currency: camila.preferred_currency, number: "2109876543210987", account_type: "checking_account",
   official_name: "Cuneta Corriente Moneda Local", holder_id: "21.098.765-4", holder_name: camila.name)
 camila_fintoc_account.save!
 
 puts "fintoc accounts finished"
 
+puts "creating balances"
+
+alejandro_balance = Balance.new(available: 1254500, current: 1254500, limit: 1254500, fintoc_account: alejandro_fintoc_account)
+alejandro_balance.save!
+
+sofia_balance = Balance.new(available: 4678900, current: 4678900, limit: 4678900, fintoc_account: sofia_fintoc_account)
+sofia_balance.save!
+
+diego_balance = Balance.new(available: 0.54238129, current: 0.54238129, limit: 0.54238129, fintoc_account: diego_fintoc_account)
+diego_balance.save!
+
+valentina_balance = Balance.new(available: 1.87654321, current: 1.87654321, limit: 1.87654321, fintoc_account:valentina_fintoc_account)
+valentina_balance.save!
+
+sebastian_balance = Balance.new(available: 2376800, current: 2376800, limit: 2376800, fintoc_account: sebastian_fintoc_account)
+sebastian_balance.save!
+
+camila_balance = Balance.new(available: 5921200, current: 5921200, limit: 5921200, fintoc_account: camila_fintoc_account)
+camila_balance.save!
+
+puts "finished balances"
+
+
+puts "creating recipient accounts"
+
+pedro = RecipientAccount.new(holder_id: "43.210.987-2", holder_name: "Pedro Iannuchi Gómez", number: "4321098765432109", institution: "Banco del Pacífico")
+
+maria = RecipientAccount.new(holder_id: "65.432.109-8", holder_name: "María Torres Ramírez", number: "6543210987654321", institution: "Banco Meridional")
+
+jimena = RecipientAccount.new(holder_id: "21.098.765-4", holder_name: "Jimena Martinez Muñóz", number: "2109876543210987", institution: "Banco Austral")
+
+puts "recipient accounts finished"
+
+
 puts "creating movements"
 
-movement1 = Movement.new(fintoc_account: sofia_fintoc_account, currency: "BTC", amount: 0.000487, description: "La plata que le debia al Pedro", transaction_date: 2023-06-19, )
+movement1 = Movement.new(fintoc_account: sofia_fintoc_account, currency: "BTC", amount: 0.000487, description: "La plata que le debia al Pedro",
+  transaction_date: "2023-06-19".to_date, movement_type: "transaction", pending: false, recipient_account: pedro)
+movement1.save!
+
+movement2 = Movement.new(fintoc_account: sebastian_fintoc_account, currency: "CLP", amount: 150000, description: "El prestamo para la mesa nueva",
+  transaction_date: "2023-04-23".to_date, movement_type: "transaction", pending: false, recipient_account: maria)
+movement2.save!
+
+movement3 = Movement.new(fintoc_account: camila_fintoc_account, currency: "CLP", amount: 10000, description: "por el helado",
+  transaction_date: "2023-01-15".to_date, movement_type: "transaction", pending: false, recipient_account: jimena)
+movement3.save!
+
+puts "movements finished"
