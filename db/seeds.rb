@@ -8,11 +8,11 @@
 
 puts "destroying seeds"
 Balance.destroy_all
-Bank_account.destroy_all
-Fintoc_account.destroy_all
+BankAccount.destroy_all
+FintocAccount.destroy_all
 Movement.destroy_all
 User.destroy_all
-Recepient_account.destroy_all
+RecipientAccount.destroy_all
 
 puts "seeds destroyed"
 puts "creating users"
@@ -35,52 +35,66 @@ sebastian.save!
 camila = User.new(name: "Camila Ruiz Castro", email: "camila.rc34@gmail.com", password: "123456", preferred_currency: "CLP")
 camila.save!
 
-andres = User.new(name: "Andrés Herrera Jiménez", email: "andres.hjimenez89@hotmail.com", password: "123456", preferred_currency: "CLP")
-andres.save!
-
-isabella = User.new(name: "Isabella Paredes Navarro", email: "iparedes12@gmail.com", password: "123456", preferred_currency: "BTC")
-isabella.save!
-
-santiago = User.new(name: "Santiago Castro Silva", email: "santiago.castrosilva56@gmail.com", password: "123456", preferred_currency: "CLP")
-santiago.save!
-
-victoria = User.new(name: "Victoria Morales Gómez", email: "victoria.mgomez90@yahoo.com", password: "123456", preferred_currency: "CLP")
-victoria.save!
 
 puts "users finished"
 
 puts "creating user bank accounts"
 
-alejandro_bank_account = Bank_account.new(user: alejandro, general_balance: "1254500")
+alejandro_bank_account = BankAccount.new(user: alejandro)
 alejandro_bank_account.save!
 
-sofia_bank_account = Bank_account.new(user: sofia, general_balance: "4678900")
+sofia_bank_account = BankAccount.new(user: sofia)
 sofia_bank_account.save!
 
-diego_bank_account = Bank_account.new(user: diego, general_balance: "0.54238129")
+diego_bank_account = BankAccount.new(user: diego)
 diego_bank_account.save!
 
-valentina_bank_account = Bank_account.new(user: valentina, general_balance: "1.87654321")
+valentina_bank_account = BankAccount.new(user: valentina)
 valentina_bank_account.save!
 
-sebastian_bank_account = Bank_account.new(user: sebastian, general_balance: "2376800")
+sebastian_bank_account = BankAccount.new(user: sebastian)
 sebastian_bank_account.save!
 
-camila_bank_account = Bank_account.new(user: sebastian, general_balance: "5921200")
+camila_bank_account = BankAccount.new(user: sebastian, general_balance: "5921200")
 camila_bank_account.save!
 
-andres_bank_account = Bank_account.new(user: andres, general_balance: "3489600")
-andres_bank_account.save!
-
-isabella_bank_account = Bank_account.new(user: isabella, general_balance: "0.31592746")
-isabella_bank_account.save!
-
-santiago_bank_account = Bank_account.new(user: santiago, general_balance: "1953400")
-santiago_bank_account.save!
-
-victoria_bank_account = Bank_account.new(user: victoria, general_balance: "7285900")
-victoria_bank_account.save!
 
 puts "bank accounts finished"
 
+puts "creating fintoc account seeds"
 
+alejandro_fintoc_account = FintocAccount.new(bank_account: alejandro_bank_account, name: "Cuenta Corriente",
+  amount: 1254500, currency: alejandro.preferred_currency, number: "5678901234567890", account_type: "checking_account",
+  official_name: "Cuneta Corriente Moneda Local", holder_id: "12.345.678-9", holder_name: alejandro.name)
+alejandro_fintoc_account.save!
+
+sofia_fintoc_account = FintocAccount.new(bank_account: sofia_bank_account, name: "Cuenta Corriente",
+  amount: 4678900, currency: sofia.preferred_currency, number: "9876543210987654", account_type: "checking_account",
+  official_name: "Cuneta Corriente Moneda Local", holder_id: "98.765.432-1", holder_name: sofia.name)
+sofia_fintoc_account.save!
+
+diego_fintoc_account = FintocAccount.new(bank_account: diego_bank_account, name: "Cuenta de Ahorro",
+  amount: 0.54238129, currency: diego.preferred_currency, number: "5678901234567890", account_type: "saving_account",
+  official_name: "Cuneta De Ahorro Moneda Local", holder_id: "56.789.012-3", holder_name: diego.name)
+diego_fintoc_account.save!
+
+valentina_fintoc_account = FintocAccount.new(bank_account: valentina_bank_account, name: "Cuenta Corriente",
+  amount: 1.87654321, currency: valentina.preferred_currency, number: "3210987654321098", account_type: "checking_account",
+  official_name: "Cuneta Corriente Moneda Local", holder_id: "32.109.876-5", holder_name: valentina.name)
+valentina_fintoc_account.save!
+
+sebastian_fintoc_account = FintocAccount.new(bank_account: sebastian_bank_account, name: "Cuenta Corriente",
+  amount: 2376800, currency: sebastian.preferred_currency, number: "7890123456789012", account_type: "checking_account",
+  official_name: "Cuneta Corriente Moneda Local", holder_id: "78.901.234-6", holder_name: sebastian.name)
+sebastian_fintoc_account.save!
+
+camila_fintoc_account = FintocAccount.new(bank_account: camila_bank_account, name: "Cuenta Corriente",
+  amount: 5921200, currency: camila.preferred_currency, number: "2109876543210987", account_type: "checking_account",
+  official_name: "Cuneta Corriente Moneda Local", holder_id: "21.098.765-4", holder_name: camila.name)
+camila_fintoc_account.save!
+
+puts "fintoc accounts finished"
+
+puts "creating movements"
+
+movement1 = Movement.new(fintoc_account: sofia_fintoc_account, currency: "BTC", amount: 0.000487, description: "La plata que le debia al Pedro", transaction_date: 2023-06-19, )
