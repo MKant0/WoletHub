@@ -10,9 +10,70 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_21_153806) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_23_131131) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "balances", force: :cascade do |t|
+    t.decimal "available"
+    t.decimal "current"
+    t.decimal "limit"
+    t.bigint "fintoc_account_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["fintoc_account_id"], name: "index_balances_on_fintoc_account_id"
+  end
+
+  create_table "bank_accounts", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.decimal "general_balance"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_bank_accounts_on_user_id"
+  end
+
+  create_table "fintoc_accounts", force: :cascade do |t|
+    t.bigint "bank_account_id", null: false
+    t.string "name"
+    t.decimal "amount"
+    t.string "currency"
+    t.integer "number"
+    t.string "type"
+    t.text "widget_token"
+    t.string "official_name"
+    t.string "holder_id"
+    t.string "holder_name"
+    t.datetime "refreshed_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["bank_account_id"], name: "index_fintoc_accounts_on_bank_account_id"
+  end
+
+  create_table "movements", force: :cascade do |t|
+    t.bigint "fintoc_account_id", null: false
+    t.string "currency"
+    t.decimal "amount"
+    t.string "description"
+    t.date "transaction_date"
+    t.string "reference_id"
+    t.string "type"
+    t.boolean "pending"
+    t.bigint "recipient_account_id", null: false
+    t.string "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["fintoc_account_id"], name: "index_movements_on_fintoc_account_id"
+    t.index ["recipient_account_id"], name: "index_movements_on_recipient_account_id"
+  end
+
+  create_table "recipient_accounts", force: :cascade do |t|
+    t.string "holder_id"
+    t.string "holder_name"
+    t.string "number"
+    t.string "institution"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -22,8 +83,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_21_153806) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "preferred_currency"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "balances", "fintoc_accounts"
+  add_foreign_key "bank_accounts", "users"
+  add_foreign_key "fintoc_accounts", "bank_accounts"
+  add_foreign_key "movements", "fintoc_accounts"
+  add_foreign_key "movements", "recipient_accounts"
 end
