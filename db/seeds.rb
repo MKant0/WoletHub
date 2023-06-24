@@ -50,3 +50,37 @@ victoria.save!
 puts "users finished"
 
 puts "creating user bank accounts"
+
+alejandro_bank_account = Bank_account.new(user: alejandro, general_balance: "1254500")
+alejandro_bank_account.save!
+
+sofia_bank_account = Bank_account.new(user: sofia, general_balance: "4678900")
+sofia_bank_account.save!
+
+diego_bank_account = Bank_account.new(user: diego, general_balance: "0.54238129")
+diego_bank_account.save!
+
+valentina_bank_account = Bank_account.new(user: valentina, general_balance: "1.87654321")
+valentina_bank_account.save!
+
+sebastian_bank_account = Bank_account.new(user: sebastian, general_balance: "2376800")
+sebastian_bank_account.save!
+
+camila_bank_account = Bank_account.new(user: sebastian, general_balance: "5921200")
+camila_bank_account.save!
+
+andres_bank_account = Bank_account.new(user: andres, general_balance: "3489600")
+andres_bank_account.save!
+
+isabella_bank_account = Bank_account.new(user: isabella, general_balance: "0.31592746")
+isabella_bank_account.save!
+
+santiago_bank_account = Bank_account.new(user: santiago, general_balance: "1953400")
+santiago_bank_account.save!
+
+victoria_bank_account = Bank_account.new(user: victoria, general_balance: "7285900")
+victoria_bank_account.save!
+
+puts "bank accounts finished"
+
+
