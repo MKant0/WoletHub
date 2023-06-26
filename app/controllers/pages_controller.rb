@@ -2,6 +2,12 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :home ]
 
   def home
-    @bank_accounts = BankAccount.all
+
   end
+
+  def dashboard
+    @bank_accounts = BankAccount.all
+    @balances = Balance.sumar_balance
+  end
+
 end
