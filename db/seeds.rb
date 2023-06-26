@@ -145,3 +145,16 @@ movement3 = Movement.new(fintoc_account: camila_fintoc_account, currency: "CLP",
 movement3.save!
 
 puts "movements finished"
+
+puts "creating favorites"
+
+fav1 = FavoriteRecipientAccount.new(user: alejandro, recipient_account_id: pedro)
+fav1.save!
+
+fav2 = FavoriteRecipientAccount.new(user: alejandro, recipient_account_id: maria)
+fav2.save!
+
+fav3 = FavoriteRecipientAccount.new(user: alejandro, recipient_account_id: jimena)
+fav3.save!
+
+puts "finished favorites"
