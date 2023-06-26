@@ -4,9 +4,16 @@
 
   <p>Balance total: <%= @balances %></p>
 
-  <%= link_to "Ver mis bancos", "#" %>
+  <%= link_to "Ver mis bancos", "#", class: btn btn-primary %>
 
-  <%= link_to "Agregar Banco", "#" %>
+  <%= link_to "Agregar Banco", "#", class: btn btn-primary %>
 
-  
+  <p>Transacciones Recientes</p>
+
+  <% @recent.each do |movement| %>
+    <p>Recipient: <%= movement.recipient_account_id.holder_name %>, Amount: <%= movement.amount %> <%= movement.currency %></p>
+  <% end %>
+
+  <%= link_to "See All Transactions", "#", class: btn btn-primary %>
+
 </div>

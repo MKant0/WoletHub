@@ -8,6 +8,7 @@ class PagesController < ApplicationController
   def dashboard
     @bank_accounts = BankAccount.all
     @balances = Balance.sumar_balance
+    @recent = Movement.recent_transactions
   end
 
 end
