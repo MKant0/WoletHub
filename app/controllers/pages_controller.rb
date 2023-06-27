@@ -9,6 +9,7 @@ class PagesController < ApplicationController
     @bank_accounts = BankAccount.all
     @balances = Balance.sumar_balance
     @recent = Movement.recent_transactions
+    @favorites = FavoriteRecipientAccount.list_favorites
   end
 
 end
