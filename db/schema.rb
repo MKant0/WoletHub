@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_24_190650) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_24_195640) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -30,6 +30,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_24_190650) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_bank_accounts_on_user_id"
+  end
+
+  create_table "favorite_recipient_accounts", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "recipient_account_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["recipient_account_id"], name: "index_favorite_recipient_accounts_on_recipient_account_id"
+    t.index ["user_id"], name: "index_favorite_recipient_accounts_on_user_id"
   end
 
   create_table "fintoc_accounts", force: :cascade do |t|
@@ -91,6 +100,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_24_190650) do
 
   add_foreign_key "balances", "fintoc_accounts"
   add_foreign_key "bank_accounts", "users"
+  add_foreign_key "favorite_recipient_accounts", "recipient_accounts"
+  add_foreign_key "favorite_recipient_accounts", "users"
   add_foreign_key "fintoc_accounts", "bank_accounts"
   add_foreign_key "movements", "fintoc_accounts"
   add_foreign_key "movements", "recipient_accounts"
