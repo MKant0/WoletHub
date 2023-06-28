@@ -1,5 +1,4 @@
 <div class="container main-container my-5">
-
   <!-- Container 1: Text on Left, Image on Right -->
   <div class="container my-4">
     <div class="row my-4">
@@ -18,21 +17,23 @@
   </div>
 
   <!-- Container 2: Image on Left, Text on Right -->
-    <div class="container my-4 container-custom py-1 px-5" style="height: 312px;">
-      <div class="row my-4 ">
-        <div class="col-md-6 d-flex align-item-center">
-          <%= image_tag "hp_2.png", alt: "Placeholder Image", class: "img-fluid mx-auto d-block"%>
+  <div class="container my-4 container-custom py-1 px-5" style="height: 350px;">
+    <div class="row my-4">
+      <div class="col-md-6 d-flex justify-content-center">
+        <%= image_tag "hp_2.png", alt: "Placeholder Image", class: "rounded mx-auto d-block" %>
+      </div>
+      <div class="col-md-6 d-flex align-items-center justify-content-center flex-column">
+        <div class="mb-4 text-left">
+          <h2>Deja de perder tiempo ingresando a 5 sitios solo para ver tus finanzas</h2>
         </div>
-        <div class="col-md-6 d-flex align-items-center justify-content-center flex-column">
-          <div class="mb-4 text-left">
-            <h2>Deja de perder tiempo ingresando a 5 sitios solo para ver tus finanzas</h2>
-          </div class="text-left">
-          <div>
-            <p>Con Wolethub solo tienes que ingresar en nuestro sitio y podrás ver todas tus cuentas he incuso hacer transferencias.</p>
-          </div>
+        <div class="text-left">
+          <p>Con Wolethub solo tienes que ingresar en nuestro sitio y podrás ver todas tus cuentas he incuso hacer transferencias.</p>
         </div>
       </div>
     </div>
+  </div>
+
+
 
     <!-- Container 3: Text on Left, Image on Right -->
     <div class="container my-4">
@@ -69,15 +70,46 @@
   </div>
 
 </div>
-<div class="footer">
-  <div class="footer-links">
-    <a href="#"><i class="fab fa-github"></i></a>
-    <a href="#"><i class="fab fa-instagram"></i></a>
-    <a href="#"><i class="fab fa-facebook"></i></a>
-    <a href="#"><i class="fab fa-twitter"></i></a>
-    <a href="#"><i class="fab fa-linkedin"></i></a>
+<footer class="bg-custom text-white text-center text-lg-start">
+  <div class="container p-5">
+    <div class="row">
+
+      <!-- Subcontainer 1: Logo -->
+      <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+        <%= link_to "/", class: "navbar-brand" do %>
+          <%= image_tag "WoletHub negro.svg", class: "logo", alt: "Logo" %>
+        <% end %>
+      </div>
+
+      <!-- Subcontainer 2: Conócenos -->
+      <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+        <h5 class="text-uppercase">Conócenos</h5>
+        <ul class="list-unstyled mb-0">
+          <li><%= link_to "Trabaja con nosotros", "#", class: "text-white" %></li>
+          <li><%= link_to "Quienes somos", "#", class: "text-white" %></li>
+          <li><%= link_to "Nuestra misión", "#", class: "text-white" %></li>
+        </ul>
+      </div>
+
+      <!-- Subcontainer 3: ¿Necesitas ayuda? -->
+      <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+        <h5 class="text-uppercase">¿Necesitas ayuda?</h5>
+        <ul class="list-unstyled mb-0">
+          <li><%= link_to "Centro de ayuda", "#", class: "text-white" %></li>
+          <li><%= link_to "Emergencias", "#", class: "text-white" %></li>
+          <li><%= link_to "Línea ética", "#", class: "text-white" %></li>
+        </ul>
+      </div>
+
+      <!-- Subcontainer 4: Encuéntranos -->
+      <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+        <h5 class="text-uppercase">Encuéntranos</h5>
+        <ul class="list-unstyled mb-0 d-flex">
+          <li class="mx-2"><%= image_tag "instagram.svg", class: "text-white" %></li>
+          <li class="mx-2"><%= image_tag "twitter.svg", class: "text-white" %></li>
+          <li class="mx-2"><%= image_tag "github.svg", class: "text-white" %></li>
+        </ul>
+      </div>
+    </div>
   </div>
-  <div class="footer-copyright">
-    This footer is made with <i class="fas fa-heart"></i> at Le Wagon
-  </div>
-</div>
+</footer>
