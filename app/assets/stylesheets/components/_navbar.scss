@@ -1,17 +1,57 @@
-.navbar-lewagon {
-  justify-content: space-between;
-  background: white;
-}
+.navbar {
+  &-lewagon {
+    justify-content: flex-start;
+    background: white;
 
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
-}
+    .navbar-brand img {
+      width: 40px;
+      margin-right: 10px; 
+    }
 
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
+    .navbar-collapse {
+      flex-grow: 0;
+
+      .navbar-nav {
+        margin-left: 0;
+      }
+    }
+  }
 }
 
 .logo {
   max-width: 100%;
   height: auto;
+}
+
+.btn-signup {
+  background-color: #8E43ED;
+  color: white;
+  border-color: #8E43ED;
+
+  &:hover {
+    background-color: white;
+    color: #8E43ED;
+  }
+}
+
+.btn-login {
+  background-color: #8E43ED;
+  color: white;
+  border-color: #8E43ED;
+
+  &:hover {
+    background-color: #8E43ED;
+    color: white;
+  }
+}
+
+.navbar .btn-outline-primary {
+  background-color: white;
+  color: #8E43ED;
+  border-color: #8E43ED;
+
+  &:hover {
+    background-color: #8E43ED;
+    color: white;
+  }
 }
