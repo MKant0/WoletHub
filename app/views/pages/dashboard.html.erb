@@ -4,21 +4,21 @@
 
   <p>Balance total: <%= @balances %></p>
 
-  <%= link_to "Ver mis bancos", "#", class: btn btn-primary %>
+  <%#= link_to "Ver mis bancos", "#", class: btn btn-primary %>
 
-  <%= link_to "Agregar Banco", "#", class: btn btn-primary %>
+  <%#= link_to "Agregar Banco", "#", class: btn btn-primary %>
 
   <h3>Transacciones Recientes</h3>
-  <% @recent.each do |movement| %>
-    <p>Recipient: <%= movement.recipient_account_id.holder_name %>, Amount: <%= movement.amount %> <%= movement.currency %></p>
-  <% end %>
+  <%# @recent.each do |movement| %>
+    <p>Recipient: <%#= movement.recipient_account_id.holder_name %>, Amount: <%#= movement.amount %> <%#= movement.currency %></p>
+  <%# end %>
 
-  <%= link_to "See All Transactions", "#", class: btn btn-primary %>
+  <%#= link_to "See All Transactions", "#", class: btn btn-primary %>
 
   <h3>Favoritos</h3>
-  <% @favorites.each do |favorite| %>
-    <%= link_to favorite.recipient_account_id.holder_name, "#" %>
-  <% end %>
+  <%# @favorites.each do |favorite| %>
+    <%#= link_to favorite.recipient_account_id.holder_name, "#" %>
+  <%# end %>
 
 
 <div class="container-fluid">
