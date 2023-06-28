@@ -1,0 +1,50 @@
+aside .close {
+  display: none
+}
+
+aside .sidebar {
+  display: flex;
+  flex-direction: column;
+  height: 86vh;
+  position: relative;
+  top: 3rem;
+}
+
+aside h3 {
+  font-weight: 500;
+}
+
+.sidebar-item {
+  margin-left: 2rem;
+  gap: 1rem;
+  align-items: center;
+  position: relative;
+  height: 3.7rem;
+  transition: all 300ms ease;
+  text-decoration: none;
+}
+
+aside .sidebar span {
+  font-size: 1.6rem;
+  transition: all 300ms ease;
+}
+
+aside .sidebar .sidebar-item.active {
+  color: #8E43ED;
+  margin-left: 0.5rem
+}
+
+aside .sidebar .sidebar-item.active span {
+  color: #8E43ED;
+
+}
+
+aside .sidebar a.sidebar-item:hover span {
+  margin-left: 1rem
+}
+
+aside .sidebar .sidebar-item:last-child {
+  position: absolute;
+  bottom: 2rem;
+  width: 100%
+}
