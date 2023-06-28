@@ -1,2 +1,83 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="container main-container my-5">
+
+  <!-- Container 1: Text on Left, Image on Right -->
+  <div class="container my-4">
+    <div class="row my-4">
+      <div class="col-md-6 d-flex align-items-center justify-content-center flex-column">
+        <div class="mb-4 text-right">
+          <h2>La forma más fácil de ver todas tus finanzas en un solo lugar</h2>
+        </div>
+        <div class="text-right">
+          <p>Ve los balances de todas tus cuentas bancarias y de tus cryptomendas, tambien puedes hacer trasnferencias!</p>
+        </div>
+      </div>
+      <div class="col-md-6 d-flex align-items-center">
+        <%= image_tag "hp_1.png", alt: "Placeholder Image", class:"img-fluid mx-auto d-block" %>
+      </div>
+    </div>
+  </div>
+
+  <!-- Container 2: Image on Left, Text on Right -->
+    <div class="container my-4 container-custom py-1 px-5" style="height: 312px;">
+      <div class="row my-4 ">
+        <div class="col-md-6 d-flex align-item-center">
+          <%= image_tag "hp_2.png", alt: "Placeholder Image", class: "img-fluid mx-auto d-block"%>
+        </div>
+        <div class="col-md-6 d-flex align-items-center justify-content-center flex-column">
+          <div class="mb-4 text-left">
+            <h2>Deja de perder tiempo ingresando a 5 sitios solo para ver tus finanzas</h2>
+          </div class="text-left">
+          <div>
+            <p>Con Wolethub solo tienes que ingresar en nuestro sitio y podrás ver todas tus cuentas he incuso hacer transferencias.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Container 3: Text on Left, Image on Right -->
+    <div class="container my-4">
+      <div class="row my-4">
+        <div class="col-md-6 d-flex align-items-center justify-content-center flex-column">
+        <div class="mb-4 text-right">
+            <h2>Transfiere dinero y crypto en un solo lugar</h2>
+          </div class="text-right">
+          <div>
+            <p>Nunca más tendrás que ir de un banco a otro haciendo transferencias, en wolethub podrás hacer transferencias de todos tus bancos de manera unificada y simple.</p>
+          </div>
+        </div>
+        <div class="col-md-6 d-flex align-items-center">
+          <%= image_tag "hp_3.png", alt: "Placeholder Image", class:"img-fluid mx-auto d-block" %>
+        </div>
+      </div>
+    </div>
+
+  <!-- Container 4: Image on Left, Text on Right -->
+  <div class="container my-4">
+    <div class="row my-4">
+      <div class="col-md-6 d-flex align-item-center">
+        <%= image_tag "hp_4.png", alt: "Placeholder Image", class: "img-fluid mx-auto d-block" %>
+      </div>
+      <div class="col-md-6 d-flex align-items-center justify-content-center flex-column">
+          <div class="mb-4 text-left">
+          <h2>Ordena tus finanzas</h2>
+        </div class="text-left">
+        <div>
+          <p>Facilitamos el orden de las finanzas personales al tener todo en un mismo lugar, no mas confusiones y mal entendimientos.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<div class="footer">
+  <div class="footer-links">
+    <a href="#"><i class="fab fa-github"></i></a>
+    <a href="#"><i class="fab fa-instagram"></i></a>
+    <a href="#"><i class="fab fa-facebook"></i></a>
+    <a href="#"><i class="fab fa-twitter"></i></a>
+    <a href="#"><i class="fab fa-linkedin"></i></a>
+  </div>
+  <div class="footer-copyright">
+    This footer is made with <i class="fas fa-heart"></i> at Le Wagon
+  </div>
+</div>
