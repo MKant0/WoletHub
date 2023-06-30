@@ -2,49 +2,44 @@ aside .close {
   display: none
 }
 
-aside .sidebar {
-  display: flex;
-  flex-direction: column;
-  height: 86vh;
+.sidebar {
   position: relative;
-  top: 3rem;
+  flex-direction: column;
+  height: 100vh;
+  position: relative;
+  border-right: solid 0.1rem lightgray ;
 }
 
 aside h3 {
   font-weight: 500;
 }
 
-.sidebar-item {
+.link-sidebar {
   margin-left: 2rem;
   gap: 1rem;
-  align-items: center;
   position: relative;
   height: 3.7rem;
   transition: all 300ms ease;
   text-decoration: none;
+  font-size: 19px;
 }
 
-aside .sidebar span {
-  font-size: 1.6rem;
-  transition: all 300ms ease;
-}
-
-aside .sidebar .sidebar-item.active {
+.active {
   color: #8E43ED;
   margin-left: 0.5rem
 }
 
-aside .sidebar .sidebar-item.active span {
-  color: #8E43ED;
 
+.link-sidebar:hover {
+  margin-left: 1rem !important
 }
 
-aside .sidebar a.sidebar-item:hover span {
-  margin-left: 1rem
-}
-
-aside .sidebar .sidebar-item:last-child {
+.child {
   position: absolute;
   bottom: 2rem;
   width: 100%
+}
+
+.dropdown-button {
+  background-color: #f2f2f2;
 }

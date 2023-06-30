@@ -1,0 +1,33 @@
+      <div class= "sidebar d-flex">
+        <div class="top mt-4 mx-3">
+
+          <%= image_tag "WoletHub.svg", class: "logo", alt: "Logo" %>
+
+        </div>
+
+        <div class= "ms-4">
+          <div class="mt-5">
+            <div class= "my-3">
+            <%= link_to "Inicio", dashboard_path, class: "link-sidebar #{'active' if current_page?(dashboard_path)}"  %>
+            </div>
+
+            <div class= "my-3">
+              <%# <%= link_to "Bancos", user_session_path, class: "link-sidebar #{'active' if current_page?(dashboard_path)}" %>
+              <button class="ms-0 link-sidebar dropdown-toggle border-0 dropdown-button" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Bancos
+              </button>
+              <%# <% @banks.each do |bank| %>
+                <%# <%= link_to "#{bank.name}", class: "dropdown-item"  %> 
+              <%# <% end %>
+            </div>
+
+            <div class= "my-3">
+            <%= link_to "Transferir", user_session_path, class: "link-sidebar #{'active' if current_page?(dashboard_path)}" %>
+            </div>
+
+            <div>
+            <%= link_to "Mi Perfil", user_session_path, class: "link-sidebar #{'active' if current_page?(dashboard_path)} child" %>
+            </div>
+          </div>
+        </div>
+      </div>

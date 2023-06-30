@@ -1,68 +1,21 @@
-<div class="contianer">
-
-  <div class="row">
-    <aside class="col-lg-3">
-
-      <div class="top">
-
-        <div class="close" id="close-btn">
-          <span class="material-symbols-outlined">close</span>
-        </div>
-
-      </div>
-
-      <div class="sidebar">
+<div class="container">
 
 
-          <%= link_to "Inicio", user_session_path, class: "sidebar-item"  %>
+<%# <%= pie_chart %>
 
-
-
-        <div class="menu-item d-flex">
-          <span class="material-symbols-outlined">blur_medium</span>
-          <h3>Movimientos Generales</h3>
-        </div>
-
-        <div class="menu-item d-flex">
-          <span class="material-symbols-outlined">account_balance</span>
-          <h3>Bancos</h3>
-        </div>
-
-        <div class="menu-item d-flex">
-          <span class="material-symbols-outlined">trending_flat</span>
-          <h3>Transferir</h3>
-        </div>
-
-        <div class="menu-item d-flex">
-          <span class="material-symbols-outlined">account_circle</span>
-          <h3>Mi Perfil</h3>
-        </div>
-
-      </div>
-
-    </aside>
-
-
-    <div class="main-area col-lg-9">
       <p>Balance total: <%= @balances %></p>
-
-      <%#= link_to "Ver mis bancos", "#", class: btn btn-primary %>
-
-      <%#= link_to "Agregar Banco", "#", class: btn btn-primary %>
 
       <h3>Transacciones Recientes</h3>
       <% @recent.each do |movement| %>
-        <p>Recipient: <%= movement.recipient_account_id %>, Amount: <%= movement.amount %> <%= movement.currency %></p>
+        <p>Recipient: <%= movement.recipient_account.holder_name %>, Amount: <%= movement.amount %> <%= movement.currency %></p>
       <% end %>
-
-      <%#= link_to "See All Transactions", "#", class: btn btn-primary %>
 
       <h3>Favoritos</h3>
       <% @favorites.each do |favorite| %>
-        <%= favorite.recipient_account_id %>
+        <%= favorite.recipient_account.holder_name %>
       <% end %>
     </div>
 
-  </div>
+
 
 </div>

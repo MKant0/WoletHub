@@ -78,3 +78,5 @@ group :test do
 end
 
 gem "annotate", "~> 3.2"
+
+gem "chartkick", "~> 5.0"
