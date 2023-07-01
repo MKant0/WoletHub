@@ -10,10 +10,7 @@ class BankAccountsController < ApplicationController
 
   def show
     @bank_account = BankAccount.find(params[:id])
-  end
-
-  def index_fintoc_account
-    @fintoc_account = FintocAccount.all
+    @fintoc_account = FintocAccount.all(fintoc_accounts_index(current_user, @bank_account))
   end
 
 end
