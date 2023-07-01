@@ -4,7 +4,7 @@ class FintocAccount < ApplicationRecord
   has_one :balance
 
   def self.fintoc_accounts_index(user, bank)
-    fintoc = FintocAccount.joins({bank_account: :user}).where(users: {id:user.id} || bank_account: {id:bank}).all
+    FintocAccount.joins(bank_account: :user).where(users: {id:user.id}, bank_account: {id:bank})
   end
 
 
