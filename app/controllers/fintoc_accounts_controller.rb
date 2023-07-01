@@ -1,4 +1,4 @@
-class FintocAccountController < ApplicationController
+class FintocAccountsController < ApplicationController
 
   def create
 
