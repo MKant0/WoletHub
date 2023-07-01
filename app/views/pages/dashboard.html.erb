@@ -1,20 +1,32 @@
 <div class="container">
 
 
-<%# <%= pie_chart %>
+  <%= pie_chart @balances%>
 
       <p>Balance total: <%= @balances %></p>
 
-      <h3>Transacciones Recientes</h3>
-      <% @recent.each do |movement| %>
-        <p>Recipient: <%= movement.recipient_account.holder_name %>, Amount: <%= movement.amount %> <%= movement.currency %></p>
-      <% end %>
+
+      <%# @banks.each do |bank| %>
+        <div class="baige-rounded-box d-flex">
+          <div>
+            <h3> Banco de Chile<%#= bank.name %></h3>
+          </div>
+          <div>
+            <h3>999999<%#= bank.fintoc_account.balances.available %></h3>
+          </div>
+        </div>
+      <%# end %>
+
+      <%# <h3>Transacciones Recientes</h3> %>
+      <%# @recent.each do |movement| %>
+      <p>Recipient: <%#= movement.recipient_account.holder_name %>, Amount: <%#= movement.amount %> <%#= movement.currency %></p>
+      <%# end %>
 
       <h3>Favoritos</h3>
       <% @favorites.each do |favorite| %>
         <%= favorite.recipient_account.holder_name %>
       <% end %>
-    
+
 
 
 
