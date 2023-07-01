@@ -11,8 +11,9 @@ Balance.destroy_all
 Movement.destroy_all
 FintocAccount.destroy_all
 BankAccount.destroy_all
+FavoriteRecipientAccount.destroy_all
 User.destroy_all
-RecipientAccount.destroy_all
+
 
 puts "seeds destroyed"
 puts "creating users"

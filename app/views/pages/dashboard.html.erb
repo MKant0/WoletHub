@@ -6,16 +6,18 @@
       <p>Balance total: <%= @balances %></p>
 
 
-      <%# @banks.each do |bank| %>
-        <div class="baige-rounded-box d-flex">
+      <% @banks.each do |bank| %>
+        <div class="baige-rounded-box d-flex justify-between">
           <div>
-            <h3> Banco de Chile<%#= bank.name %></h3>
+            <h5><%= bank.name %></h5>
           </div>
           <div>
-            <h3>999999<%#= bank.fintoc_account.balances.available %></h3>
+            <% bank.fintoc_accounts.each do |fintoc| %>
+              <h5><%= fintoc.balance.available %></h5>
+            <% end %>
           </div>
         </div>
-      <%# end %>
+      <% end %>
 
 
   <h3>Transacciones Recientes</h3>
