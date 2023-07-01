@@ -1,8 +1,24 @@
 <div class="container">
 
-<%# <%= pie_chart %>
 
-  <p>Balance total: <%= @balances %></p>
+  <%= pie_chart @balances%>
+
+      <p>Balance total: <%= @balances %></p>
+
+
+      <% @banks.each do |bank| %>
+        <div class="baige-rounded-box d-flex justify-between">
+          <div>
+            <h5><%= bank.name %></h5>
+          </div>
+          <div>
+            <% bank.fintoc_accounts.each do |fintoc| %>
+              <h5><%= fintoc.balance.available %></h5>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+
 
   <h3>Transacciones Recientes</h3>
   <% @recent.each do |movement| %>
@@ -16,4 +32,3 @@
 </div>
 
 </div>
-
