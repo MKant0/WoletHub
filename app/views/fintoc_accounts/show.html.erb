@@ -1,0 +1,5 @@
+<h2>Todas sus transacciones de la <%= @fintoc_account.name %> de <%= @bank_account.name %> </h2>
+
+<% @movements.each do |movement| %>
+   ID: <%= movement['id'] %>, Monto: <%= movement['amount'] %> <%= movement['currency'] %>, Descripción: <%= movement['description'] %>
+<% end %>
