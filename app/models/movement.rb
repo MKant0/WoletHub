@@ -2,6 +2,8 @@ class Movement < ApplicationRecord
   belongs_to :fintoc_account
   belongs_to :recipient_account
 
+  validates :bank, :amount, :person, presence: true
+
   def self.recent_transactions(user)
     # recent = []
     # user.bank_accounts.each do |bank_account|

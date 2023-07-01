@@ -1,0 +1,7 @@
+<h1>Hola?</h1>
+<%= simple_form_for(@movement) do |f| %>
+  <%= f.input :field_name, collection: options_for_select([['Option 1', 1], ['Option 2', 2], ['Option 3', 3]]), include_blank: true %>
+  <%= f.input :ammount, label: "Cuanto deseas transferir? ($)", class: "form-control" %>
+  <%= f.input :person, label: "a quien deseas transferir?", class: "form-control" %>
+  <%= f.submit "Confirma transferencia", class: "btn btn-primary mt-3" %>
+<% end %>

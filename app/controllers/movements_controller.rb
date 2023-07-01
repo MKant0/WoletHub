@@ -1,13 +1,20 @@
 class MovementsController < ApplicationController
 
   def new
-    @movements = Movement.new
+    @movement = Movement.new
   end
 
   def create
+    @movement = Movement.new(movement_params)
+    if @movement.save
+      redirect_to movement_confirmation_path(@movement) # agregar ruta de la confirmacion
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   def movement_confirmation
+    redirect_to #pagina de confirmacion
   end
 
   def index_movements
@@ -19,5 +26,11 @@ class MovementsController < ApplicationController
     @movement = Movement.find(params[:id])
     @movement_details = FintocService.get_movement_details(@movement.account_id, @movement.id, link_token, api_key)
     # Aquí, link_token y api_key serían los valores relevantes para el usuario actual.
+  end
+
+  private
+
+  def movement_params
+    params.require(:movement).permit(:bank, :price, :person)
   end
 end

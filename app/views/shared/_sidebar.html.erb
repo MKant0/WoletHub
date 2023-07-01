@@ -17,12 +17,12 @@
               Bancos
               </button>
               <%# <% @banks.each do |bank| %>
-                <%# <%= link_to "#{bank.name}", class: "dropdown-item"  %> 
+                <%# <%= link_to "#{bank.name}", class: "dropdown-item"  %>
               <%# <% end %>
             </div>
 
             <div class= "my-3">
-            <%= link_to "Transferir", user_session_path, class: "link-sidebar #{'active' if current_page?(dashboard_path)}" %>
+            <%= link_to "Transferir", new_movement_path, class: "link-sidebar #{'active' if current_page?(dashboard_path)}" %>
             </div>
 
             <div>
