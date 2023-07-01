@@ -17,4 +17,8 @@ class Movement < ApplicationRecord
     recent
   end
 
+  def self.all_movements(user, fintoc)
+    Movement.joins(fintoc_account: {bank_account: :user}).where(users: {id:user.id}, fintoc_account: {id:fintoc.id})
+  end
+
 end
