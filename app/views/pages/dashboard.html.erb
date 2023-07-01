@@ -1,21 +1,19 @@
 <div class="container">
 
-
 <%# <%= pie_chart %>
 
-      <p>Balance total: <%= @balances %></p>
+  <p>Balance total: <%= @balances %></p>
 
-      <h3>Transacciones Recientes</h3>
-      <% @recent.each do |movement| %>
-        <p>Recipient: <%= movement.recipient_account.holder_name %>, Amount: <%= movement.amount %> <%= movement.currency %></p>
-      <% end %>
+  <h3>Transacciones Recientes</h3>
+  <% @recent.each do |movement| %>
+    <p>ID: <%= movement['id'] %>, Monto: <%= movement['amount'] %> <%= movement['currency'] %>, Descripción: <%= movement['description'] %></p>
+  <% end %>
 
-      <h3>Favoritos</h3>
-      <% @favorites.each do |favorite| %>
-        <%= favorite.recipient_account.holder_name %>
-      <% end %>
-    </div>
-
-
+  <h3>Favoritos</h3>
+  <% @favorites.each do |favorite| %>
+    <%= favorite.recipient_account.holder_name %>
+  <% end %>
+</div>
 
 </div>
+
