@@ -40,22 +40,28 @@ puts "users finished"
 
 puts "creating user bank accounts"
 
-alejandro_bank_account = BankAccount.new(user: alejandro)
+alejandro_bank_account = BankAccount.new(user: alejandro, name: "Banco de Chile")
 alejandro_bank_account.save!
 
-sofia_bank_account = BankAccount.new(user: sofia)
+alejandro_bank_account2 = BankAccount.new(user: alejandro, name: "Banco Santander")
+alejandro_bank_account2.save!
+
+alejandro_bank_account3 = BankAccount.new(user: alejandro, name: "Banco BICE")
+alejandro_bank_account3.save!
+
+sofia_bank_account = BankAccount.new(user: sofia, name: "Banco Austral")
 sofia_bank_account.save!
 
-diego_bank_account = BankAccount.new(user: diego)
+diego_bank_account = BankAccount.new(user: diego, name: "Banco Galicia")
 diego_bank_account.save!
 
-valentina_bank_account = BankAccount.new(user: valentina)
+valentina_bank_account = BankAccount.new(user: valentina, name: "Banco de Chile")
 valentina_bank_account.save!
 
-sebastian_bank_account = BankAccount.new(user: sebastian)
+sebastian_bank_account = BankAccount.new(user: sebastian, name: "Banco Santander")
 sebastian_bank_account.save!
 
-camila_bank_account = BankAccount.new(user: camila)
+camila_bank_account = BankAccount.new(user: camila, name: "Banco de Chile")
 camila_bank_account.save!
 
 
@@ -68,6 +74,16 @@ alejandro_fintoc_account = FintocAccount.new(bank_account: alejandro_bank_accoun
   currency: alejandro.preferred_currency, number: "5678901234567890", account_type: "checking_account",
   official_name: "Cuneta Corriente Moneda Local", holder_id: "12.345.678-9", holder_name: alejandro.name)
 alejandro_fintoc_account.save!
+
+alejandro_fintoc_account2 = FintocAccount.new(bank_account: alejandro_bank_account2, name: "Cuenta de Ahorro",
+  currency: alejandro.preferred_currency, number: "367801234868890", account_type: "saving_account",
+  official_name: "Cuneta de Ahorro Moneda Local", holder_id: "12.345.678-9", holder_name: alejandro.name)
+alejandro_fintoc_account2.save!
+
+alejandro_fintoc_account3 = FintocAccount.new(bank_account: alejandro_bank_account3, name: "Cuenta de Negocio",
+  currency: alejandro.preferred_currency, number: "76780263434868678", account_type: "saving_account",
+  official_name: "Cuneta de Negocio Moneda Local", holder_id: "12.345.678-9", holder_name: alejandro.name)
+alejandro_fintoc_account3.save!
 
 sofia_fintoc_account = FintocAccount.new(bank_account: sofia_bank_account, name: "Cuenta Corriente",
   currency: sofia.preferred_currency, number: "9876543210987654", account_type: "checking_account",
@@ -100,6 +116,12 @@ puts "creating balances"
 
 alejandro_balance = Balance.new(available: 1254500, current: 1254500, limit: 1254500, fintoc_account: alejandro_fintoc_account)
 alejandro_balance.save!
+
+alejandro_balance2 = Balance.new(available: 6309800, current: 6309800, limit: 6309800, fintoc_account: alejandro_fintoc_account2)
+alejandro_balance2.save!
+
+alejandro_balance3 = Balance.new(available: 8876100, current: 8876100, limit: 8876100, fintoc_account: alejandro_fintoc_account3)
+alejandro_balance3.save!
 
 sofia_balance = Balance.new(available: 4678900, current: 4678900, limit: 4678900, fintoc_account: sofia_fintoc_account)
 sofia_balance.save!
