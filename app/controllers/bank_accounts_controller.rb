@@ -14,6 +14,5 @@ class BankAccountsController < ApplicationController
     @fintoc_account = FintocAccount.fintoc_accounts_index(current_user, @bank_account)
     @sidebar = true
   end
-
-
 end
+
