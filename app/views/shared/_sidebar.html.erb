@@ -12,21 +12,20 @@
             </div>
 
             <div class= "my-3">
-              <%# <%= link_to "Bancos", user_session_path, class: "link-sidebar #{'active' if current_page?(dashboard_path)}" %>
-              <button class="ms-0 link-sidebar dropdown-toggle border-0 dropdown-button" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Bancos
-              </button>
-              <%# <% @banks.each do |bank| %>
-                <%# <%= link_to "#{bank.name}", class: "dropdown-item"  %>
-              <%# <% end %>
+
+               <%# <button class="ms-0 link-sidebar dropdown-toggle border-0 dropdown-button" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              # Bancos
+              # </button> %>
+              <%= link_to "Bancos", bank_accounts_path, class: "link-sidebar #{'active' if current_page?(bank_accounts_path)}"  %>
+
             </div>
 
             <div class= "my-3">
-            <%= link_to "Transferir", new_movement_path, class: "link-sidebar #{'active' if current_page?(dashboard_path)}" %>
+            <%= link_to "Transferir", new_movement_path, class: "link-sidebar #{'active' if current_page?(new_movement_path)}" %>
             </div>
 
             <div>
-            <%= link_to "Mi Perfil", user_session_path, class: "link-sidebar #{'active' if current_page?(dashboard_path)} child" %>
+            <%= link_to "Mi Perfil", edit_user_registration_path, class: "link-sidebar #{'active' if current_page?(edit_user_registration_path)} child" %>
             </div>
           </div>
         </div>
