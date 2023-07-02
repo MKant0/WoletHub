@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
@@ -13,20 +12,19 @@
 
   <body>
 
-  <%= render "shared/navbar" if @navbar == true %>
+    <%= render "shared/navbar" if @navbar == true %>
 
-  <%= render "shared/flashes" %>
-  <div class="<%= 'row' if @sidebar == true %>">
-    <div class="<%= 'col-2' if @sidebar == true %>">
-      <%= render "shared/sidebar" if @sidebar == true%>
+    <%= render "shared/flashes" %>
+    <div class="<%= 'row' if @sidebar == true %>">
+      <div class="<%= 'col-2' if @sidebar == true %>">
+        <%= render "shared/sidebar" if @sidebar == true %>
+      </div>
+
+      <div class="<%= 'col-10' if @sidebar == true %>">
+        <%= render "shared/flashes" %>
+        <%= yield %>
+      </div>
     </div>
-
-    <div class="<%= 'col-10' if @sidebar == true %>">
-      <%= render "shared/flashes" %>
-      <%= yield %>
-    </div>
-  </div>
-
 
   </body>
 </html>

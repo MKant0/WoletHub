@@ -3,7 +3,7 @@ class Movement < ApplicationRecord
   belongs_to :recipient_account
   has_one :bank_account
 
-  validates :amount, presence: true
+  validates :bank_account, :amount, presence: true
   #forgein_key :
 
   def self.recent_transactions(user)
