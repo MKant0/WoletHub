@@ -3,20 +3,17 @@ class MovementsController < ApplicationController
   def new
     @movement = Movement.new
     @bank = BankAccount.show_all_banks(current_user)
+    @sidebar = true
   end
 
   def create
     @movement = Movement.new(movement_params)
-    @movement.bank_account = BankAccount.find(params[:bank_account_id].to_i)
+    @movement.bank_account = BankAccount.find(params[:bank_account].to_i)
     if @movement.save
-      redirect_to movement_confirmation_path(@movement) # agregar ruta de la confirmacion
+      redirect_to movement_path(@movement)
     else
       render :new, status: :unprocessable_entity
     end
-  end
-
-  def show
-    @movement = Movement.find(params[:id])
   end
 
   def movement_confirmation
@@ -37,6 +34,6 @@ class MovementsController < ApplicationController
   private
 
   def movement_params
-    params.require(:movement).permit(:fintoc_account_id, :fintoc_account, :bank_account_id, :bank_account, :amount)
+    params.require(:movement).permit(:bank_account, :bank_account_id, :fintoc_account, :fintoc_account_id, :amount)
   end
 end

@@ -1,0 +1,6 @@
+<div class="container">
+  <h2>Tus Bancos</h2>
+  <% @banks.each do |bank| %>
+    <%= link_to bank.name, bank_account_path(bank)  %>
+  <% end %>
+</div>
