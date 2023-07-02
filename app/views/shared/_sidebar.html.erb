@@ -28,6 +28,9 @@
             <div>
             <%= link_to "Mi Perfil", user_session_path, class: "link-sidebar #{'active' if current_page?(dashboard_path)} child" %>
             </div>
+            <div>
+            <%= button_to 'Cerrar sesión', destroy_user_session_path, method: :delete %>
+            </div>
           </div>
         </div>
       </div>
