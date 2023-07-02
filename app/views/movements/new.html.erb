@@ -1,0 +1,6 @@
+<%= simple_form_for(@movement) do |f| %>
+  <%= f.select :bank_account, @bank.map { |bank| [bank.name, bank.id]} %>
+  <%= f.association :fintoc_account, collection: FintocAccount.fintoc_accounts_index(current_user, @bank) %>
+  <%= f.input :amount, label: "Cuanto deseas transferir? ($)", class: "form-control" %>
+  <%= f.submit "Confirma transferencia", class: "btn btn-primary mt-3" %>
+<% end %>
