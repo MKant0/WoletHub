@@ -2,8 +2,12 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :home ]
 
   def home
-    @sidebar = false
-    @navbar = true
+    if user_signed_in?
+      redirect_to dashboard_path
+    else
+      @sidebar = false
+      @navbar = true
+    end
   end
 
   def dashboard

@@ -4,7 +4,7 @@ class Movement < ApplicationRecord
   has_one :bank_account, through: :fintoc_account
 
   validates :bank, :amount, :person, presence: true
-  forgein_key :
+  #forgein_key :
 
   def self.recent_transactions(user)
     # recent = []
