@@ -1,7 +1,7 @@
 class Movement < ApplicationRecord
   belongs_to :fintoc_account
   belongs_to :recipient_account
-  has_one :bank_account, through: :fintoc_account
+  has_one :bank_account
 
   validates :bank_account, :amount, presence: true
   # forgein_key :

@@ -5,7 +5,8 @@ class BankAccountsController < ApplicationController
   require 'json'
 
   def index
-    @bank_accounts = BankAccount.all
+    @banks = BankAccount.show_all_banks(current_user)
+    @sidebar = true
   end
 
 
@@ -15,4 +16,3 @@ class BankAccountsController < ApplicationController
     @sidebar = true
   end
 end
-
