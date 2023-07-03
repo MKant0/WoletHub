@@ -34,6 +34,6 @@ class MovementsController < ApplicationController
   private
 
   def movement_params
-    params.require(:movement).permit(:bank_account, :bank_account_id, :fintoc_account, :fintoc_account_id, :amount)
+    params.require(:movement).permit(:bank_account_id, :fintoc_account, :amount)
   end
 end

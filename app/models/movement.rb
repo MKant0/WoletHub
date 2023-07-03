@@ -17,7 +17,7 @@ class Movement < ApplicationRecord
     # recent.last(3)
     # # Movement.where(user_id: user.id).last(3)
     # # return recent
-    recent = Movement.joins(fintoc_account: {bank_account: :user}).where(users: {id:user.id}).first(3)
+    recent = Movement.joins(fintoc_account: {bank_account: :user}).where(users: {id:user.id}).last(3)
     recent
   end
 
