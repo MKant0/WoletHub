@@ -155,23 +155,23 @@ puts "recipient accounts finished"
 
 puts "creating movements"
 
-movement1 = Movement.new(fintoc_account: alejandro_fintoc_account, currency: "BTC", amount: 0.000487, description: "La plata que le debia al Pedro",
+movement1 = Movement.new(bank_account: alejandro_bank_account, fintoc_account: alejandro_fintoc_account, currency: "BTC", amount: 0.000487, description: "La plata que le debia al Pedro",
   transaction_date: "2023-06-19".to_date, movement_type: "transaction", pending: false, recipient_account: pedro)
 movement1.save!
 
-movement2 = Movement.new(fintoc_account: alejandro_fintoc_account, currency: "CLP", amount: 150000, description: "El prestamo para la mesa nueva",
+movement2 = Movement.new(bank_account: alejandro_bank_account, fintoc_account: alejandro_fintoc_account, currency: "CLP", amount: 150000, description: "El prestamo para la mesa nueva",
   transaction_date: "2023-04-23".to_date, movement_type: "transaction", pending: false, recipient_account: maria)
 movement2.save!
 
-movement3 = Movement.new(fintoc_account: alejandro_fintoc_account, currency: "CLP", amount: 10000, description: "por el helado",
+movement3 = Movement.new(bank_account: alejandro_bank_account, fintoc_account: alejandro_fintoc_account, currency: "CLP", amount: 10000, description: "por el helado",
   transaction_date: "2023-01-15".to_date, movement_type: "transaction", pending: false, recipient_account: jimena)
 movement3.save!
 
-movement4 = Movement.new(fintoc_account: alejandro_fintoc_account, currency: "CLP", amount: 237800, description: "para el auto de mama",
+movement4 = Movement.new(bank_account: alejandro_bank_account, fintoc_account: alejandro_fintoc_account, currency: "CLP", amount: 237800, description: "para el auto de mama",
   transaction_date: "2023-01-13".to_date, movement_type: "transaction", pending: false, recipient_account: pedro)
 movement4.save!
 
-movement5 = Movement.new(fintoc_account: alejandro_fintoc_account, currency: "CLP", amount: 133800, description: "regalos de navidad",
+movement5 = Movement.new(bank_account: alejandro_bank_account, fintoc_account: alejandro_fintoc_account, currency: "CLP", amount: 133800, description: "regalos de navidad",
   transaction_date: "2022-12-23".to_date, movement_type: "transaction", pending: false, recipient_account: maria)
 movement5.save!
 

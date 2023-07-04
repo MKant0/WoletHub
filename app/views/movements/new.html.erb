@@ -3,7 +3,7 @@
   <%= f.select :bank_account, @bank.map { |bank| [bank.name, bank.id]} %>
   <%= f.association :fintoc_account, collection: FintocAccount.fintoc_accounts_index(current_user, @bank) %>
   <%= f.input :amount, label: "Cuanto deseas transferir? ($)", class: "form-control" %>
-  <%# <%= f.association :recipient_account, collection:  %>
+  <%= f.association :recipient_account, collection: @recipients.map { |recipient| [recipient.holder_name]} %>
   <%= f.submit "Confirma transferencia", class: "btn btn-primary mt-3" %>
   <% end %>
 </div>

@@ -3,6 +3,7 @@ class MovementsController < ApplicationController
   def new
     @movement = Movement.new
     @bank = BankAccount.show_all_banks(current_user)
+    @recipients = RecipientAccount.all
     @sidebar = true
   end
 
@@ -34,6 +35,6 @@ class MovementsController < ApplicationController
   private
 
   def movement_params
-    params.require(:movement).permit(:bank_account_id, :fintoc_account, :amount)
+    params.require(:movement).permit(:bank_account_id, :fintoc_account, :amount, :recipient_account_id)
   end
 end
