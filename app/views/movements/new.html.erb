@@ -1,22 +1,10 @@
 <div class="container mt-5">
   <%= simple_form_for(@movement) do |f| %>
-    # Elige el banco y la cuenta.
-    <%= f.select :bank_account, @bank.map { |bank| [bank.name, bank.id] }, {}, { id: "bankSelector" } %>
-    <%= f.select :fintoc_account, @fintoc_accounts.map { |account| [account.name, account.id] }, {}, { id: "accountSelector" } %>
-
-    # Muestra el balance de la cuenta seleccionada.
-    <div id="accountBalance"></div>
-
-    # Elige la cantidad a transferir.
-    <%= f.input :amount, label: "Cuanto deseas transferir? ($)", class: "form-control" %>
-
-    # Detalles del nuevo receptor.
-    <%= f.simple_fields_for :recipient_account do |ra| %>
-      <%= ra.input :name, label: "Nombre del receptor", id: "newRecipientName" %>
-      <%= ra.input :account_number, label: "Número de cuenta del receptor", id: "newRecipientAccountNumber" %>
-    <% end %>
-
-    # Confirma la transferencia.
-    <%= f.submit "Confirma transferencia", class: "btn btn-primary mt-3" %>
+  <%= f.association :bank_account, collection: @bank %>
+  <%= f.association :fintoc_account, collection: FintocAccount.fintoc_accounts_index(current_user, @bank) %>
+  <%= f.input :amount, label: "Cuanto deseas transferir? ($)", class: "form-control" %>
+  <%= f.association :recipient_account, collection: current_user.recipient_accounts.map { |recipient| [recipient.holder_name, recipient.id] } %>
+  <%= f.input :description, label: "Escribe una corta descripción de su transferencia", class: "form-control" %>
+  <%= f.submit "Confirma transferencia", class: "btn btn-primary mt-3" %>
   <% end %>
 </div>

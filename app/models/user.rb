@@ -5,5 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :bank_accounts
+  has_many :favorite_recipient_accounts
+  has_many :recipient_accounts, through: :favorite_recipient_accounts
+
 
 end

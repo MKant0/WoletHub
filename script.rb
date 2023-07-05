@@ -27,6 +27,10 @@ def get_movements
 
   movements = account.get_movements.to_a
   puts "Movements: #{movements}"
+  #guardarlo en @movements
+  #una vez guardado en la variable, pasarlo a lo que tengo en la bbdd, su tabla con un each do.
+  #y ahi guardarlo en la bbdd
+  #y luego mostrarlo en la vista
 end
 
 def get_movement_details(movement_id)
@@ -80,4 +84,4 @@ end
 #get_account_info
 #get_movements
 #get_movement_details('mov_JP6YByH6j4A3e4OM') # Reemplaza con el ID del movimiento real
-create_payment_intent
+#create_payment_intent
