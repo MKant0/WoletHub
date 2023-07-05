@@ -1,9 +1,10 @@
 <div class="container mt-5">
   <%= simple_form_for(@movement) do |f| %>
-  <%= f.select :bank_account, @bank.map { |bank| [bank.name, bank.id]} %>
+  <%= f.association :bank_account, collection: @bank %>
   <%= f.association :fintoc_account, collection: FintocAccount.fintoc_accounts_index(current_user, @bank) %>
   <%= f.input :amount, label: "Cuanto deseas transferir? ($)", class: "form-control" %>
-  <%= f.association :recipient_account, collection: @recipients.map { |recipient| [recipient.holder_name]} %>
+  <%= f.association :recipient_account, collection: current_user.recipient_accounts.map { |recipient| [recipient.holder_name, recipient.id] } %>
+  <%= f.input :description, label: "Escribe una corta descripción de su transferencia", class: "form-control" %>
   <%= f.submit "Confirma transferencia", class: "btn btn-primary mt-3" %>
   <% end %>
 </div>

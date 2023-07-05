@@ -9,10 +9,14 @@ class MovementsController < ApplicationController
 
   def create
     @movement = Movement.new(movement_params)
-    @movement.bank_account = BankAccount.find(params[:bank_account].to_i)
+    @movement.bank_account = BankAccount.find(params[:movement][:bank_account_id].to_i)
+    # amount = Movement.find(params[:amount])
+    # balance = Balanca.bank_balance
     if @movement.save
+      # balance - amount
       redirect_to movement_path(@movement)
     else
+      puts @movement.errors.full_messages
       render :new, status: :unprocessable_entity
     end
   end
@@ -28,13 +32,13 @@ class MovementsController < ApplicationController
 
   def show
     @movement = Movement.find(params[:id])
-    @movement_details = FintocService.get_movement_details(@movement.account_id, @movement.id, link_token, api_key)
+    # @movement_details = FintocService.get_movement_details(@movement.account_id, @movement.id, link_token, api_key)
     # Aquí, link_token y api_key serían los valores relevantes para el usuario actual.
   end
 
   private
 
   def movement_params
-    params.require(:movement).permit(:bank_account_id, :fintoc_account, :amount, :recipient_account_id)
+    params.require(:movement).permit(:bank_account_id, :fintoc_account_id, :amount, :recipient_account_id, :description)
   end
 end
