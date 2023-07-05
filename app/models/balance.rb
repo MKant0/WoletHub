@@ -15,4 +15,8 @@ class Balance < ApplicationRecord
     balances.pluck(:available).sum
   end
 
+  # def self.bank_balance
+  #   Balance.joins(fintoc_account: {bank_account: :user}).where(users: {id:user.id})
+  # end
+
 end

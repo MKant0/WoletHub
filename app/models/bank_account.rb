@@ -1,7 +1,8 @@
 class BankAccount < ApplicationRecord
   belongs_to :user
   has_many :fintoc_accounts, dependent: :destroy
-  has_many :movements, through: :fintoc_accounts
+  has_many :movements
+
 
   validates :user, presence: true
 
