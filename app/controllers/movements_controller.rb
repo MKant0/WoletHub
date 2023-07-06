@@ -10,10 +10,11 @@ class MovementsController < ApplicationController
   def create
     @movement = Movement.new(movement_params)
     @movement.bank_account = BankAccount.find(params[:movement][:bank_account_id].to_i)
-    # amount = Movement.find(params[:amount])
-    # balance = Balanca.bank_balance
     if @movement.save
-      # balance - amount
+      fintoc = FintocAccount.find(@movement.fintoc_account_id)
+      balance = fintoc.balance.available
+      result = balance - @movement.amount
+      fintoc.balance.update(available: result)
       redirect_to movement_path(@movement)
     else
       puts @movement.errors.full_messages

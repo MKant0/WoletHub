@@ -41,7 +41,7 @@
           <h3>Cancel my account</h3>
 
 
-          <!-- <%= link_to "Back", :back %> -->
+           <%= link_to "Back", :back %> -->
        <!-- </div>
       </div>
 
@@ -87,7 +87,7 @@
 
           <div class="row pt-3 mx-5">
             <div class="col-4">
-              <%= link_to 'Cerrar sesión', destroy_user_session_path, method: :delete, class: "btn btn-outline-primary purple-btn" %>
+              <%= button_to 'Cerrar sesión', destroy_user_session_path, method: :delete, class: "btn btn-outline-primary purple-btn" %>
             </div>
             <div class="col-4">
               <%= f.button :submit, "Actualizar", class: "btn btn-outline-primary purple-btn"  %>
