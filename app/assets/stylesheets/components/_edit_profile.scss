@@ -1,0 +1,27 @@
+.baige-rounded-box {
+  background-color: rgba(172, 90, 0, .1);
+  margin: 0.5rem;
+  border-radius: 20px;
+  padding: 0.5rem;
+  align-items: start;
+}
+.red-btn {
+  color: white;
+  border-radius: 5px;
+
+  &:hover {
+    background-color: rgb(184, 0, 0);
+    color: white;
+  }
+}
+.purple-btn {
+  color: #8E43ED;
+  border-color: #8E43ED;
+  border-radius: 5px;
+
+  &:hover{
+    background-color: #8E43ED;
+    border-color: #8E43ED;
+    color: white;
+  }
+}
