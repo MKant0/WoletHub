@@ -1,0 +1,36 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Items</h1>
+
+<div id="items">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Description</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @paypopups.each do |paypopup| %>
+        <tr scope="row">
+          <td style="width: 25%">
+            <%= paypopup.name %>
+          </td>
+          <td style="width: 50%">
+            <%= paypopup.description %>
+          </td>
+          <td style="width: 25%">
+            <%= link_to "Show", paypopup, class: "btn btn-secondary" %>
+            <%= link_to "Delete", paypopup, class: "btn btn-danger", method: :delete, data: { "turbo-method": :delete, turbo_confirm: "Are you sure?" } %>
+            <%= link_to "Edit", edit_paypopup_path(paypopup), class: "btn btn-success" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<p>
+    <%= link_to "New item", new_paypopup_path, class: "btn btn-primary", data: { turbo_frame: "paypopup_modal" }%>
+</p>
