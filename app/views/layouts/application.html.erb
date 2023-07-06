@@ -22,7 +22,12 @@
 
       <div class="<%= 'col-10' if @sidebar == true %>">
         <%= render "shared/flashes" %>
-        <%= yield %>
+        <div class="container">
+         <div class="row">
+           <%= yield %>
+           <%= turbo_frame_tag "paypopup_modal", target: "_top" %>
+         </div>
+        </div>
       </div>
     </div>
 

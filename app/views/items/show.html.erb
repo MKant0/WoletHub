@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @paypopup %>
+
+<div>
+  <%= link_to "Edit this item", edit_item_path(@paypopup) %> |
+  <%= link_to "Back to items", paypopups_path %>
+
+  <%= button_to "Destroy this item", @paypopup, method: :delete %>
+</div>

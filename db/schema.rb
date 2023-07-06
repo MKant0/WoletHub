@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_02_220028) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_05_175543) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -59,6 +59,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_02_220028) do
     t.index ["bank_account_id"], name: "index_fintoc_accounts_on_bank_account_id"
   end
 
+  create_table "items", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "movements", force: :cascade do |t|
     t.bigint "fintoc_account_id", null: false
     t.string "currency"
@@ -76,6 +83,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_02_220028) do
     t.index ["bank_account_id"], name: "index_movements_on_bank_account_id"
     t.index ["fintoc_account_id"], name: "index_movements_on_fintoc_account_id"
     t.index ["recipient_account_id"], name: "index_movements_on_recipient_account_id"
+  end
+
+  create_table "paypopups", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "recipient_accounts", force: :cascade do |t|
