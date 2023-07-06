@@ -25,10 +25,7 @@
             </div>
 
             <div>
-            <%= link_to "Mi Perfil", edit_user_registration_path, class: "link-sidebar #{'active' if current_page?(edit_user_registration_path)}" %>
-            </div>
-            <div>
-            <%= link_to 'Cerrar sesión', destroy_user_session_path, method: :delete, class: "link-sidebar child" %>
+            <%= link_to "Mi Perfil", edit_user_registration_path, class: "link-sidebar child #{'active' if current_page?(edit_user_registration_path)}" %>
             </div>
           </div>
         </div>
