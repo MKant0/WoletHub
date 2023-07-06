@@ -16,11 +16,31 @@
     </div>
   </div>
 
+
+
+  <div class="container my-4 container-custom-outline py-1 px-5" style="background: radial-gradient(circle, #cbcbcb 10%, transparent 11%);
+        background-size: 1em 1em;
+        background-color: #ffffff;
+        opacity: 1;
+        height: 250px;">
+    <div class="row my-4">
+        <div class="mb-4 text-center">
+          <h2><strong>¿Quieres probar wolethub</strong> <em>GRATIS</em> ?</h2>
+        </div>
+        <div class="text-center">
+          <p><strong>Que estas esperando para ordenar tus finanzas!</strong></p>
+        </div>
+        <div class="text-center">
+          <%= link_to "Unete!", "#", class: "btn btn-primary btn-unete" %>
+        </div>
+    </div>
+  </div>
+
   <!-- Container 2: Image on Left, Text on Right -->
   <div class="container my-4 container-custom py-1 px-5" style="height: 350px;">
     <div class="row my-4">
       <div class="col-md-6 d-flex justify-content-center">
-        <%= image_tag "hp_2.png", alt: "Placeholder Image", class: "rounded mx-auto d-block" %>
+        <%= image_tag "Online.png", alt: "Placeholder Image", class: "rounded mx-auto d-block"%>
       </div>
       <div class="col-md-6 d-flex align-items-center justify-content-center flex-column">
         <div class="mb-4 text-left">
@@ -32,8 +52,6 @@
       </div>
     </div>
   </div>
-
-
 
     <!-- Container 3: Text on Left, Image on Right -->
     <div class="container my-4">
@@ -47,7 +65,7 @@
           </div>
         </div>
         <div class="col-md-6 d-flex align-items-center">
-          <%= image_tag "hp_3.png", alt: "Placeholder Image", class:"img-fluid mx-auto d-block" %>
+          <%= image_tag "Taxes.png", alt: "Placeholder Image", class:"img-fluid mx-auto d-block" %>
         </div>
       </div>
     </div>
@@ -56,9 +74,9 @@
   <div class="container my-4">
     <div class="row my-4">
       <div class="col-md-6 d-flex align-item-center">
-        <%= image_tag "hp_4.png", alt: "Placeholder Image", class: "img-fluid mx-auto d-block" %>
+        <%= image_tag "Investments.png", alt: "Placeholder Image", class: "img-fluid mx-auto d-block" %>
       </div>
-      <div class="col-md-6 d-flex align-items-center justify-content-center flex-column">
+      <div class="col-md-6 d-flex justify-content-center flex-column">
           <div class="mb-4 text-left">
           <h2>Ordena tus finanzas</h2>
         </div class="text-left">
@@ -70,8 +88,9 @@
   </div>
 
 </div>
-<footer class="bg-custom text-white text-center text-lg-start">
-  <div class="container p-5">
+
+<footer class="bg-custom-footer text-white text-center text-lg-start">
+  <div class="container-footer p-5">
     <div class="row">
 
       <!-- Subcontainer 1: Logo -->
@@ -105,9 +124,9 @@
       <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
         <h5 class="text-uppercase">Encuéntranos</h5>
         <ul class="list-unstyled mb-0 d-flex">
-          <li class="mx-2"><%= image_tag "instagram.svg", class: "text-white" %></li>
-          <li class="mx-2"><%= image_tag "twitter.svg", class: "text-white" %></li>
-          <li class="mx-2"><%= image_tag "github.svg", class: "text-white" %></li>
+          <li class="mx-2"><%= image_tag "instagram.svg", class: "icon-color" %></li>
+          <li class="mx-2"><%= image_tag "twitter.svg", class: "icon-color" %></li>
+          <li class="mx-2"><%= image_tag "github.svg", class: "icon-color" %></li>
         </ul>
       </div>
     </div>
