@@ -51,16 +51,25 @@ aside h3 {
   width: 686px;
   text-align: center;
   justify-content: space-between;
+  box-shadow: 0px 0px transparent;
+  transition: box-shadow 0.3s, transform 0.3s;
+}
+
+.baige-rounded-box:hover {
+  box-shadow: 0px 5px lightgray;
+  transform: scale(1.02);
 }
 
 .link-black {
   color: black;
   text-decoration: none;
   font-size: 17px;
+
 }
 
 .link-black:hover {
   color:#8E43ED;
+
 }
 
 .baige-rounded-box-scaled {
