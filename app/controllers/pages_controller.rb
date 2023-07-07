@@ -20,7 +20,6 @@ class PagesController < ApplicationController
     end
     @banks = BankAccount.show_all_banks(current_user)
     @recent = Movement.recent_transactions(current_user)
-    @favorites = FavoriteRecipientAccount.where(user_id: current_user.id).includes(:recipient_account)
     @sidebar = true
     @navbar = false
   end
@@ -28,4 +27,10 @@ class PagesController < ApplicationController
   def _sidebar
     @banks = BankAccount.show_all_banks(current_user)
   end
+
+  def profile
+    @sidebar = true
+    @favorites = FavoriteRecipientAccount.where(user_id: current_user.id).includes(:recipient_account)
+  end
+
 end
