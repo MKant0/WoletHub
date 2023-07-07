@@ -1,0 +1,21 @@
+<div class="container">
+
+  <h2>El Perfil de <%= current_user.name %></h2>
+
+  <div class="d-flex justify-content-center">
+    <h3>Favoritos</h3>
+   </div>
+    <% @favorites.each do |favorite| %>
+      <div class="baige-rounded-box-scaled align-center mx-auto">
+        <%= favorite.recipient_account.holder_name %>
+      </div>
+    <% end %>
+
+    <%= button_to "Editar Perfil", edit_user_registration_path, class: "btn btn-signup"  %>
+
+
+  <div>
+    <%= button_to 'Cerrar sesión', destroy_user_session_path, method: :delete, class: "btn btn-outline-primary purple-btn" %>
+  </div>
+
+</div>

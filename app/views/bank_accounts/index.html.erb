@@ -1,6 +1,11 @@
 <div class="container">
-  <h2>Tus Bancos</h2>
-  <% @banks.each do |bank| %>
-    <%= link_to bank.name, bank_account_path(bank)  %>
-  <% end %>
+  <div class="mt-6">
+    <h2>Tus Bancos</h2>
+
+    <% @banks.each do |bank| %>
+      <div class="baige-rounded-box-scaled align-center mx-auto">
+        <%= link_to bank.name, bank_account_path(bank), class: "link-black"  %>
+      </div>
+    <% end %>
+  </div>
 </div>

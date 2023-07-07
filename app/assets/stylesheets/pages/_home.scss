@@ -94,5 +94,59 @@
   background-color: #8E43ED;
   display: flex;
   flex-direction: column;
-  min-width: 100vw;
+}
+.squarebgfree {
+  background-color: transparent;
+
+  border-radius: 20px;
+}
+.card-info {
+  color: #8E43ED;
+}
+.card-description {
+  color: #8E43ED;
+}
+.card-valor {
+  font-size: 50px;
+}
+.btn-empezar-free {
+  background-color: transparent;
+  color: #8E43ED;
+  border-color: #8E43ED;
+  border-radius: 100px;
+  border: 2px solid #8E43ED;
+
+  &:hover {
+    background-color: #8E43ED;
+    color: white;
+    border-radius: 100px;
+    border-color: #8E43ED;
+  }
+}
+.container-custom-outline {
+  border: 5px solid #8E43ED;
+  border-radius: 10px;
+}
+.container-custom-bg {
+  background-color:  #8E43ED;
+  border-radius: 20px;
+}
+.card-info-pay {
+  color: white;
+}
+.btn-empezar-pay {
+  background-color: white;
+  color: #8E43ED;
+  border-radius: 100px;
+  border-color: #8E43ED;
+
+  &:hover {
+    background-color: #8E43ED;
+    color: white;
+    border-radius: 100px;
+    border-color: white;
+  }
+}
+.card-description-pay {
+  color: white;
 }
