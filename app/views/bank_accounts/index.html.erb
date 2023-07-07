@@ -1,11 +1,19 @@
-<div class="container">
+<div class="container full-height d-flex justify-content-center align-items-center">
   <div class="mt-6">
-    <h2>Tus Bancos</h2>
 
-    <% @banks.each do |bank| %>
-      <div class="baige-rounded-box-scaled align-center mx-auto">
-        <%= link_to bank.name, bank_account_path(bank), class: "link-black"  %>
-      </div>
-    <% end %>
+    <div class="d-flex justify-content-center align-items-center">
+      <h2>Tus Bancos</h2>
+    </div>
+
+    <div class="">
+      <% @banks.each do |bank| %>
+
+        <div class="baige-rounded-box-scaled align-center mx-auto">
+          <%= link_to bank.name, bank_account_path(bank), class: "link-black"  %>
+        </div>
+
+      <% end %>
+    </div>
+
   </div>
 </div>

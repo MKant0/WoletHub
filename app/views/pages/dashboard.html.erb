@@ -9,7 +9,7 @@
     <% @banks.each do |bank| %>
       <div class="baige-rounded-box d-flex justify-between mx-auto">
         <div>
-          <h5><%= link_to bank.name, bank_account_path(bank) %></h5>
+          <h5><%= link_to bank.name, bank_account_path(bank), class: "link-black" %></h5>
         </div>
         <div>
           <% bank.fintoc_accounts.each do |fintoc| %>
