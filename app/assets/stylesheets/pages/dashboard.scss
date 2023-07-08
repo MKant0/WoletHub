@@ -6,7 +6,6 @@ aside .close {
   position: relative;
   flex-direction: column;
   height: 100vh;
-  position: relative;
   border-right: solid 0.1rem lightgray ;
 }
 
@@ -26,12 +25,12 @@ aside h3 {
 
 .active {
   color: #8E43ED;
-  margin-left: 0.5rem
+
 }
 
 
 .link-sidebar:hover {
-  margin-left: 1rem !important
+  margin-left: 2.5rem !important
 }
 
 .child {
