@@ -82,7 +82,6 @@ module DataFintoc
     puts "Payment intent response: #{response.body}"
 
     uri2 = URI("https://webview.fintoc.com/widget?public_key=pk_test_xwUGiHD3-zsftKEioAvCGjAk6qQrTS65&holder_type=individual&product=payments&country=cl&widget_token=#{response.body['widget_token']}")
-
   end
 
   get_account_info
