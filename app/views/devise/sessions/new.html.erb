@@ -1,8 +1,7 @@
 <!-- Log in -->
 <div class="row">
-    <div class="col-6">
-      <div class="squarebg">
-      </div>
+    <div class="col-6 p-0">
+      <div class="squarebg"></div>
     </div>
     <div class="col-6 py-5">
         <%= image_tag "WoletHub.svg", class: "logo mx-5", alt: "Logo" %>
@@ -23,7 +22,7 @@
           </div>
           <div class="form-actions py-5 mx-5">
             <div class="row">
-              <%= f.button :submit, "Log in" %>
+              <%= f.button :submit, "Log in", class:"btn btn-primary btn-login my-3" %>
               <%= render "devise/shared/links" %>
             </div>
           </div>
