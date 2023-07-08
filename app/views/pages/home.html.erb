@@ -31,7 +31,9 @@
           <p><strong>Que estas esperando para ordenar tus finanzas!</strong></p>
         </div>
         <div class="text-center">
-          <%= link_to "Unete!", "#", class: "btn btn-primary btn-unete" %>
+          <button type="button" class="btn btn-purple-unete btn-unete" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Unete!
+          </button>
         </div>
     </div>
   </div>
@@ -56,9 +58,9 @@
     <!-- Container 3: Text on Left, Image on Right -->
     <div class="container my-4">
       <div class="row my-4">
-        <div class="col-md-6 d-flex align-items-center justify-content-center flex-column">
-        <div class="mb-4 text-right">
-            <h2>Transfiere dinero y crypto en un solo lugar</h2>
+        <div class="col-md-6 d-flex justify-content-center flex-column">
+          <div class="mb-4 text-left">
+            <h2>Transfiere dinero y crypto <br>en un solo lugar</h2>
           </div class="text-right">
           <div>
             <p>Nunca más tendrás que ir de un banco a otro haciendo transferencias, en wolethub podrás hacer transferencias de todos tus bancos de manera unificada y simple.</p>
@@ -90,7 +92,7 @@
 </div>
 
 <footer class="bg-custom-footer text-white text-center text-lg-start">
-  <div class="container-footer p-5">
+  <div class="container-footer w-100 p-5">
     <div class="row">
 
       <!-- Subcontainer 1: Logo -->
@@ -132,3 +134,69 @@
     </div>
   </div>
 </footer>
+
+<!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog vertical-alignment-helper">
+    <div class="modal-content-pay vertical-align-center">
+      <div class="modal-header">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-6">
+            <div class="container-custom-outline">
+                <div class="container-free">
+                  <div class="card-info text-center py-2">
+                    <div>
+                      <p>Basico</p>
+                      <p class="card-valor"><em>0 CLP</em></p>
+                    </div>
+                    <%= link_to "Empezar", "#", class: "btn btn-outline-primary me-2 btn-empezar-free" %>
+                    <hr>
+                    <p class="card-description text-left">
+                      <ul>
+                        <li>Puedes tener hasta 2 bancos</li>
+                        <li>20 transacciones mensuales gratis</li>
+                        <li>Cuentas bancarias ilimitadas</li>
+                      </ul>
+                    </p>
+                  </div>
+                </div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="container-custom-bg">
+              <div class="container-pay">
+                <div class="container-pay">
+                  <div class="card-info-pay text-center py-2">
+                    <div>
+                      <p>Recomendado</p>
+                      <p class="card-valor"><em>19.900 CLP/año</em></p>
+                    </div>
+                     <%= link_to "Empezar", "#", class: "btn btn-outline-primary me-2 btn-empezar-pay" %>
+                     <hr>
+                     <p class="card-description-pay text-left px-2">
+                      <ul>
+                        <li>Bancos ilimitados</li>
+                        <li>Transacciones mensuales ilimitadas</li>
+                        <li>Acceso a todo el contenido</li>
+                      </ul>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div> -->
+    </div>
+  </div>
+</div>
