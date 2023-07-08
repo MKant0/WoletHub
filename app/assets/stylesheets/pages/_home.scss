@@ -75,6 +75,7 @@
   border-color: #8E43ED;
   border-radius: 20px;
   font-size: 24px;
+
   &:hover {
     background-color: transparent;
     color: #8E43ED;
@@ -97,7 +98,6 @@
 }
 .squarebgfree {
   background-color: transparent;
-
   border-radius: 20px;
 }
 .card-info {
@@ -111,7 +111,7 @@
 }
 .btn-empezar-free {
   background-color: transparent;
-  color: #8E43ED;
+  color: #AC5A00;
   border-color: #8E43ED;
   border-radius: 100px;
   border: 2px solid #8E43ED;
@@ -125,7 +125,7 @@
 }
 .container-custom-outline {
   border: 5px solid #8E43ED;
-  border-radius: 10px;
+  border-radius: 20px;
 }
 .container-custom-bg {
   background-color:  #8E43ED;
@@ -136,7 +136,7 @@
 }
 .btn-empezar-pay {
   background-color: white;
-  color: #8E43ED;
+  color: #AC5A00;
   border-radius: 100px;
   border-color: #8E43ED;
 
@@ -145,8 +145,27 @@
     color: white;
     border-radius: 100px;
     border-color: white;
+    border: 2px solid white;
   }
 }
 .card-description-pay {
   color: white;
+}
+
+.vertical-alignment-helper {
+  display:table;
+  pointer-events:none;
+}
+.vertical-align-center {
+  /* To center vertically */
+  pointer-events:none;
+}
+.modal-content {
+  margin: 0 auto;
+  pointer-events: all;
+  width: 800px;
+  border-radius: 10px; /* This makes sure that we can still click outside of the modal to close it */
+}
+.btn-primary {
+  background-color: #8E43ED;
 }
