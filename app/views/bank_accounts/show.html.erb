@@ -6,12 +6,8 @@
     </div>
 
     <div class="d-flex justify-content-center align-items-center">
-      <% @fintoc_account.each do |fintoc| %>
-        <div class="baige-rounded-box-scaled align-center mx-auto">
-          <%= link_to fintoc.name, fintoc_path, class: "link-black" %>
-        </div>
-      <% end %>
+      <%= render "fintoc_partial", fintoc_account: @fintoc_account %>
     </div>
 
   </div>
-</div>
+</div> 
