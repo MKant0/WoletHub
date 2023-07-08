@@ -1,0 +1,18 @@
+<h1>Dashboard</h1>
+
+<h2>Información personal</h2>
+
+<p>Email: <%= @user_info['user']['email'] %></p>
+<p>Nombre: <%= @user_info['user']['account_data']['names'] %></p>
+<p>Apellido: <%= @user_info['user']['account_data']['surnames'] %></p>
+
+<h2>Balances</h2>
+
+<% @balances['balances'].each do |balance| %>
+  <p>
+    Moneda: <%= balance['id'] %><br>
+    Cantidad: <%= balance['amount'][0] %><br>
+    Cantidad disponible: <%= balance['available_amount'][0] %><br>
+    Cantidad congelada: <%= balance['frozen_amount'][0] %>
+  </p>
+<% end %>
