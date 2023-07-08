@@ -1,0 +1,2 @@
+class WebookEvent < ApplicationRecord
+end
