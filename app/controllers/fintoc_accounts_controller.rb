@@ -1,4 +1,6 @@
 class FintocAccountsController < ApplicationController
+
+  require_relative '../services/fintoc_services.rb'
   def new
     @fintoc_account = FintocAccount.new
     # @link_intent = create_link_intent
@@ -23,21 +25,7 @@ class FintocAccountsController < ApplicationController
     @bank_account = BankAccount.find(params[:id])
     @movements = Movement.all_movements(current_user, @fintoc_account)
     @sidebar = true
+    @fintoc_access = FintocService.get_account_info(ENV['FINTOC_LINK_TOKEN'], ENV['FINTOC_API_KEY'])
+    @account_id = @fintoc_access[0].id
   end
-
-  private
-
-  # def create_link_intent
-  #   api_key = ENV['FINTOC_API_KEY']
-  #   fintoc_client = Fintoc::Client.new(api_key)
-
-  #   link_intent = fintoc_client.create_link_intent(
-  #     country: 'cl',
-  #     holder_type: 'individual',
-  #     product: 'movements',
-  #     mode: 'live'
-  #   )
-
-  #   link_intent.to_h
-  # end
 end
