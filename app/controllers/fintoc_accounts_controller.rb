@@ -1,7 +1,7 @@
 class FintocAccountsController < ApplicationController
   def new
     @fintoc_account = FintocAccount.new
-    @link_intent = create_link_intent
+    # @link_intent = create_link_intent
   end
 
 
@@ -27,17 +27,17 @@ class FintocAccountsController < ApplicationController
 
   private
 
-  def create_link_intent
-    api_key = ENV['FINTOC_API_KEY']
-    fintoc_client = Fintoc::Client.new(api_key)
+  # def create_link_intent
+  #   api_key = ENV['FINTOC_API_KEY']
+  #   fintoc_client = Fintoc::Client.new(api_key)
 
-    link_intent = fintoc_client.create_link_intent(
-      country: 'cl',
-      holder_type: 'individual',
-      product: 'movements',
-      mode: 'live'
-    )
+  #   link_intent = fintoc_client.create_link_intent(
+  #     country: 'cl',
+  #     holder_type: 'individual',
+  #     product: 'movements',
+  #     mode: 'live'
+  #   )
 
-    link_intent.to_h
-  end
+  #   link_intent.to_h
+  # end
 end
