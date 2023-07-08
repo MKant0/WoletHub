@@ -6,3 +6,9 @@ import { application } from "./application"
 
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
+
+import PaypopupModalController from "./paypopup_modal_controller"
+application.register("paypopup-modal", PaypopupModalController)
+
+import WidgetsController from "./widgets_controller"
+application.register("widgets", WidgetsController)

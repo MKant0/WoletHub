@@ -81,7 +81,7 @@ def create_payment_intent
 
 end
 
-#get_account_info
+get_account_info
 #get_movements
 #get_movement_details('mov_JP6YByH6j4A3e4OM') # Reemplaza con el ID del movimiento real
-create_payment_intent
+#create_payment_intent

@@ -2,12 +2,12 @@
 <script type="text/javascript">
     var BASE_URL = "<%= Rails.env.production? ? 'https://wolethub.me' : 'http://localhost:3000' %>";
 </script>
+<div data-controller='widgets'></div>
 
-
-<script>
+<%# <script>
   window.onload = () => {
     const widget = Fintoc.create({
-      publicKey: 'pk_live_BwgEyz8EzvAQetqfdvY2me8527FfF2Jf',
+      publicKey: 'pk_test_xwUGiHD3-zsftKEioAvCGjAk6qQrTS65',
       holderType: 'individual',
       product: 'movements',
       webhookUrl: 'https://webhook.site/7c9c93d1-a80b-4886-8fa8-145c4215fb86',
@@ -31,4 +31,4 @@
   widget.open();
 };
 
-</script>
+</script> %>
