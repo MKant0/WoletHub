@@ -5,6 +5,7 @@ class MovementsController < ApplicationController
     @bank = BankAccount.show_all_banks(current_user)
     @recipients = RecipientAccount.all
     @sidebar = true
+    @recipient_account = RecipientAccount.new
   end
 
   def create

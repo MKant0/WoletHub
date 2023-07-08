@@ -1,0 +1,32 @@
+.btn-primary-confirma {
+  background-color: #8E43ED;
+  border-radius: 10px;
+  color: white;
+
+  &:hover {
+    background-color: #522e83;
+    color: white;
+  }
+}
+.btn-primary-nuevo {
+  background-color: white;
+  border-radius: 10px;
+  border: 2px solid #8E43ED;
+  color: #8E43ED;
+
+  &:hover {
+    background-color: #8E43ED;
+    color: white;
+    border-radius: 10px;
+  }
+}
+.btn-primary-AgregarDestinatario {
+  background-color: #8E43ED;
+  border-radius: 10px;
+  color: white;
+
+  &:hover {
+    background-color: #522e83;
+    color: white;
+  }
+}
