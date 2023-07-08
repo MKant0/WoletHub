@@ -1,3 +1,28 @@
+<script src=“https://js.fintoc.com/v1/”></script>
+<script>
+  window.onload = () => {
+    const widget = Fintoc.create({
+      publicKey: 'sk_test_929tBk2rVGgU6qKZVk_a4ajVRRL-rGaR',
+      holderType: 'individual',
+      product: 'movements',
+      webhookUrl: 'https://hot-cars-stand.loca.lt/data_fintoc',
+      onSuccess: (link) => {
+        console.log('Success!');
+        console.log(link);
+      },
+      onExit: () => {
+        console.log('Widget closing!');
+      },
+      onEvent: (event) => {
+        console.log('An event just happened!');
+        console.log(event);
+      },
+    });
+     widget.open();
+  };
+</script>
+
+
 <div class="container main-container my-5">
   <!-- Container 1: Text on Left, Image on Right -->
   <div class="container my-4">
