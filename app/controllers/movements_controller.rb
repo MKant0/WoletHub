@@ -42,4 +42,22 @@ class MovementsController < ApplicationController
   def movement_params
     params.require(:movement).permit(:bank_account_id, :fintoc_account_id, :amount, :recipient_account_id, :description)
   end
+
+  def get_movements
+    account_id = 'acc_pjGbKqETYAvKrV5E' # Reemplaza con el ID de la cuenta real
+    link_token = ENV['FINTOC_LINK_TOKEN']
+    api_key = ENV['FINTOC_API_KEY']
+
+    client = Fintoc::Client.new(api_key)
+    link = client.get_link(link_token)
+    account = link.find(id: account_id)
+
+    movements = account.get_movements.to_a
+    return movements
+    # puts "Movements: #{movements}"
+    #guardarlo en @movements
+    #una vez guardado en la variable, pasarlo a lo que tengo en la bbdd, su tabla con un each do.
+    #y ahi guardarlo en la bbdd
+    #y luego mostrarlo en la vista
+  end
 end
