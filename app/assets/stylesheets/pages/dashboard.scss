@@ -6,7 +6,6 @@ aside .close {
   position: relative;
   flex-direction: column;
   height: 100vh;
-  position: relative;
   border-right: solid 0.1rem lightgray ;
 }
 
@@ -26,12 +25,12 @@ aside h3 {
 
 .active {
   color: #8E43ED;
-  margin-left: 0.5rem
+
 }
 
 
 .link-sidebar:hover {
-  margin-left: 1rem !important
+  margin-left: 2.5rem !important
 }
 
 .child {
@@ -52,17 +51,22 @@ aside h3 {
   width: 686px;
   text-align: center;
   justify-content: space-between;
+  box-shadow: 0px 0px transparent;
+  transition: box-shadow 0.3s, transform 0.3s;
+}
+
+.baige-rounded-box:hover {
+  box-shadow: 0px 5px lightgray;
+  transform: scale(1.02);
 }
 
 .link-black {
   color: black;
   text-decoration: none;
   font-size: 17px;
+
 }
 
-.link-black:hover {
-  color:#8E43ED;
-}
 
 .baige-rounded-box-scaled {
   background-color: rgba(172, 90, 0, .1) ;
@@ -72,4 +76,15 @@ aside h3 {
   width: 250px;
   text-align: center;
   justify-content: space-between;
+  box-shadow: 0px 0px transparent;
+  transition: box-shadow 0.3s, transform 0.3s;
+}
+
+.baige-rounded-box-scaled:hover {
+  box-shadow: 0px 5px lightgray;
+  transform: scale(1.02);
+}
+
+.full-height {
+  height: 100vh;
 }

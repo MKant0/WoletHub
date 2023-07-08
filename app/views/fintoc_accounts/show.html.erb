@@ -1,35 +1,46 @@
-  <div class="container my-4">
-    <div class="baige-rounded-box-scaled align-center mx-auto mb-5">
+<div class="container my-4">
+
+
+  <div class="d-flex justify-content-center align-items-center">
+    <div class="ring">
+      <h2 class="ring-text">$<%= @fintoc_account.balance.available %></h2>
+    </div>
+  </div>
+
+
+    <%# <div class="baige-rounded-box-scaled align-center mx-auto mb-5">
       <p>Saldo disponible</p>
       <h2><%= @fintoc_access[0].balance.to_s.split(" ")[0] %><h2>
       <%= console %>
       <h2><%= @fintoc_account.balance.available %></h2>
-    </div>
+    <%# </div>  %>
 
-
+  <div class="d-flex justify-content-center align-items-center">
     <h3>Todas sus transacciones de la <%= @fintoc_account.name %> de <%= @bank_account.name %> </h3>
-      <div class="table-responsive small my-4">
-        <table class="table table-striped table-sm">
-          <thead>
+  </div>
+
+  <div class="table-responsive small my-4">
+    <table class="table table-striped table-sm">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Monto</th>
+          <th scope="col">Moneda</th>
+          <th scope="col">Descripción</th>
+
+        </tr>
+      </thead>
+      <tbody>
+          <% @movements.each do |movement| %>
             <tr>
-              <th scope="col">ID</th>
-              <th scope="col">Monto</th>
-              <th scope="col">Moneda</th>
-              <th scope="col">Descripción</th>
-
+              <td><%= movement['id'] %></td>
+              <td>$<%= movement['amount'] %></td>
+              <td><%= movement['currency'] %></td>
+              <td><%= movement['description'] %></td>
             </tr>
-          </thead>
-          <tbody>
-              <% @movements.each do |movement| %>
-                <tr>
-                  <td><%= movement['id'] %></td>
-                  <td>$<%= movement['amount'] %></td>
-                  <td><%= movement['currency'] %></td>
-                  <td><%= movement['description'] %></td>
-                </tr>
-              <% end %>
+          <% end %>
 
-          </tbody>
-        </table>
-      </div>
-    </div>
+      </tbody>
+    </table>
+  </div>
+</div>
