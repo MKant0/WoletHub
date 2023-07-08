@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root to: "pages#home"
 
   resources :movements, only: [:index, :new, :create, :show]
-  resources :paypopups
+  resources :recipient_accounts
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
