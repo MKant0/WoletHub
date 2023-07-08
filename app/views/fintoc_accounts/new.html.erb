@@ -1,0 +1,34 @@
+<script src="https://js.fintoc.com/v1/"></script>
+<script type="text/javascript">
+    var BASE_URL = "<%= Rails.env.production? ? 'https://wolethub.me' : 'http://localhost:3000' %>";
+</script>
+
+
+<script>
+  window.onload = () => {
+    const widget = Fintoc.create({
+      publicKey: 'pk_live_BwgEyz8EzvAQetqfdvY2me8527FfF2Jf',
+      holderType: 'individual',
+      product: 'movements',
+      webhookUrl: 'https://webhook.site/7c9c93d1-a80b-4886-8fa8-145c4215fb86',
+      onSuccess: function(link) {
+      console.log('Success! Here is the Link object:');
+      console.log(link);
+      localStorage.setItem('linkId', link.id); // guardar el link.id en el localStorage
+      console.log('The link_token is: ' + link.link_token);
+      },
+
+      onExit: function() {
+      console.log('Widget closing!');
+      window.location.href = `${BASE_URL}/bank_accounts`;
+      },
+      onEvent: function(event) {
+      console.log('An event just happened!');
+      console.log(event);
+      }
+  });
+
+  widget.open();
+};
+
+</script>

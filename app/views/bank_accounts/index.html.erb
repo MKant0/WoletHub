@@ -7,5 +7,9 @@
         <%= link_to bank.name, bank_account_path(bank), class: "link-black"  %>
       </div>
     <% end %>
+
+    <div class="mt-3">
+      <%= link_to "Agregar cuenta Fintoc", new_fintoc_account_path, class: "btn btn-primary" %>
+    </div>
   </div>
 </div>
