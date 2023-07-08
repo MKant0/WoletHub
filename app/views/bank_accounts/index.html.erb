@@ -1,11 +1,28 @@
-<div class="container">
-  <div class="mt-6">
-    <h2>Tus Bancos</h2>
+<div class="container full-height d-flex justify-content-center align-items-center">
+  <div class="mt-6" data-controller="clickable-div">
+    <div>
 
-    <% @banks.each do |bank| %>
-      <div class="baige-rounded-box-scaled align-center mx-auto">
-        <%= link_to bank.name, bank_account_path(bank), class: "link-black"  %>
+      <div class="d-flex justify-content-center align-items-center">
+        <h2>Tus Bancos</h2>
       </div>
-    <% end %>
+
+    <div class="d-flex flex-wrap">
+
+        <div class="me-1">
+          <% @banks.each do |bank| %>
+            <%= link_to bank_account_path(bank), remote: true, class: "link-black", data: { action: "click->clickable-div#loadBankDetails"} do %>
+              <div class="baige-rounded-box-scaled align-center mx-auto">
+                <%= bank.name %>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+
+
+      <div class="d-flex justify-content-center align-items-center ms-1" data-clickable-div-target="container">
+      </div>
+
+    </div>
+
   </div>
 </div>
