@@ -1,15 +1,27 @@
 <div class="row">
-  <div class="container">
-    <h2>Hola! <%= current_user.name %></h2>
-    <div class="d-flex justify-content-center">
-      <h3>Favoritos</h3>
+  <div class="container col-6 my-5 container-custom-outline-profile">
+    <div class="text-left mx-5">
+      <div class="row">
+          <h3 class="personalInfo pt-5 text-center"><%= image_tag "identification.png", class: "profile-image" %>Informacion personal</h3>
+          <div class="datos-personales text-start col-6">
+            <h6 class="personalInfo pt-5">Nombre</h6>
+            <h6 class="personalInfo pt-5">Banco</h6>
+            <h6 class="personalInfo pt-5">Cuenta</h6>
+            <h6 class="personalInfo pt-5">Moneda de preferencia</h6>
+            <p class="fav-placing mt-5">Favoritos</p>
+          </div>
+          <div class="datos-personales-individuales text-end col-6">
+            <p class="personalInfoindiv pt-5"><%= current_user.name %>
+
+          </div>
+      </div>
     </div>
+
     <% @favorites.each do |favorite| %>
       <div class="baige-rounded-box-scaled align-center mx-auto">
         <%= favorite.recipient_account.holder_name %>
       </div>
     <% end %>
-
 
       <div class="form-actions py-5 mx-5">
         <div class="row">
