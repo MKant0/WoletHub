@@ -1,7 +1,7 @@
-.baige-rounded-box {
-  background-color: rgba(172, 90, 0, .1);
+.baige-rounded-box-f5 {
+  background-color: rgba(172, 90, 0, 0.05);
   margin: 0.5rem;
-  border-radius: 20px;
+  border-radius: 10px;
   padding: 0.5rem;
   align-items: start;
 }
@@ -49,4 +49,19 @@
     color: #8E43ED;
     border-radius: 5px solid #8E43ED;
   }
+}
+.github-link:hover {
+  color: white;
+}
+.container-custom-outline-profile {
+  border: 0.5px solid rgba(142, 67, 237, 0.2);
+  border-radius: 5px;
+}
+.personalInfo {
+  font-weight: 550;
+}
+.profile-image {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
 }

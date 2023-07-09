@@ -128,7 +128,11 @@
         <ul class="list-unstyled mb-0 d-flex">
           <li class="mx-2"><%= image_tag "instagram.svg", class: "icon-color" %></li>
           <li class="mx-2"><%= image_tag "twitter.svg", class: "icon-color" %></li>
-          <li class="mx-2"><%= image_tag "github.svg", class: "icon-color" %></li>
+          <li class="mx-2">
+            <%= link_to "https://github.com/MKant0/WoletHub", class: "github-link" do %>
+              <%= image_tag "github.svg", class: "icon-color" %>
+            <% end %>
+          </li>
         </ul>
       </div>
     </div>
@@ -155,7 +159,7 @@
                       <p>Basico</p>
                       <p class="card-valor"><em>0 CLP</em></p>
                     </div>
-                    <%= link_to "Empezar", "#", class: "btn btn-outline-primary me-2 btn-empezar-free" %>
+                    <%= link_to "Empezar", new_user_session_path, class: "btn btn-outline-primary me-2 btn-empezar-free" %>
                     <hr>
                     <p class="card-description text-left">
                       <ul>
@@ -177,7 +181,7 @@
                       <p>Recomendado</p>
                       <p class="card-valor"><em>19.900 CLP/año</em></p>
                     </div>
-                     <%= link_to "Empezar", "#", class: "btn btn-outline-primary me-2 btn-empezar-pay" %>
+                     <%= link_to "Empezar", new_user_session_path, class: "btn btn-outline-primary me-2 btn-empezar-pay" %>
                      <hr>
                      <p class="card-description-pay text-left px-2">
                       <ul>
