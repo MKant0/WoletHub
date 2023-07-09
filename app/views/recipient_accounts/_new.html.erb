@@ -1,0 +1,7 @@
+<%= simple_form_for(@recipient_account) do |f| %>
+<%= f.input :holder_id, label: "R.U.T", input_html: { maxlength: 9 }, input_html: { minlength: 9 } %>
+<%= f.input :holder_name, label: "Nombre destinatario" %>
+<%= f.input :number, label:"Numero de cuenta" %>
+<%= f.input :institution, label: "Banco" %>
+<%= f.submit "Agregar destinatario", class: "btn btn-primary-AgregarDestinatario mt-3" %>
+<% end %>
