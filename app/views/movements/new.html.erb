@@ -45,7 +45,6 @@
 </div>
 
 
-
 <script>
 
   document.addEventListener("DOMContentLoaded", function() {
@@ -59,9 +58,7 @@
       fetch(`/fintoc_accounts?bank_account_id=${selectedBankAccountId}`)
         .then(response => response.json())
         .then(data => {
-
           fintocAccountSelect.innerHTML = "";
-
 
           data.forEach(function(fintocAccount) {
             const option = document.createElement("option");
