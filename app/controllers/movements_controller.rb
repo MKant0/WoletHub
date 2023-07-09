@@ -2,10 +2,13 @@ class MovementsController < ApplicationController
 
   def new
     @movement = Movement.new
-    @bank = BankAccount.show_all_banks(current_user)
+    @bank_accounts = BankAccount.show_all_banks(current_user)
     @recipients = RecipientAccount.all
     @sidebar = true
     @recipient_account = RecipientAccount.new
+
+    @selected_bank_account = @bank_accounts.first
+    @fintoc_accounts = FintocAccount.fintoc_accounts_index(current_user, @selected_bank_account)
   end
 
   def create
