@@ -2,8 +2,8 @@
   <div class="container col-6 mt-5">
     <h2>Nueva transferencia</h2>
     <%= simple_form_for(@movement) do |f| %>
-    <%= f.association :bank_account, label:"Cuenta Bancaria", collection: @bank %>
-    <%= f.association :fintoc_account, label:"Tipo de cuenta", collection: FintocAccount.fintoc_accounts_index(current_user, @bank) %>
+    <%= f.association :bank_account, label: "Cuenta Bancaria", collection: @bank_accounts, input_html: { id: "bank-account-select" } %>
+    <%= f.association :fintoc_account, label: "Tipo de cuenta", collection: @fintoc_accounts, input_html: { id: "fintoc-account-select" } %>
     <%= f.input :amount, label: "Cuanto deseas transferir? ($)", class: "form-control" %>
     <%= f.association :recipient_account, label:"A quien le vas a transferir", collection: current_user.recipient_accounts.map { |recipient| [recipient.holder_name, recipient.id] } %>
     <%= f.input :description, as: :text, label: "Escribe una corta descripción de su transferencia", class: "form-control", input_html: { maxlength: 3000 } %>
@@ -34,13 +34,7 @@
                 <div>
                   <p>Completa los datos</p>
                 </div>
-                <%= simple_form_for(@recipient_account) do |f| %>
-                <%= f.input :holder_id, label: "R.U.T", input_html: { maxlength: 9 }, input_html: { minlength: 9 } %>
-                <%= f.input :holder_name, label: "Nombre destinatario" %>
-                <%= f.input :number, label:"Numero de cuenta" %>
-                <%= f.input :institution, label: "Banco" %>
-                <%= f.submit "Agregar destinatario", class: "btn btn-primary-AgregarDestinatario mt-3" %>
-                <% end %>
+                <%= render :partial => 'recipient_accounts/new'%>
               </div>
             </div>
           </div>
@@ -49,3 +43,33 @@
     </div>
   </div>
 </div>
+
+
+
+<script>
+
+  document.addEventListener("DOMContentLoaded", function() {
+    const bankAccountSelect = document.getElementById("bank-account-select");
+    const fintocAccountSelect = document.getElementById("fintoc-account-select");
+
+    bankAccountSelect.addEventListener("change", function() {
+      const selectedBankAccountId = this.value;
+
+
+      fetch(`/fintoc_accounts?bank_account_id=${selectedBankAccountId}`)
+        .then(response => response.json())
+        .then(data => {
+
+          fintocAccountSelect.innerHTML = "";
+
+
+          data.forEach(function(fintocAccount) {
+            const option = document.createElement("option");
+            option.value = fintocAccount.id;
+            option.text = fintocAccount.name;
+            fintocAccountSelect.appendChild(option);
+          });
+        });
+    });
+  });
+</script>

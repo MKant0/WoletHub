@@ -4,14 +4,14 @@
 
 import { application } from "./application"
 
+import BankAccountController from "./bank_account_controller"
+application.register("bank-account", BankAccountController)
+
 import ClickableDivController from "./clickable_div_controller"
 application.register("clickable-div", ClickableDivController)
 
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
-
-import PaypopupModalController from "./paypopup_modal_controller"
-application.register("paypopup-modal", PaypopupModalController)
 
 import WidgetsController from "./widgets_controller"
 application.register("widgets", WidgetsController)

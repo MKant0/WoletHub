@@ -1,6 +1,14 @@
 class FintocAccountsController < ApplicationController
 
   require_relative '../services/fintoc_services.rb'
+
+  def index
+    bank_account = BankAccount.find(params[:bank_account_id])
+    fintoc_accounts = FintocAccount.fintoc_accounts_index(current_user, bank_account)
+
+    render json: fintoc_accounts
+  end
+
   def new
     @fintoc_account = FintocAccount.new
     # @link_intent = create_link_intent
