@@ -3,7 +3,7 @@
 
   <div class="d-flex justify-content-center align-items-center">
     <div class="ring">
-      <h2 class="ring-text">$<%= @fintoc_account.balance.available %></h2>
+      <h2 class="ring-text">$<%= number_with_delimiter(@fintoc_account.balance.available, delimiter: ".", separator: ",") %></h2>
     </div>
   </div>
 
@@ -34,7 +34,7 @@
           <% @movements.each do |movement| %>
             <tr>
               <td><%= movement['id'] %></td>
-              <td>$<%= movement['amount'] %></td>
+              <td>$<%= number_with_delimiter(movement['amount'], delimiter: ".", separator: ",") %></td>
               <td><%= movement['currency'] %></td>
               <td><%= movement['description'] %></td>
             </tr>
