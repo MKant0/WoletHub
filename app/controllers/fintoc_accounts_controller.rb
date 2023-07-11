@@ -27,5 +27,6 @@ class FintocAccountsController < ApplicationController
     @sidebar = true
     @fintoc_access = FintocService.get_account_info(ENV['FINTOC_LINK_TOKEN'], ENV['FINTOC_API_KEY'])
     @account_id = @fintoc_access[0].id
+    
   end
 end

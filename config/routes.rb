@@ -3,12 +3,9 @@ Rails.application.routes.draw do
   root to: "pages#home"
 
   resources :movements, only: [:index, :new, :create, :show]
-<<<<<<< HEAD
   resources :paypopups
   resources :fintoc_accounts, only: [:new, :create, :show]
-=======
   resources :recipient_accounts
->>>>>>> a5f928f665c53cd89ac1d77d546deb0a67cc6354
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
