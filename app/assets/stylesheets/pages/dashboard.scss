@@ -66,6 +66,11 @@ aside h3 {
   font-size: 17px;
 
 }
-
-
-
+.barraBancoSeleccionado {
+  width: 276px;
+  height: 19px;
+  flex-shrink: 0;
+  border-radius: 50px;
+  background: #002884;
+  margin-left: 50%
+}
