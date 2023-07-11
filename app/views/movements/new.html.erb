@@ -1,10 +1,10 @@
 <div class="row">
-  <div class="container col-6 mt-5">
+  <div class="container col-6 mt-5" data-controller="bank-account">
     <h2>Nueva transferencia</h2>
     <%= simple_form_for(@movement) do |f| %>
     <%= f.association :bank_account, label: "Cuenta Bancaria", collection: @bank_accounts, input_html: { id: "bank-account-select" } %>
     <%= f.association :fintoc_account, label: "Tipo de cuenta", collection: @fintoc_accounts, input_html: { id: "fintoc-account-select" } %>
-    <%= f.input :amount, label: "Cuanto deseas transferir? ($)", class: "form-control" %>
+    <%= f.input :amount, label: "Cuanto deseas transferir? ($)", class: "form-control", data: { action:"keyup->bank-account#periodThousand"} %>
     <%= f.association :recipient_account, label:"A quien le vas a transferir", collection: current_user.recipient_accounts.map { |recipient| [recipient.holder_name, recipient.id] } %>
     <%= f.input :description, as: :text, label: "Escribe una corta descripción de su transferencia", class: "form-control", input_html: { maxlength: 3000 } %>
     <div class="row">

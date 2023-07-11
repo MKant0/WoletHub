@@ -3,8 +3,9 @@ aside .close {
 }
 
 .sidebar {
-  position: relative;
+  position: sticky;
   flex-direction: column;
+  top: 0;
   height: 100vh;
   border-right: solid 0.1rem lightgray ;
 }
