@@ -29,11 +29,12 @@ class WebhookController < ApplicationController
     case event['type']
     when 'link.created'
       link_token = event['data']['link_token']
+      bank_account_id = session[:bank_account_id]
       # Aquí creas el objeto Link en tu base de datos
       account_info = FintocService.get_account_info(link_token, ENV['FINTOC_API_KEY'])
       account_info.each do |account|
         FintocAccount.create!(
-          #bank_account_id: account.id,
+          bank_account_id: bank_account_id,
           name: account.name,
           amount: account.balance.available,
           currency: account.currency,

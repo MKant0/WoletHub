@@ -1,39 +1,29 @@
-
 <div class="container full-height d-flex justify-content-center align-items-center">
   <div class="mt-6" data-controller="clickable-div">
     <div>
-
       <div class="d-flex justify-content-center align-items-center">
         <h2>Tus Bancos</h2>
       </div>
-
-
-
-
-    <div class="d-flex flex-wrap">
-
+      <div class="d-flex flex-wrap">
         <div class="me-1">
           <% @banks.each do |bank| %>
-            <%= link_to bank_account_path(bank), remote: true, class: "link-black", data: { action: "click->clickable-div#loadBankDetails"} do %>
+            <%= link_to bank_account_path(bank), remote: true, class: "link-black", data: { action: "click->clickable-div#loadBankDetails" } do %>
               <div class="baige-rounded-box-scaled align-center mx-auto">
                 <%= bank.name %>
               </div>
             <% end %>
           <% end %>
+          <% if @banks.empty? %>
+            <%= link_to new_fintoc_account_path, class: "link-purple" do %>
+              <div class="button-rounded-box-scaled align-center mx-auto">
+                Agregar cuenta Fintoc
+              </div>
+            <% end %>
+          <% end %>
         </div>
-
-
-      <div class="d-flex justify-content-center align-items-center ms-1" data-clickable-div-target="container">
+        <div class="d-flex justify-content-center align-items-center ms-1" data-clickable-div-target="container">
+        </div>
       </div>
-
     </div>
-
-    <%= link_to new_fintoc_account_path(bank_account_id: bank.id), class: "link-purple" do %>
-      <div class="button-rounded-box-scaled align-center mx-auto">
-        Agregar cuenta Fintoc
-      </div>
-    <% end %>
-
-
   </div>
 </div>
