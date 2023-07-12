@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :paypopups
   resources :fintoc_accounts, only: [:new, :create, :show, :index]
   resources :recipient_accounts
+  resources :links, only: [:create]
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -18,4 +19,5 @@ Rails.application.routes.draw do
   get "financial_accounts/:id", to: "fintoc_accounts#show", as: :fintoc
   get "profile", to: "pages#profile"
   post "data_fintoc", to: "webhooks#data_fintoc"
+
 end

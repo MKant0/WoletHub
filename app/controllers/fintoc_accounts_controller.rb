@@ -19,14 +19,11 @@ class FintocAccountsController < ApplicationController
     @fintoc_account = FintocAccount.new(fintoc_account_params)
 
     if @fintoc_account.save
-      # La vinculación bancaria se creó correctamente
-      redirect_to fintoc_account_path(@fintoc_account)
+      render json: { id: @fintoc_account.id }
     else
-      # Hubo un error al crear la vinculación bancaria
-      render :new
+      render json: { error: 'There was an error creating the fintoc account.' }, status: :unprocessable_entity
     end
   end
-
 
   def show
     @fintoc_account = FintocAccount.find(params[:id])
@@ -35,6 +32,7 @@ class FintocAccountsController < ApplicationController
     @sidebar = true
     @fintoc_access = FintocService.get_account_info(ENV['FINTOC_LINK_TOKEN'], ENV['FINTOC_API_KEY'])
     @account_id = @fintoc_access[0].id
-    
+    @fintoc_movement = FintocService.get_movements(@account_id, ENV['FINTOC_LINK_TOKEN'], ENV['FINTOC_API_KEY'])
   end
+  
 end
