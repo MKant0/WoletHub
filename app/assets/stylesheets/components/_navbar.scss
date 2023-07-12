@@ -1,4 +1,5 @@
 .navbar {
+  background-color: white;
   &-lewagon {
     justify-content: flex-start;
     background: white;
@@ -19,7 +20,7 @@
 }
 
 .logo {
-  max-width: 100%;
+  width: 150px;
   height: auto;
 }
 
