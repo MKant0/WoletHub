@@ -10,10 +10,15 @@ export default class extends Controller {
         holderType: 'individual',
         product: 'movements',
         webhookUrl: 'https://webhook.site/7c9c93d1-a80b-4886-8fa8-145c4215fb86',
-        onSuccess: function(link) {
+        onSuccess: function(response) {
+          fetch("/links", {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({"link": response.id, })})
+
           console.log('Success! Here is the Link object:');
-          console.log(link);
-          localStorage.setItem('linkId', link.id); // guardar el link.id en el localStorage
+          console.log(response);
+          localStorage.setItem('linkId', response.id); // guardar el link.id en el localStorage
         },
 
         onExit: function() {
