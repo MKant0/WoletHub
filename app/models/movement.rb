@@ -18,11 +18,12 @@ class Movement < ApplicationRecord
     # # Movement.where(user_id: user.id).last(3)
     # # return recent
     recent = Movement.joins(fintoc_account: {bank_account: :user}).where(users: {id:user.id}).last(3)
-    recent
+    recent.reverse()
   end
 
   def self.all_movements(user, fintoc)
-    Movement.joins(fintoc_account: {bank_account: :user}).where(users: {id:user.id}, fintoc_account: {id:fintoc.id})
+   all = Movement.joins(fintoc_account: {bank_account: :user}).where(users: {id:user.id}, fintoc_account: {id:fintoc.id})
+   all.reverse()
   end
 
 end

@@ -6,7 +6,7 @@ export default class extends Controller {
   static targets = ["container"]
 
   connect(){
-    
+
   }
   loadBankDetails(event) {
     event.preventDefault();
