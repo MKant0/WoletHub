@@ -42,6 +42,7 @@ class MovementsController < ApplicationController
     @sidebar = true
   end
 
+
   private
 
   def movement_params
