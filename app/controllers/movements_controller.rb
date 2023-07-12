@@ -15,9 +15,11 @@ class MovementsController < ApplicationController
     @movement = Movement.new(movement_params)
     @movement.bank_account = BankAccount.find(params[:movement][:bank_account_id].to_i)
     if @movement.save
+      amountformatted = @movement.amount.to_s.gsub(/[.]/, "")
+      bd = BigDecimal(amountformatted.to_i)
       fintoc = FintocAccount.find(@movement.fintoc_account_id)
       balance = fintoc.balance.available
-      result = balance - @movement.amount
+      result = balance - bd
       fintoc.balance.update(available: result)
       redirect_to movement_path(@movement)
     else

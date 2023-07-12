@@ -59,7 +59,10 @@
 }
 
 .purple-waves-background {
-  background-image: url(purple_waves.png) !important;
+  background-image: asset-url("purple_waves_cropped.png");
+  background-size: cover;
+  width: 100%;
+  height: 100%;
 }
 
 
