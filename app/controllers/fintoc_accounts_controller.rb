@@ -10,9 +10,10 @@ class FintocAccountsController < ApplicationController
   end
 
   def new
+    @bank_account_id = params[:bank_account_id]
     @fintoc_account = FintocAccount.new
-    # @link_intent = create_link_intent
   end
+
 
 
   def create
@@ -34,5 +35,5 @@ class FintocAccountsController < ApplicationController
     @account_id = @fintoc_access[0].id
     @fintoc_movement = FintocService.get_movements(@account_id, ENV['FINTOC_LINK_TOKEN'], ENV['FINTOC_API_KEY'])
   end
-  
+
 end

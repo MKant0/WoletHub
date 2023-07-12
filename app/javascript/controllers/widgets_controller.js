@@ -14,7 +14,22 @@ export default class extends Controller {
           fetch("/links", {
             method: "POST",
             headers: {"Content-Type": "application/json"},
-            body: JSON.stringify({"link": response.id, })})
+            body: JSON.stringify({
+              "link": {
+                "accounts": response.accounts,
+                "active": response.active,
+                "created_at": response.created_at,
+                "holder_id": response.holder_id,
+                "holder_type": response.holder_type,
+                "link_token": response.id,
+                "institution_id": response.institution.id,
+                "institution_name": response.institution.name,
+                "institution_country": response.institution.country,
+                "link_token": response.link_token,
+                "mode": response.mode,
+                "username": response.username,
+              }
+             })})
 
           console.log('Success! Here is the Link object:');
           console.log(response);

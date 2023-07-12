@@ -30,7 +30,22 @@ class WebhookController < ApplicationController
     when 'link.created'
       link_token = event['data']['link_token']
       # Aquí creas el objeto Link en tu base de datos
-      Link.create!(link_token: link_token)
+      account_info = FintocService.get_account_info(link_token, ENV['FINTOC_API_KEY'])
+      account_info.each do |account|
+        FintocAccount.create!(
+          #bank_account_id: account.id,
+          name: account.name,
+          amount: account.balance.available,
+          currency: account.currency,
+          number: account.number,
+          account_type: account.type,
+          widget_token: link_token,
+          official_name: account.official_name,
+          holder_id: account.holder_id,
+          holder_name: account.holder_name,
+          refreshed_at: account.refreshed_at
+        )
+      end
     when 'link.credentials_changed'
       link_id = event['data']['id']
       # Then define and call a method to handle the event.
