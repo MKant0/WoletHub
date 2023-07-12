@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_08_164842) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_12_193809) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -66,12 +66,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_08_164842) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "links", force: :cascade do |t|
-    t.string "link_token"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "movements", force: :cascade do |t|
     t.bigint "fintoc_account_id", null: false
     t.string "currency"
@@ -117,6 +111,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_08_164842) do
     t.datetime "updated_at", null: false
     t.integer "preferred_currency"
     t.string "name"
+    t.string "buda_api_key"
+    t.string "buda_secret_key"
+    t.string "encrypted_buda_api_key"
+    t.string "encrypted_buda_api_key_iv"
+    t.string "encrypted_buda_secret_key"
+    t.string "encrypted_buda_secret_key_iv"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

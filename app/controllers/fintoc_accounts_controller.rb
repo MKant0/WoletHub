@@ -4,20 +4,19 @@ class FintocAccountsController < ApplicationController
 
   def index
     bank_account = BankAccount.find(params[:bank_account_id])
-    fintoc_accounts = FintocAccount.fintoc_accounts_index(current_user, bank_account)
+    fintoc_accounts = FintocAccount.where(bank_account_id: bank_account.id)
 
     render json: fintoc_accounts
   end
 
   def new
+    @bank_account_id = params[:bank_account_id]
     @fintoc_account = FintocAccount.new
-    # @link_intent = create_link_intent
+    session[:bank_account_id] = @bank_account_id
   end
-
 
   def create
     @fintoc_account = FintocAccount.new(fintoc_account_params)
-
     if @fintoc_account.save
       render json: { id: @fintoc_account.id }
     else
@@ -27,12 +26,17 @@ class FintocAccountsController < ApplicationController
 
   def show
     @fintoc_account = FintocAccount.find(params[:id])
-    @bank_account = BankAccount.find(params[:id])
-    @movements = Movement.all_movements(current_user, @fintoc_account)
+    @bank_account = BankAccount.find(@fintoc_account.bank_account_id)
+    @movements = Movement.where(fintoc_account_id: @fintoc_account.id)
     @sidebar = true
     @fintoc_access = FintocService.get_account_info(ENV['FINTOC_LINK_TOKEN'], ENV['FINTOC_API_KEY'])
     @account_id = @fintoc_access[0].id
     @fintoc_movement = FintocService.get_movements(@account_id, ENV['FINTOC_LINK_TOKEN'], ENV['FINTOC_API_KEY'])
   end
-  
+
+  private
+
+  def fintoc_account_params
+    params.require(:fintoc_account).permit(:name, :amount, :currency, :number, :account_type, :widget_token, :official_name, :holder_id, :holder_name, :refreshed_at)
+  end
 end

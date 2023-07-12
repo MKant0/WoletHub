@@ -1,9 +1,14 @@
-import { Controller } from "@hotwired/stimulus"
+import { Controller } from "@hotwired/stimulus";
 
 // Connects to data-controller="widgets"
 export default class extends Controller {
+  startFintocProcess(event) {
+    let BankAccountId = event.target.dataset.bankAccountId;
+    sessionStorage.setItem('bankAccountId', BankAccountId);
+  } // <--- Punto y coma faltante
+
   connect() {
-    console.log("Hello, Stimulus!", this.element)
+    console.log("Hello, Stimulus!", this.element);
     window.onload = () => {
       const widget = Fintoc.create({
         publicKey: 'pk_test_xwUGiHD3-zsftKEioAvCGjAk6qQrTS65',
@@ -14,7 +19,23 @@ export default class extends Controller {
           fetch("/links", {
             method: "POST",
             headers: {"Content-Type": "application/json"},
-            body: JSON.stringify({"link": response.id, })})
+            body: JSON.stringify({
+              "link": {
+                "accounts": response.accounts,
+                "active": response.active,
+                "created_at": response.created_at,
+                "holder_id": response.holder_id,
+                "holder_type": response.holder_type,
+                "link_token": response.id,
+                "institution_id": response.institution.id,
+                "institution_name": response.institution.name,
+                "institution_country": response.institution.country,
+                "link_token": response.link_token,
+                "mode": response.mode,
+                "username": response.username
+              }
+            })
+          });
 
           console.log('Success! Here is the Link object:');
           console.log(response);
@@ -29,9 +50,9 @@ export default class extends Controller {
           console.log('An event just happened!');
           console.log(event);
         }
-        });
+      });
 
       widget.open();
-      };
-    }
+    };
   }
+}

@@ -84,7 +84,7 @@
     uri2 = URI("https://webview.fintoc.com/widget?public_key=pk_test_xwUGiHD3-zsftKEioAvCGjAk6qQrTS65&holder_type=individual&product=payments&country=cl&widget_token=#{response.body['widget_token']}")
   end
 
-  #puts get_account_info
+  puts get_account_info
   #get_movements
   #get_movement_details('mov_JP6YByH6j4A3e4OM') # Reemplaza con el ID del movimiento real
   #create_payment_intent
