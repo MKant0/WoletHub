@@ -5,8 +5,7 @@ export default class extends Controller {
   startFintocProcess(event) {
     let BankAccountId = event.target.dataset.bankAccountId;
     sessionStorage.setItem('bankAccountId', BankAccountId);
-  } // <--- Punto y coma faltante
-
+  } 
   connect() {
     console.log("Hello, Stimulus!", this.element);
     window.onload = () => {
