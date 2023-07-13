@@ -84,3 +84,4 @@ production:
   database: WoletHab_production
   username: WoletHab
   password: <%= ENV["WOLETHAB_DATABASE_PASSWORD"] %>
+  url: <%= ENV['DATABASE_URL'] %>
