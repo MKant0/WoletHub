@@ -2,7 +2,7 @@ class WebhookController < ApplicationController
 
   skip_before_action :verify_authenticity_token, only: [:data_fintoc]
 
-  equire 'json'
+  require 'json'
 
   def data_fintoc
     payload = request.body.read
