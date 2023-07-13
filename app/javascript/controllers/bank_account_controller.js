@@ -16,6 +16,10 @@ export default class extends Controller {
     // console.log("randnumber", randnumber.toLocaleString("de-DE"))
     // console.log("randnumber-chile", randnumber.toLocaleString("es-CL"))
 
+    // const num = "10000000000"
+    // console.log(parseFloat(num))
+    // const numFloat = parseFloat(num)
+    // console.log(numFloat.toLocaleString("es-CL"))
 
     const value = parseFloat(this.amountTarget.value.replace(/\.|,/g, ''));
     const formattedValue = value.toLocaleString("es-CL");

@@ -14,9 +14,11 @@ class MovementsController < ApplicationController
   def create
     @movement = Movement.new(movement_params)
     @movement.bank_account = BankAccount.find(params[:movement][:bank_account_id].to_i)
+    @movement.amount = @movement.amount.gsub(/[.]/, '')
+    @movement.amount = @movement.amount.to_i
     if @movement.save
-      amountformatted = @movement.amount.to_s.gsub(/[.]/, "")
-      bd = BigDecimal(amountformatted.to_i)
+      # amountformatted = @movement.amount.to_s.gsub(/[.]/, "")
+      bd = BigDecimal(@movement.amount)
       fintoc = FintocAccount.find(@movement.fintoc_account_id)
       balance = fintoc.balance.available
       result = balance - bd
