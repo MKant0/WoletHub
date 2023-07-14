@@ -31,6 +31,7 @@ class PagesController < ApplicationController
   def profile
     @sidebar = true
     @favorites = FavoriteRecipientAccount.where(user_id: current_user.id).includes(:recipient_account)
+    @bank_accounts = BankAccount.show_all_banks(current_user)
   end
 
 end
