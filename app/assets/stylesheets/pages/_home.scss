@@ -173,3 +173,15 @@
   background-color: white;
   border-radius: 5px;
 }
+.lineTop {
+  color: #8E43ED;
+  border: none;
+  border-top: 5px solid #8E43ED;
+  transform: rotate(3deg);
+}
+.lineBot {
+  color: #8E43ED;
+  border: none;
+  border-top: 5px solid #8E43ED;
+  transform: rotate(-3deg);
+}
