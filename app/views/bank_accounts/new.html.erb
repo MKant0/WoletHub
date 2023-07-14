@@ -1,0 +1,12 @@
+<div class="row">
+  <div class="container col-6 mt-5" data-controller="bank-account">
+    <h2>Nuevo Banco</h2>
+    <%= simple_form_for(@bank_account) do |f| %>
+      <%= f.input :name, as: :string, label: "Cuál es el nombre de tu banco?", class: "form-control", input_html: { maxlength: 50 }, input_html: { class: "rounded-corners-form"}%>
+      <div class="col-6">
+        <%= f.submit "Siguente", class: "btn btn-primary-confirma mt-3" %>
+      </div>
+    <% end %>
+
+  </div>
+</div>
