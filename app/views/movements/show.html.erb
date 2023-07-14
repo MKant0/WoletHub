@@ -9,8 +9,8 @@
     </div>
   </div>
 
-  <p>Pagaste $<%= @movement.amount %></p>
-  <p><%= @movement.recipient_account.holder_name %> recibirá su pago en menos de 24 horas.</p>
+  <p>Pagaste $<%= number_with_delimiter(try_integer(@movement.amount), delimiter: ".", separator: ",") %></p>
+  <p><%= @movement.recipient_account.holder_name %> recibirá tu pago en menos de 24 horas.</p>
   <p class="small-font-gray">Operación #<%= @movement.id %></p>
   <%= link_to "Volver a mi Dashboard", dashboard_path, class:"btn btn-purple-EditarPerfil" %>
 </div>
