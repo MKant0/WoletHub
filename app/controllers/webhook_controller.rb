@@ -1,46 +1,14 @@
 class WebhookController < ApplicationController
 
-  skip_before_action :verify_authenticity_token, only: [:send_test_webhook_event]
-  skip_before_action :authenticate_user!, only: [:send_test_webhook_event]
+  skip_before_action :verify_authenticity_token, only: [:data_fintoc]
+  skip_before_action :authenticate_user!, only: [:data_fintoc]
 
   require 'json'
-  require 'net/http'
-  require 'uri'
 
   def data_fintoc
     FintocAccount.create(widget_token: "prueba de token")
     head :ok
   end
-
-def send_test_webhook_event
-  # The URL of your webhook endpoint
-  uri = URI.parse("https://wolethab-914-db0606c8d9c5.herokuapp.com/webhook")
-
-  # The payload your webhook is expected to handle
-  # Replace with your actual expected payload
-  payload = {
-    event: 'test_event',
-    data: {
-      key: 'value'
-    }
-  }
-
-  # Create the HTTP objects
-  http = Net::HTTP.new(uri.host, uri.port)
-  http.use_ssl = true
-  http.verify_mode = OpenSSL::SSL::VERIFY_NONE # read into this
-
-  request = Net::HTTP::Post.new(uri.request_uri, 'Content-Type' => 'application/json')
-
-  # Set the request body to your payload
-  request.body = payload.to_json
-
-  # Send the request
-  response = http.request(request)
-
-  puts "Response #{response.code} #{response.message}: #{response.body}"
-end
-
     #   payload = request.body.read
     #   puts "AQUI VA EL PAYLOAD $$$$$$$$#{payload}"
     #   event = nil
