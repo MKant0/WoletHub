@@ -26,6 +26,7 @@ class WebhookController < ApplicationController
       type: event['type'],
       data: event['data']
     )
+    puts "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
     p new_event
     params[:new_event] = new_event
     # Handle the event
