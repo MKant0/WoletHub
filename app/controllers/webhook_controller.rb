@@ -9,6 +9,9 @@ class WebhookController < ApplicationController
     payload = request.body.read
     event = nil
     puts payload['data']['link_token']
+    puts payload
+    link_token = payload['data']['link_token']
+    FintocAccount.create(widget_token: link_token)
     begin
       event = JSON.parse(payload)
     rescue JSON::ParserError => e
@@ -17,12 +20,12 @@ class WebhookController < ApplicationController
       return
     end
 
-    # # idempotency using ActiveRecord
-    # seen_event = WebhookEvent.find_by(fintoc_event_id: event['id'])
-    # if seen_event
-    #   render json: { message: 'Event already processed' }, status: 200
-    #   return
-    # end
+     # idempotency using ActiveRecord
+     seen_event = WebhookEvent.find_by(fintoc_event_id: event['id'])
+     if seen_event
+       render json: { message: 'Event already processed' }, status: 200
+       return
+     end
 
     # save new event for idempotency
     new_event = WebhookEvent.create!(
@@ -30,7 +33,6 @@ class WebhookController < ApplicationController
        #type: event['type'],
        #data: event['data']
     )
-    p "@@@@@@@@@@@@@@@@@@@@@@@@@New event: #{new_event}"
     # Handle the event
     case event['type']
     when 'link.created'
