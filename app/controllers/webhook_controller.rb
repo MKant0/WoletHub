@@ -12,7 +12,7 @@ class WebhookController < ApplicationController
     puts payload
     link_token = payload['data']['link_token']
     begin
-      event = JSON.parse(payload)
+      event = JSON.parse(payload, symbolize_names: true)
       puts event[:data]
       id = event[:data][:id]
       name = event[:data][:name]
