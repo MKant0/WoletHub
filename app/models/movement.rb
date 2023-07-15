@@ -17,13 +17,17 @@ class Movement < ApplicationRecord
     # recent.last(3)
     # # Movement.where(user_id: user.id).last(3)
     # # return recent
-    recent = Movement.joins(fintoc_account: {bank_account: :user}).where(users: {id:user.id}).last(3)
+    recent = Movement.joins(fintoc_account: { bank_account: :user }).where(users: { id: user.id }).last(3)
     recent.reverse()
   end
 
   def self.all_movements(user, fintoc)
-   all = Movement.joins(fintoc_account: {bank_account: :user}).where(users: {id:user.id}, fintoc_account: {id:fintoc.id})
-   all.reverse()
+    all = Movement.joins(fintoc_account: { bank_account: :user }).where(users: { id: user.id }, fintoc_account: { id:fintoc.id })
+    all.reverse()
   end
 
+  def self.all_transactions(user)
+    all = Movement.joins(fintoc_account: { bank_account: :user }).where(users: { id: user.id })
+    all.reverse()
+  end
 end
