@@ -16,7 +16,7 @@ class WebhookController < ApplicationController
       puts event[:data]
       id = event[:data][:id]
       name = event[:data][:name]
-      amount = event[:data][:balance][:available]
+      amount = event[:data][:account][:balance][:available]
       currency = event[:data][:balance][:currency]
       number = event[:data][:number]
       account_type = event[:data][:type]
