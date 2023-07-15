@@ -14,12 +14,13 @@ class WebhookController < ApplicationController
     begin
       event = JSON.parse(payload)
       puts event[:data]
+      " puts de params#{puts params[:data][:link_token]}"
+      " p de params#{p params[:data][:link_token]}"
     rescue JSON::ParserError => e
       # Invalid payload
       render json: { error: 'Invalid payload' }, status: 400
       return
     end
-    p params[:data][:link_token]
     # FintocAccount.create(widget_token: event[:data][:link_token])
      # idempotency using ActiveRecord
      seen_event = WebhookEvent.find_by(fintoc_event_id: event['id'])
@@ -37,7 +38,7 @@ class WebhookController < ApplicationController
     # Handle the event
     case event['type']
     when 'link.created'
-       link_token = payload['data']['link_token']
+       link_token = payload[:data][:link_token]
       # puts "Link token: #{link_token}"
       # name = new_event['data']['holder_name'] # Assuming the name is in the 'holder_name' field
        FintocAccount.create(widget_token: link_token)
