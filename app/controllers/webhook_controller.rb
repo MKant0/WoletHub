@@ -19,18 +19,18 @@ class WebhookController < ApplicationController
       return
     end
 
-    # idempotency using ActiveRecord
-    seen_event = WebhookEvent.find_by(fintoc_event_id: event['id'])
-    if seen_event
-      render json: { message: 'Event already processed' }, status: 200
-      return
-    end
+    # # idempotency using ActiveRecord
+    # seen_event = WebhookEvent.find_by(fintoc_event_id: event['id'])
+    # if seen_event
+    #   render json: { message: 'Event already processed' }, status: 200
+    #   return
+    # end
 
     # save new event for idempotency
     new_event = WebhookEvent.create!(
       fintoc_event_id: event['id'],
-      type: event['type'],
-      data: event['data']
+      # type: event['type'],
+      # data: event['data']
     )
 
     # Handle the event
