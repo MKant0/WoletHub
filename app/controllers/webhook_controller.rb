@@ -29,16 +29,16 @@ class WebhookController < ApplicationController
     # save new event for idempotency
     new_event = WebhookEvent.create!(
       fintoc_event_id: event['id'],
-      # type: event['type'],
-      # data: event['data']
+       type: event['type'],
+       data: event['data']
     )
 
     # Handle the event
     case event['type']
     when 'link.created'
-      link_token = new_event.data['link_token']
+      link_token = new_event['data']['link_token']
       puts "Link token: #{link_token}"
-      name = new_event.data['holder_name'] # Assuming the name is in the 'holder_name' field
+      name = new_event.['data']['holder_name'] # Assuming the name is in the 'holder_name' field
       FintocAccount.create(widget_token: link_token, name: name)
       # bank_account_id = session[:bank_account_id] # Make sure to set this in your application properly
 
