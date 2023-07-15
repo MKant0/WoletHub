@@ -4,7 +4,7 @@ require 'uri'
 require 'json'
 #require 'dotenv'
 
-Dotenv.load('.env') # Carga las variables de entorno del archivo .env
+#Dotenv.load('.env') # Carga las variables de entorno del archivo .env
 
 def create_hmac_sha384(key, message)
   digest = OpenSSL::Digest.new('SHA384')

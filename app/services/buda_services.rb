@@ -1,10 +1,10 @@
 require 'net/http'
 require 'openssl'
 require 'uri'
-require 'dotenv'
+#require 'dotenv'
 require 'json'
 
-Dotenv.load('.env') # Carga las variables de entorno del archivo .env
+#Dotenv.load('.env') # Carga las variables de entorno del archivo .env
 
 class BudaServices
   attr_reader :key, :secret
