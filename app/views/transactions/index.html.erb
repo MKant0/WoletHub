@@ -28,5 +28,6 @@
         </tbody>
       </table>
   </div>
+  <%= paginate @movements %>
   <%= link_to "Descargar excel", transactions_path(format: :xlsx), class: "btn btn-primary btn-descargarExcel" %>
 </div>

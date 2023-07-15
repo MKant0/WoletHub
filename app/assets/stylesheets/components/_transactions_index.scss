@@ -12,8 +12,13 @@
   background-color: #cbcbcb;
   color: white;
   border-radius: 5px;
+  font-family: 'Catamaran', sans-serif;
 
   &:hover{
     color: black;
+
+  &:active{
+    color: black;
+  }
   }
 }
