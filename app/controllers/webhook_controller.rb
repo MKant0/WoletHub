@@ -19,7 +19,7 @@ class WebhookController < ApplicationController
       render json: { error: 'Invalid payload' }, status: 400
       return
     end
-    p params
+    p params[:data][:link_token]
     # FintocAccount.create(widget_token: event[:data][:link_token])
      # idempotency using ActiveRecord
      seen_event = WebhookEvent.find_by(fintoc_event_id: event['id'])
