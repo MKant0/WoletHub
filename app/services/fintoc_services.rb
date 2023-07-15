@@ -3,7 +3,7 @@ require 'net/http'
 require 'openssl'
 require 'fintoc'
 
-class FintocService
+class FintocServices
   def self.get_movements(account_id, link_token, api_key)
     client = Fintoc::Client.new(api_key)
     link = client.get_link(link_token)

@@ -17,7 +17,7 @@ class FintocAccountsController < ApplicationController
   end
 
   def create
-    @fintoc_data = FintocService.get_account_info(link_token, ENV['FINTOC_API_KEY'])
+    @fintoc_data = FintocServices.get_account_info(link_token, ENV['FINTOC_API_KEY'])
     @fintoc_account = FintocAccount.new(fintoc_account_params)
     if @fintoc_account.save
       render json: { id: @fintoc_account.id }
@@ -31,9 +31,9 @@ class FintocAccountsController < ApplicationController
     @bank_account = BankAccount.find(@fintoc_account.bank_account_id)
     @movements = Movement.where(fintoc_account_id: @fintoc_account.id)
     @sidebar = true
-    @fintoc_access = FintocService.get_account_info(link_token, ENV['FINTOC_API_KEY'])
+    @fintoc_access = FintocServices.get_account_info(link_token, ENV['FINTOC_API_KEY'])
     @account_id = @fintoc_access[0].id
-    @fintoc_movement = FintocService.get_movements(@account_id, link_token, ENV['FINTOC_API_KEY'])
+    @fintoc_movement = FintocServices.get_movements(@account_id, link_token, ENV['FINTOC_API_KEY'])
   end
 
   private
