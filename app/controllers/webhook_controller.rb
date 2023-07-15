@@ -19,7 +19,7 @@ class WebhookController < ApplicationController
       render json: { error: 'Invalid payload' }, status: 400
       return
     end
-
+    puts event
      # idempotency using ActiveRecord
      seen_event = WebhookEvent.find_by(fintoc_event_id: event['id'])
      if seen_event
