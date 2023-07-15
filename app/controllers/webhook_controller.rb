@@ -4,14 +4,13 @@ class WebhookController < ApplicationController
 
   require 'json'
 
-# Using Sinatra
   def data_fintoc
       payload = request.body.read
+      puts "AQUI VA EL PAYLOAD $$$$$$$$#{payload}"
       event = nil
 
       begin
         event = JSON.parse(payload)
-        p "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
       rescue JSON::ParserError => e
         # Invalid payload
         status 400
@@ -31,9 +30,14 @@ class WebhookController < ApplicationController
         type: event['type'],
         data: event['data']
       )
+      params[:new_event] = new_event
+    # Handle the event
+    case event['type']
+    when 'link.created'
+      link_token = new_event['data']['link_token']
+      FintocAccount.create(widget_token: link_token, name: name)
+      bank_account_id = session[:bank_account_id]
 
-      # Handle the event
-      case event['type']
       when 'link.credentials_changed'
         link_id = event['data']['id']
         # Then define and call a method to handle the event.
