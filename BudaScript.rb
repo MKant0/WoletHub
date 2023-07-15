@@ -2,7 +2,7 @@ require 'net/http'
 require 'openssl'
 require 'uri'
 require 'json'
-require 'dotenv'
+#require 'dotenv'
 
 Dotenv.load('.env') # Carga las variables de entorno del archivo .env
 
