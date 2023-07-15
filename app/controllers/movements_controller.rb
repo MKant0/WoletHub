@@ -17,7 +17,7 @@ class MovementsController < ApplicationController
     @movement.currency = "CLP"
     @movement.transaction_date = Time.now.to_date
     @movement.amount = @movement.amount.gsub(/[.]/, '')
-    @movement.amount = @movement.amount.to_i
+    @movement.amount = @movement.amount.to_f
     if @movement.save
       # amountformatted = @movement.amount.to_s.gsub(/[.]/, "")
       bd = BigDecimal(@movement.amount)

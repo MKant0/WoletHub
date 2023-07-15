@@ -3,7 +3,7 @@
 
   <div class="container-custom-outline-profile col-10 d-flex justify-content-center m-5 bg-white">
     <div class="ring">
-      <h2 class="ring-text">$<%= number_with_delimiter(@fintoc_account.balance.available, delimiter: ".", separator: ",") %></h2>
+      <h2 class="ring-text">$<%= number_with_delimiter(try_integer(@fintoc_account.balance.available), delimiter: ".", separator: ",") %></h2>
     </div>
   </div>
 
@@ -50,7 +50,7 @@
             <tr>
               <td><%= movement['transaction_date'].strftime('%d-%m-%Y') %></td>
               <td><%= movement['description'] %></td>
-              <td>$<%= number_with_delimiter(try_integer(movement['amount'].to_s.gsub(/[.]/, "")), delimiter: ".", separator: ",") %></td>
+              <td>$<%= number_with_delimiter(try_integer(movement['amount']), delimiter: ".", separator: ",") %></td>
               <td><%= movement['currency'] %></td>
               <td><%= movement.recipient_account.holder_name %></td>
             </tr>
