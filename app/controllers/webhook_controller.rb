@@ -26,10 +26,10 @@ class WebhookController < ApplicationController
       type: event['type'],
       data: event['data']
     )
+    p new_event
     params[:new_event] = new_event
-    Binding
     # Handle the event
-    case event['type']
+    case new_event['type']
     when 'link.created'
       link_token = event['data']['link_token']
       bank_account_id = session[:bank_account_id]
