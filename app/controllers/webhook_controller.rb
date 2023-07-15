@@ -29,9 +29,10 @@ class WebhookController < ApplicationController
       data: event['data']
     )
     params[:new_event] = new_event
-    puts params[type]
+    p params[:new_event]
+    p new_event
     # Handle the event
-    case new_event['type']
+    case event['type']
     when 'link.created'
       link_token = new_event['data']['link_token']
       FintocAccount.create(widget_token: link_token, name: name)
