@@ -1,3 +1,19 @@
 .container-bg {
   background-color: white;
 }
+.pagination {
+  padding-left: 20px;
+}
+.first2 {
+  padding-left: 3px;
+  padding-right: 3px;
+  margin: 3px;
+  text-decoration: none;
+  background-color: #cbcbcb;
+  color: white;
+  border-radius: 5px;
+
+  &:hover{
+    color: black;
+  }
+}
