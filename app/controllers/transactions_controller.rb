@@ -11,6 +11,7 @@ class TransactionsController < ApplicationController
       format.html { render :index }
     end
     @sidebar = true
+    @movements = Movement.order(created_at: :desc).page params[:page]
   end
 
   # def show
