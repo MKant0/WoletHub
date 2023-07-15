@@ -11,7 +11,6 @@ class WebhookController < ApplicationController
     puts payload['data']['link_token']
     puts payload
     link_token = payload['data']['link_token']
-    FintocAccount.create(widget_token: link_token)
     begin
       event = JSON.parse(payload)
     rescue JSON::ParserError => e
@@ -20,6 +19,7 @@ class WebhookController < ApplicationController
       return
     end
     puts event
+    FintocAccount.create(widget_token: event[:data][:link_token])
      # idempotency using ActiveRecord
      seen_event = WebhookEvent.find_by(fintoc_event_id: event['id'])
      if seen_event
