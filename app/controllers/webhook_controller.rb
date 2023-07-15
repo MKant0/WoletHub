@@ -4,7 +4,8 @@ class WebhookController < ApplicationController
 
   require 'json'
 
-  def data_fintoc
+# Using Sinatra
+  post '/webhook' do
     payload = request.body.read
     event = nil
 
@@ -12,30 +13,27 @@ class WebhookController < ApplicationController
       event = JSON.parse(payload)
       p event
     rescue JSON::ParserError => e
-      render plain: 'Invalid payload', status: 400
+      # Invalid payload
+      status 400
       return
     end
 
+    # idempotency using sinatra-activerecord
     seen_event = WebhookEvent.find_by(fintoc_event_id: event['id'])
     if seen_event
-      render plain: 'Event already processed', status: 200
+      status 200
       return
     end
 
+    # save new event for idempotency
     new_event = WebhookEvent.create!(
       fintoc_event_id: event['id'],
       type: event['type'],
       data: event['data']
     )
-    params[:new_event] = new_event
 
     # Handle the event
     case event['type']
-    when 'link.created'
-      link_token = new_event['data']['link_token']
-      FintocAccount.create(widget_token: link_token, name: name)
-      bank_account_id = session[:bank_account_id]
-      # Aquí creas el objeto Link en tu base de datos
     when 'link.credentials_changed'
       link_id = event['data']['id']
       # Then define and call a method to handle the event.
@@ -45,10 +43,12 @@ class WebhookController < ApplicationController
     when 'account.refresh_intent.succeeded'
       account_id = event['data']['refreshed_object_id']
       # Then define and call a method to handle the account refreshed event.
+    # ... handle other event types
     else
-      puts "Unhandled event type: #{event['type']}"
+      # Unexpected event type
+      puts "Unhandled event type: #{event.type}"
     end
 
-    render plain: 'Event processed successfully', status: 200
+    status 200
   end
 end
