@@ -7,10 +7,8 @@ class WebhookController < ApplicationController
 
   def data_fintoc
     payload = request.body.read
-    puts "Payload: #{payload}"
-
     event = nil
-
+    puts payload['data']['link_token']
     begin
       event = JSON.parse(payload)
     rescue JSON::ParserError => e
@@ -32,7 +30,7 @@ class WebhookController < ApplicationController
        #type: event['type'],
        #data: event['data']
     )
-    puts "@@@@@@@@@@@@@@@@@@@@@@@@@New event: #{new_event}"
+    p "@@@@@@@@@@@@@@@@@@@@@@@@@New event: #{new_event}"
     # Handle the event
     case event['type']
     when 'link.created'
