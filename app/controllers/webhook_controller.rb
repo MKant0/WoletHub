@@ -12,7 +12,7 @@ class WebhookController < ApplicationController
 
       begin
         event = JSON.parse(payload)
-        p event
+        p "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
       rescue JSON::ParserError => e
         # Invalid payload
         status 400
