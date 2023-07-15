@@ -1,12 +1,66 @@
-.navbar-lewagon {
-  justify-content: space-between;
-  background: white;
+.navbar {
+  background-color: white;
+  &-lewagon {
+    justify-content: flex-start;
+    background: white;
+
+    .navbar-brand img {
+      width: 40px;
+      margin-right: 10px;
+    }
+
+    .navbar-collapse {
+      flex-grow: 0;
+
+      .navbar-nav {
+        margin-left: 0;
+      }
+    }
+  }
 }
 
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
+.logo {
+  width: 150px;
+  height: auto;
 }
 
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
+.btn-signup-navbar {
+  background-color: #8E43ED;
+  color: white;
+  border-color: #8E43ED;
+  border-radius: 10px;
+
+  &:hover {
+    background-color: white;
+    color: #8E43ED;
+  }
+}
+
+.btn-login-navbar {
+  background-color: #8E43ED;
+  color: white;
+  border-color: #8E43ED;
+  border-radius: 10px;
+
+  &:hover {
+    background-color: #8E43ED;
+    color: white;
+  }
+}
+
+.navbar .btn-outline-primary {
+  background-color: white;
+  color: #8E43ED;
+  border-color: #8E43ED;
+
+  &:hover {
+    background-color: #8E43ED;
+    color: white;
+  }
+}
+.link-sidebar {
+  color: black
+}
+.link-sidebar:hover {
+  color: #8E43ED;
 }

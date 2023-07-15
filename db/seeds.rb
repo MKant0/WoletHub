@@ -11,13 +11,14 @@ Balance.destroy_all
 Movement.destroy_all
 FintocAccount.destroy_all
 BankAccount.destroy_all
+FavoriteRecipientAccount.destroy_all
 User.destroy_all
-RecipientAccount.destroy_all
+
 
 puts "seeds destroyed"
 puts "creating users"
 
-alejandro = User.new(name: "Alejandro García Martínez", email: "a.garciamartinez12@gmail.com", password: "123456", preferred_currency: "CLP")
+alejandro = User.new(name: "Alejandro García Martínez", email: "a.garcia12@gmail.com", password: "123456", preferred_currency: "CLP")
 alejandro.save!
 
 sofia = User.new(name: "Sofía López Rodríguez", email: "sofia.lrodriguez67@hotmail.com", password: "123456", preferred_currency: "CLP")
@@ -40,22 +41,28 @@ puts "users finished"
 
 puts "creating user bank accounts"
 
-alejandro_bank_account = BankAccount.new(user: alejandro)
+alejandro_bank_account = BankAccount.new(user: alejandro, name: "Banco de Chile")
 alejandro_bank_account.save!
 
-sofia_bank_account = BankAccount.new(user: sofia)
+alejandro_bank_account2 = BankAccount.new(user: alejandro, name: "Banco Santander")
+alejandro_bank_account2.save!
+
+alejandro_bank_account3 = BankAccount.new(user: alejandro, name: "Banco BICE")
+alejandro_bank_account3.save!
+
+sofia_bank_account = BankAccount.new(user: sofia, name: "Banco Austral")
 sofia_bank_account.save!
 
-diego_bank_account = BankAccount.new(user: diego)
+diego_bank_account = BankAccount.new(user: diego, name: "Banco Galicia")
 diego_bank_account.save!
 
-valentina_bank_account = BankAccount.new(user: valentina)
+valentina_bank_account = BankAccount.new(user: valentina, name: "Banco de Chile")
 valentina_bank_account.save!
 
-sebastian_bank_account = BankAccount.new(user: sebastian)
+sebastian_bank_account = BankAccount.new(user: sebastian, name: "Banco Santander")
 sebastian_bank_account.save!
 
-camila_bank_account = BankAccount.new(user: camila)
+camila_bank_account = BankAccount.new(user: camila, name: "Banco de Chile")
 camila_bank_account.save!
 
 
@@ -68,6 +75,16 @@ alejandro_fintoc_account = FintocAccount.new(bank_account: alejandro_bank_accoun
   currency: alejandro.preferred_currency, number: "5678901234567890", account_type: "checking_account",
   official_name: "Cuneta Corriente Moneda Local", holder_id: "12.345.678-9", holder_name: alejandro.name)
 alejandro_fintoc_account.save!
+
+alejandro_fintoc_account2 = FintocAccount.new(bank_account: alejandro_bank_account2, name: "Cuenta de Ahorro",
+  currency: alejandro.preferred_currency, number: "367801234868890", account_type: "saving_account",
+  official_name: "Cuneta de Ahorro Moneda Local", holder_id: "12.345.678-9", holder_name: alejandro.name)
+alejandro_fintoc_account2.save!
+
+alejandro_fintoc_account3 = FintocAccount.new(bank_account: alejandro_bank_account3, name: "Cuenta de Negocio",
+  currency: alejandro.preferred_currency, number: "76780263434868678", account_type: "saving_account",
+  official_name: "Cuneta de Negocio Moneda Local", holder_id: "12.345.678-9", holder_name: alejandro.name)
+alejandro_fintoc_account3.save!
 
 sofia_fintoc_account = FintocAccount.new(bank_account: sofia_bank_account, name: "Cuenta Corriente",
   currency: sofia.preferred_currency, number: "9876543210987654", account_type: "checking_account",
@@ -101,6 +118,12 @@ puts "creating balances"
 alejandro_balance = Balance.new(available: 1254500, current: 1254500, limit: 1254500, fintoc_account: alejandro_fintoc_account)
 alejandro_balance.save!
 
+alejandro_balance2 = Balance.new(available: 6309800, current: 6309800, limit: 6309800, fintoc_account: alejandro_fintoc_account2)
+alejandro_balance2.save!
+
+alejandro_balance3 = Balance.new(available: 8876100, current: 8876100, limit: 8876100, fintoc_account: alejandro_fintoc_account3)
+alejandro_balance3.save!
+
 sofia_balance = Balance.new(available: 4678900, current: 4678900, limit: 4678900, fintoc_account: sofia_fintoc_account)
 sofia_balance.save!
 
@@ -132,29 +155,37 @@ puts "recipient accounts finished"
 
 puts "creating movements"
 
-movement1 = Movement.new(fintoc_account: sofia_fintoc_account, currency: "BTC", amount: 0.000487, description: "La plata que le debia al Pedro",
+movement1 = Movement.new(bank_account: alejandro_bank_account, fintoc_account: alejandro_fintoc_account, currency: "BTC", amount: 0.000487, description: "La plata que le debia al Pedro",
   transaction_date: "2023-06-19".to_date, movement_type: "transaction", pending: false, recipient_account: pedro)
 movement1.save!
 
-movement2 = Movement.new(fintoc_account: sebastian_fintoc_account, currency: "CLP", amount: 150000, description: "El prestamo para la mesa nueva",
+movement2 = Movement.new(bank_account: alejandro_bank_account, fintoc_account: alejandro_fintoc_account, currency: "CLP", amount: 150000, description: "El prestamo para la mesa nueva",
   transaction_date: "2023-04-23".to_date, movement_type: "transaction", pending: false, recipient_account: maria)
 movement2.save!
 
-movement3 = Movement.new(fintoc_account: camila_fintoc_account, currency: "CLP", amount: 10000, description: "por el helado",
+movement3 = Movement.new(bank_account: alejandro_bank_account, fintoc_account: alejandro_fintoc_account, currency: "CLP", amount: 10000, description: "por el helado",
   transaction_date: "2023-01-15".to_date, movement_type: "transaction", pending: false, recipient_account: jimena)
 movement3.save!
+
+movement4 = Movement.new(bank_account: alejandro_bank_account, fintoc_account: alejandro_fintoc_account, currency: "CLP", amount: 237800, description: "para el auto de mama",
+  transaction_date: "2023-01-13".to_date, movement_type: "transaction", pending: false, recipient_account: pedro)
+movement4.save!
+
+movement5 = Movement.new(bank_account: alejandro_bank_account, fintoc_account: alejandro_fintoc_account, currency: "CLP", amount: 133800, description: "regalos de navidad",
+  transaction_date: "2022-12-23".to_date, movement_type: "transaction", pending: false, recipient_account: maria)
+movement5.save!
 
 puts "movements finished"
 
 puts "creating favorites"
 
-fav1 = FavoriteRecipientAccount.new(user: alejandro, recipient_account_id: pedro)
+fav1 = FavoriteRecipientAccount.new(user: alejandro, recipient_account: pedro)
 fav1.save!
 
-fav2 = FavoriteRecipientAccount.new(user: alejandro, recipient_account_id: maria)
+fav2 = FavoriteRecipientAccount.new(user: alejandro, recipient_account: maria)
 fav2.save!
 
-fav3 = FavoriteRecipientAccount.new(user: alejandro, recipient_account_id: jimena)
+fav3 = FavoriteRecipientAccount.new(user: alejandro, recipient_account: jimena)
 fav3.save!
 
 puts "finished favorites"

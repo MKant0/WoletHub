@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_24_195640) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_13_230400) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -29,6 +29,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_24_195640) do
     t.decimal "general_balance"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name"
     t.index ["user_id"], name: "index_bank_accounts_on_user_id"
   end
 
@@ -58,10 +59,17 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_24_195640) do
     t.index ["bank_account_id"], name: "index_fintoc_accounts_on_bank_account_id"
   end
 
+  create_table "items", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "movements", force: :cascade do |t|
     t.bigint "fintoc_account_id", null: false
     t.string "currency"
-    t.decimal "amount"
+    t.string "amount"
     t.string "description"
     t.date "transaction_date"
     t.string "reference_id"
@@ -71,8 +79,17 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_24_195640) do
     t.string "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "bank_account_id"
+    t.index ["bank_account_id"], name: "index_movements_on_bank_account_id"
     t.index ["fintoc_account_id"], name: "index_movements_on_fintoc_account_id"
     t.index ["recipient_account_id"], name: "index_movements_on_recipient_account_id"
+  end
+
+  create_table "paypopups", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "recipient_accounts", force: :cascade do |t|
@@ -92,10 +109,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_24_195640) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "preferred_currency"
+    t.string "preferred_currency"
     t.string "name"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "webook_events", force: :cascade do |t|
+    t.string "fintoc_event_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_foreign_key "balances", "fintoc_accounts"
@@ -103,6 +126,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_24_195640) do
   add_foreign_key "favorite_recipient_accounts", "recipient_accounts"
   add_foreign_key "favorite_recipient_accounts", "users"
   add_foreign_key "fintoc_accounts", "bank_accounts"
+  add_foreign_key "movements", "bank_accounts"
   add_foreign_key "movements", "fintoc_accounts"
   add_foreign_key "movements", "recipient_accounts"
 end

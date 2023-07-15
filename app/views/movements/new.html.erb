@@ -1,0 +1,45 @@
+<div class="row">
+  <div class="container col-6 mt-5" data-controller="bank-account">
+    <h2>Nueva transferencia</h2>
+    <%= simple_form_for(@movement) do |f| %>
+    <%= f.association :bank_account, label: "Cuenta Bancaria", collection: @bank_accounts, input_html: {  class: "rounded-corners-form", data: { action:"change->bank-account#selectAccount", bank_account_target: "bank"}} %>
+    <%= f.association :fintoc_account, label: "Tipo de cuenta", collection: @fintoc_accounts, input_html: { class: "rounded-corners-form", data: { bank_account_target: "fintoc"}} %>
+    <%= f.input :amount, as: :string, label: "Cuanto deseas transferir? ($)", input_html: { maxlength: 15, class: "rounded-corners-form", data: { action:"keyup->bank-account#periodThousand", bank_account_target: "amount"}} %>
+    <%= f.association :recipient_account, label:"A quien le vas a transferir", collection: current_user.recipient_accounts.map { |recipient| [recipient.holder_name, recipient.id] }, input_html: { class: "rounded-corners-form"}  %>
+    <%= f.input :description, as: :text, label: "Escribe una corta descripción de su transferencia", class: "form-control", input_html: { maxlength: 3000 }, input_html: { class: "rounded-corners-form"}%>
+    <div class="row">
+      <div class="col-6">
+        <%= f.submit "Confirma transferencia", class: "btn btn-primary-confirma mt-3" %>
+      </div>
+      <div class="col-6 text-end">
+        <button type="button" class="btn btn-primary-nuevo mt-3" data-bs-toggle="modal" data-bs-target="#NuevoDestinatarioModal"> Agregar nuevo destinatario </button>
+      </div>
+    <% end %>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="NuevoDestinatarioModal" tabindex="-1" aria-labelledby="NuevoDestinatarioModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-12">
+            <div class="container-NuevoDestinatario">
+              <div class="card-info-NuevoDestinatario text-left py-2">
+                <div>
+                  <p>Completa los datos</p>
+                </div>
+                <%= render :partial => 'recipient_accounts/new'%>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

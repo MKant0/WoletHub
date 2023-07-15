@@ -1,1 +1,187 @@
 // Specific CSS for your home-page
+.container-custom {
+  background-color: #8E43ED;
+  border-radius: 10px;
+
+  h2, p {
+    color: white;
+  }
+}
+.container-custom-outline {
+  border: 5px solid #8E43ED;
+  border-radius: 10px;
+
+  h2, p {
+    color: #8E43ED;
+  }
+}
+.footer {
+  background: #F4F4F4;
+  display: flex;
+  align-items: center;
+  height: 100px;
+  padding: 0px 50px;
+  color: rgba(0,0,0,0.3);
+}
+.footer-links {
+  display: flex;
+  align-items: center;
+}
+.footer-links a {
+  color: black;
+  opacity: 0.15;
+  text-decoration: none;
+  font-size: 24px;
+  padding: 0px 10px;
+}
+.footer-links a:hover {
+  opacity: 1;
+}
+.footer .fa-heart {
+  color: #D23333;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: #f2f2f2; /* Or any color that matches your branding */
+  color: #333;
+}
+
+.footer-section {
+  flex: 1;
+}
+
+.footer-section h4 {
+  margin-bottom: 15px;
+}
+
+.footer-section p {
+  margin-bottom: 10px;
+}
+.bg-custom {
+  background-color: #8E43ED;
+}
+.rounded {
+  height: 327px;
+}
+.img-fluid {
+  height: 327px;
+}
+.btn-unete {
+  background-color: #8E43ED;
+  color: white;
+  border-color: #8E43ED;
+  border-radius: 20px;
+  font-size: 24px;
+
+  &:hover {
+    background-color: transparent;
+    color: #8E43ED;
+    border-color: #8E43ED;
+    border-radius: 20px;
+    border-width: 3px;
+    font-weight: bold;
+  }
+}
+.text-white {
+  text-decoration: none;
+}
+.icon-color {
+  color: white;
+}
+.bg-custom-footer {
+  background-color: #8E43ED;
+  display: flex;
+  flex-direction: column;
+}
+.squarebgfree {
+  background-color: transparent;
+  border-radius: 20px;
+}
+.card-info {
+  color: #8E43ED;
+}
+.card-description {
+  color: #8E43ED;
+}
+.card-valor {
+  font-size: 50px;
+}
+.btn-empezar-free {
+  background-color: transparent;
+  color: #AC5A00;
+  border-color: #8E43ED;
+  border-radius: 100px;
+  border: 2px solid #8E43ED;
+
+  &:hover {
+    background-color: #8E43ED;
+    color: white;
+    border-radius: 100px;
+    border-color: #8E43ED;
+  }
+}
+.container-custom-outline {
+  border: 5px solid #8E43ED;
+  border-radius: 20px;
+}
+.container-custom-bg {
+  background-color:  #8E43ED;
+  border-radius: 20px;
+}
+.card-info-pay {
+  color: white;
+}
+.btn-empezar-pay {
+  background-color: white;
+  color: #AC5A00;
+  border-radius: 100px;
+  border-color: #8E43ED;
+
+  &:hover {
+    background-color: #8E43ED;
+    color: white;
+    border-radius: 100px;
+    border-color: white;
+    border: 2px solid white;
+  }
+}
+.card-description-pay {
+  color: white;
+}
+
+.vertical-alignment-helper {
+  display:table;
+  pointer-events:none;
+}
+.vertical-align-center {
+  /* To center vertically */
+  pointer-events:none;
+}
+.modal-content-pay {
+  margin: 0 auto;
+  pointer-events: all;
+  width: 800px;
+  border-radius: 10px; /* This makes sure that we can still click outside of the modal to close it */
+}
+.btn-primary {
+  background-color: #8E43ED;
+}
+.modal-dialog {
+  background-color: white;
+  border-radius: 5px;
+}
+.lineTop {
+  color: #8E43ED;
+  border: none;
+  border-top: 5px solid #8E43ED;
+  transform: rotate(3deg);
+}
+.lineBot {
+  color: #8E43ED;
+  border: none;
+  border-top: 5px solid #8E43ED;
+  transform: rotate(-3deg);
+}

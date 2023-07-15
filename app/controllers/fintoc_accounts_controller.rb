@@ -1,0 +1,44 @@
+class FintocAccountsController < ApplicationController
+
+  require_relative '../services/fintoc_services.rb'
+
+
+  def index
+    bank_account = BankAccount.find(params[:bank_account_id])
+    fintoc_accounts = FintocAccount.where(bank_account_id: bank_account.id)
+
+    render json: fintoc_accounts
+  end
+
+  def new
+    @bank_account_id = params[:bank_account_id]
+    @fintoc_account = FintocAccount.new
+    session[:bank_account_id] = @bank_account_id
+  end
+
+  def create
+    @fintoc_data = FintocService.get_account_info(link_token, ENV['FINTOC_API_KEY'])
+    @fintoc_account = FintocAccount.new(fintoc_account_params)
+    if @fintoc_account.save
+      render json: { id: @fintoc_account.id }
+    else
+      render json: { error: 'There was an error creating the fintoc account.' }, status: :unprocessable_entity
+    end
+  end
+
+  def show
+    @fintoc_account = FintocAccount.find(params[:id])
+    @bank_account = BankAccount.find(@fintoc_account.bank_account_id)
+    @movements = Movement.where(fintoc_account_id: @fintoc_account.id)
+    @sidebar = true
+    @fintoc_access = FintocService.get_account_info(link_token, ENV['FINTOC_API_KEY'])
+    @account_id = @fintoc_access[0].id
+    @fintoc_movement = FintocService.get_movements(@account_id, link_token, ENV['FINTOC_API_KEY'])
+  end
+
+  private
+
+  def fintoc_account_params
+    params.require(:fintoc_account).permit(:name, :amount, :currency, :number, :account_type, :widget_token, :official_name, :holder_id, :holder_name, :refreshed_at)
+  end
+end

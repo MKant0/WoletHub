@@ -1,0 +1,16 @@
+<div class="container col-6 my-5 d-flex flex-column justify-content-center align-items-center eighty-height">
+
+  <div class="d-flex justify-content-between">
+    <div class="me-3">
+    <h4>Listo! Tu pago ya se acreditó</h4>
+    </div>
+    <div class="ms-3">
+    <%= image_tag "purple-checkmark", alt: "Marca de verificación", id:"purple-checkmark" %>
+    </div>
+  </div>
+
+  <p>Pagaste $<%= number_with_delimiter(try_integer(@movement.amount), delimiter: ".", separator: ",") %></p>
+  <p><%= @movement.recipient_account.holder_name %> recibirá tu pago en menos de 24 horas.</p>
+  <p class="small-font-gray">Operación #<%= @movement.id %></p>
+  <%= link_to "Volver a mi Dashboard", dashboard_path, class:"btn btn-purple-EditarPerfil" %>
+</div>
