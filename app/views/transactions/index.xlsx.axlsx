@@ -1,0 +1,11 @@
+
+wb = xlsx_package.workbook
+
+wb.add_worksheet(name: "Transacciones") do |sheet|
+  # Create the header row
+  sheet.add_row ["Fecha", "Descripción", "Monto", "Moneda", "Destinatario"]
+  # Create entries for each item
+  @movements.each do |movement|
+    sheet.add_row [movement.transaction_date, movement.description, movement.amount, movement.currency, movement.recipient_account.holder_name]
+  end
+end
