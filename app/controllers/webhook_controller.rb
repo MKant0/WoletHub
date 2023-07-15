@@ -10,7 +10,7 @@ class WebhookController < ApplicationController
 
     begin
       event = JSON.parse(payload)
-      p event['data']['link_token']
+      p event
     rescue JSON::ParserError => e
       render plain: 'Invalid payload', status: 400
       return
@@ -29,7 +29,6 @@ class WebhookController < ApplicationController
     )
     params[:new_event] = new_event
 
-    p params[:new_event]
     # Handle the event
     case event['type']
     when 'link.created'
