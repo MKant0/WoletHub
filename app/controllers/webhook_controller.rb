@@ -24,8 +24,6 @@ class WebhookController < ApplicationController
       holder_name = params[:data][:holder_name]
       p link_token
       p name
-      p amount
-      p currency
       p number
       p account_type
       p official_name
