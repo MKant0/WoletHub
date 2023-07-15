@@ -15,6 +15,7 @@ class WebhookController < ApplicationController
       event = JSON.parse(payload)
       puts event[:data]
       link_token = params[:data][:link_token]
+      p link_token
       FintocAccount.create(widget_token: link_token)
       " p de params#{p params[:data][:link_token]}"
     rescue JSON::ParserError => e
