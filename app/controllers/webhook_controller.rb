@@ -22,7 +22,7 @@ class WebhookController < ApplicationController
       official_name = params[:data][:official_name]
       holder_id = params[:data][:holder_id]
       holder_name = params[:data][:holder_name]
-      FintocAccount.create(widget_token: link_token, name: name, currency: currency, number: number, account_type: account_type, official_name: official_name, holder_id: holder_id, holder_name: holder_name)
+      FintocAccount.create(widget_token: link_token, name: name, number: number, account_type: account_type, official_name: official_name, holder_id: holder_id, holder_name: holder_name)
       p" p de params#{params[:data][:link_token]}"
     rescue JSON::ParserError => e
       # Invalid payload
