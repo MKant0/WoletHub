@@ -7,6 +7,7 @@ class WebhookController < ApplicationController
 
   def data_fintoc
     FintocAccount.create(widget_token: "prueba de token")
+    head :ok
   end
     #   payload = request.body.read
     #   puts "AQUI VA EL PAYLOAD $$$$$$$$#{payload}"
