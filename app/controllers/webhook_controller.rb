@@ -13,12 +13,12 @@ class WebhookController < ApplicationController
     link_token = payload['data']['link_token']
     begin
       event = JSON.parse(payload)
+      puts event[:data]
     rescue JSON::ParserError => e
       # Invalid payload
       render json: { error: 'Invalid payload' }, status: 400
       return
     end
-    puts event[:data]
     p params
     # FintocAccount.create(widget_token: event[:data][:link_token])
      # idempotency using ActiveRecord
