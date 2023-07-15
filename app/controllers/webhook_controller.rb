@@ -27,11 +27,12 @@ class WebhookController < ApplicationController
       data: event['data']
     )
     params[:new_event] = new_event
+    puts params[type]
     # Handle the event
     case new_event['type']
     when 'link.created'
-      link_token = event['data']['link_token']
-      FintocAccount.create(widget_token: link_token)
+      link_token = new_event['data']['link_token']
+      FintocAccount.create(widget_token: link_token, name: name)
       bank_account_id = session[:bank_account_id]
       # Aquí creas el objeto Link en tu base de datos
     when 'link.credentials_changed'

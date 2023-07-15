@@ -15,30 +15,7 @@ export default class extends Controller {
         product: 'movements',
         webhookUrl: 'https://wolethab-914-db0606c8d9c5.herokuapp.com/webhook',
         onSuccess: function(response) {
-          fetch("/links", {
-            method: "POST",
-            headers: {"Content-Type": "application/json"},
-            body: JSON.stringify({
-              "link": {
-                "accounts": response.accounts,
-                "active": response.active,
-                "created_at": response.created_at,
-                "holder_id": response.holder_id,
-                "holder_type": response.holder_type,
-                "link_token": response.id,
-                "institution_id": response.institution.id,
-                "institution_name": response.institution.name,
-                "institution_country": response.institution.country,
-                "link_token": response.link_token,
-                "mode": response.mode,
-                "username": response.username
-              }
-            })
-          });
-
-          console.log('Success! Here is the Link object:');
-          console.log(response);
-          localStorage.setItem('linkId', response.id); // guardar el link.id en el localStorage
+          window.location.href = `https://wolethab-914-db0606c8d9c5.herokuapp.com//bank_accounts`
         },
 
         onExit: function() {
