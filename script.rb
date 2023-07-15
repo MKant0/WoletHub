@@ -1,7 +1,7 @@
 # module DataFintoc
 
   require 'fintoc'
-  require 'dotenv/load'
+  #require 'dotenv/load'
   require 'net/http'
   require 'uri'
   require 'json'
