@@ -15,7 +15,7 @@ export default class extends Controller {
         product: 'movements',
         webhookUrl: 'https://wolethab-914-db0606c8d9c5.herokuapp.com/webhook',
         onSuccess: function(response) {
-          window.location.href = `https://wolethab-914-db0606c8d9c5.herokuapp.com//bank_accounts`
+          window.location.href = `https://wolethab-914-db0606c8d9c5.herokuapp.com/bank_accounts`
         },
 
         onExit: function() {
