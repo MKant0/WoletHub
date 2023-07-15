@@ -18,6 +18,6 @@ Rails.application.routes.draw do
   get "bank_accounts/:id", to: "bank_accounts#show", as: :bank_account
   get "financial_accounts/:id", to: "fintoc_accounts#show", as: :fintoc
   get "profile", to: "pages#profile"
-  post '/webhook', to: 'webhook#send_test_webhook_event'
+  post '/webhook', to: 'webhook#data_fintoc'
 
 end
