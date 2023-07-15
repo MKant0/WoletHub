@@ -26,17 +26,16 @@ class WebhookController < ApplicationController
       type: event['type'],
       data: event['data']
     )
-    puts "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
-    p new_event
     params[:new_event] = new_event
     # Handle the event
     case new_event['type']
     when 'link.created'
-     p link_token = event['data']['link_token']
+      link_token = event['data']['link_token']
+      p link_token
       bank_account_id = session[:bank_account_id]
       # Aquí creas el objeto Link en tu base de datos
     when 'link.credentials_changed'
-      link_id = `e`vent['data']['id']
+      link_id = event['data']['id']
       # Then define and call a method to handle the event.
     when 'link.refresh_intent.succeeded'
       link_id = event['data']['refreshed_object_id']
