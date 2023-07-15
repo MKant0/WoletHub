@@ -6,7 +6,6 @@ class WebhookController < ApplicationController
 
 # Using Sinatra
   def data_fintoc
-    post '/webhook' do
       payload = request.body.read
       event = nil
 
@@ -52,5 +51,4 @@ class WebhookController < ApplicationController
 
       status 200
     end
-  end
 end
