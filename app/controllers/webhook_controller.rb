@@ -6,8 +6,9 @@ class WebhookController < ApplicationController
   require 'json'
 
   def data_fintoc
-    FintocAccount.create(widget_token: "prueba de token")
-    head :ok
+    payload = request.body.read
+      puts "AQUI VA EL PAYLOAD $$$$$$$$#{payload}"
+      event = nil
   end
     #   payload = request.body.read
     #   puts "AQUI VA EL PAYLOAD $$$$$$$$#{payload}"
