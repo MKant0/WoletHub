@@ -1,19 +1,41 @@
 .container-bg {
   background-color: white;
 }
-.pagination {
-  padding-left: 20px;
-}
 .first2 {
   padding-left: 3px;
-  padding-right: 3px;
-  margin: 3px;
+  margin: 0 3px;
   text-decoration: none;
   background-color: #cbcbcb;
   color: white;
   border-radius: 5px;
+  font-family: 'Catamaran', sans-serif;
 
   &:hover{
     color: black;
+
+  &:active{
+    color: black;
+    text-decoration: none;
   }
+  }
+}
+.numeros {
+  margin: 0 3px;
+  padding-left: 3px;
+  color: white;
+  text-decoration: none;
+
+  &:hover{
+    color: black;
+
+  &:active{
+    color: black;
+    text-decoration: none;
+    padding-left: 3px;
+  }
+  }
+}
+.pagmar {
+  padding-right: 3px;
+  margin: 3px;
 }
