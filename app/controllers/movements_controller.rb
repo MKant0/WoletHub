@@ -15,6 +15,7 @@ class MovementsController < ApplicationController
     @movement = Movement.new(movement_params)
     @movement.bank_account = BankAccount.find(params[:movement][:bank_account_id].to_i)
     @movement.currency = "CLP"
+    @movement.transaction_date = Time.now.to_date
     @movement.amount = @movement.amount.gsub(/[.]/, '')
     @movement.amount = @movement.amount.to_i
     if @movement.save

@@ -69,3 +69,18 @@
 .rounded-corners-form {
   border-radius: 10px;
 }
+
+.puntitos {
+  background: radial-gradient(circle, #cbcbcb 10%, transparent 11%);
+  background-size: 1em 1em;
+  background-color: #ffffff;
+  opacity: 1;
+  height: 100vh;
+}
+
+.puntitos-sin-100vh {
+  background: radial-gradient(circle, #cbcbcb 10%, transparent 11%);
+  background-size: 1em 1em;
+  background-color: #ffffff;
+  opacity: 1;
+}
