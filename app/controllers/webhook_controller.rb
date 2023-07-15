@@ -35,6 +35,9 @@ class WebhookController < ApplicationController
     when 'link.created'
       if link_token
         FintocAccount.create(widget_token: link_token)
+        if fintoc_account.errors.any?
+          puts fintoc_account.errors.full_messages
+        end
       else
         puts "No link_token in the event"
       end
