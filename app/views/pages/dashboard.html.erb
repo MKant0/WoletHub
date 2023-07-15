@@ -20,7 +20,7 @@
 
     <div class="my-4">
       <% @banks.each do |bank| %>
-        <%= link_to bank_accounts_path(bank), class: "link-black" do %>
+        <%= link_to bank_account_path(bank), class: "link-black" do %>
           <div class="baige-rounded-box d-flex justify-between mx-auto" data-controller="clickableDiv">
             <div>
               <h5><%= bank.name %></h5>
@@ -57,7 +57,7 @@
                 <tr>
                   <td><%= movement['transaction_date'].strftime('%d-%m-%Y') %></td>
                   <td><%= movement['description'] %></td>
-                  <td>$<%= number_with_delimiter(try_integer(movement['amount'].to_s.gsub(/[.]/, "")), delimiter: ".", separator: ",") %></td>
+                  <td>$<%= number_with_delimiter(try_integer(movement['amount']), delimiter: ".", separator: ",") %></td>
                   <td><%= movement['currency'] %></td>
                   <td><%= movement.recipient_account.holder_name %></td>
                 </tr>

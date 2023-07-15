@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root to: "pages#home"
 
   resources :movements, only: [:index, :new, :create, :show]
-  resources :fintoc_accounts, only: [:new, :create, :show, :index]
+  resources :fintoc_accounts, only: [:new, :create, :index]
   resources :recipient_accounts
   resources :transactions, only: [:index]
   resources :movements do
