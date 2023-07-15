@@ -29,7 +29,7 @@ class WebhookController < ApplicationController
     )
     params[:new_event] = new_event
 
-    p new_event['data']['link_token']
+    p params[:new_event]
     # Handle the event
     case event['type']
     when 'link.created'
