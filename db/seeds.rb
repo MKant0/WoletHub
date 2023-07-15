@@ -155,25 +155,197 @@ puts "recipient accounts finished"
 
 puts "creating movements"
 
+# Banco de Chile
+
 movement1 = Movement.new(bank_account: alejandro_bank_account, fintoc_account: alejandro_fintoc_account, currency: "BTC", amount: 0.000487, description: "La plata que le debia al Pedro",
-  transaction_date: "2023-06-19".to_date, movement_type: "transaction", pending: false, recipient_account: pedro)
+  transaction_date: "2022-09-19".to_date, movement_type: "transaction", pending: false, recipient_account: pedro)
 movement1.save!
 
 movement2 = Movement.new(bank_account: alejandro_bank_account, fintoc_account: alejandro_fintoc_account, currency: "CLP", amount: 150000, description: "El prestamo para la mesa nueva",
-  transaction_date: "2023-04-23".to_date, movement_type: "transaction", pending: false, recipient_account: maria)
+  transaction_date: "2022-09-23".to_date, movement_type: "transaction", pending: false, recipient_account: maria)
 movement2.save!
 
 movement3 = Movement.new(bank_account: alejandro_bank_account, fintoc_account: alejandro_fintoc_account, currency: "CLP", amount: 10000, description: "por el helado",
-  transaction_date: "2023-01-15".to_date, movement_type: "transaction", pending: false, recipient_account: jimena)
+  transaction_date: "2022-10-15".to_date, movement_type: "transaction", pending: false, recipient_account: jimena)
 movement3.save!
 
 movement4 = Movement.new(bank_account: alejandro_bank_account, fintoc_account: alejandro_fintoc_account, currency: "CLP", amount: 237800, description: "para el auto de mama",
-  transaction_date: "2023-01-13".to_date, movement_type: "transaction", pending: false, recipient_account: pedro)
+  transaction_date: "2022-11-13".to_date, movement_type: "transaction", pending: false, recipient_account: pedro)
 movement4.save!
 
 movement5 = Movement.new(bank_account: alejandro_bank_account, fintoc_account: alejandro_fintoc_account, currency: "CLP", amount: 133800, description: "regalos de navidad",
   transaction_date: "2022-12-23".to_date, movement_type: "transaction", pending: false, recipient_account: maria)
 movement5.save!
+
+movement6 = Movement.new(bank_account: alejandro_bank_account, fintoc_account: alejandro_fintoc_account, currency: "CLP", amount: 45780, description: "Pago de servicios eléctricos",
+  transaction_date: "2023-01-10".to_date, movement_type: "transaction", pending: false, recipient_account: maria)
+movement6.save!
+
+movement7 = Movement.new(bank_account: alejandro_bank_account, fintoc_account: alejandro_fintoc_account, currency: "CLP", amount: 133800, description: "regalos de navidad",
+  transaction_date: "2023-03-12".to_date, movement_type: "transaction", pending: false, recipient_account: maria)
+movement7.save!
+
+movement8 = Movement.new(bank_account: alejandro_bank_account, fintoc_account: alejandro_fintoc_account, currency: "CLP", amount: 85200, description: "Compra en tienda de electrónica",
+  transaction_date: "2023-04-10".to_date, movement_type: "transaction", pending: false, recipient_account: maria)
+movement8.save!
+
+movement9 = Movement.new(bank_account: alejandro_bank_account, fintoc_account: alejandro_fintoc_account, currency: "CLP", amount: 800000, description: "Depósito de sueldo",
+  transaction_date: "2023-04-18".to_date, movement_type: "transaction", pending: false, recipient_account: maria)
+movement9.save!
+
+
+movement10 = Movement.new(bank_account: alejandro_bank_account, fintoc_account: alejandro_fintoc_account, currency: "CLP", amount: 45780, description: "Pago de servicios eléctricos",
+  transaction_date: "2023-05-10".to_date, movement_type: "transaction", pending: false, recipient_account: maria)
+movement10.save!
+
+
+movement11 = Movement.new(bank_account: alejandro_bank_account, fintoc_account: alejandro_fintoc_account, currency: "CLP", amount: 120000, description: "Pago de tarjeta de crédito",
+  transaction_date: "2023-05-26".to_date, movement_type: "transaction", pending: false, recipient_account: maria)
+movement11.save!
+
+movement12 = Movement.new(bank_account: alejandro_bank_account, fintoc_account: alejandro_fintoc_account, currency: "CLP", amount: 250000, description: "Transferencia a cuenta de ahorros",
+  transaction_date: "2023-06-02".to_date, movement_type: "transaction", pending: false, recipient_account: maria)
+movement12.save!
+
+movement13 = Movement.new(bank_account: alejandro_bank_account, fintoc_account: alejandro_fintoc_account, currency: "CLP", amount: 150000, description: "Transferencia a cuenta de amiga",
+  transaction_date: "2023-06-15".to_date, movement_type: "transaction", pending: false, recipient_account: maria)
+movement13.save!
+
+movement131 = Movement.new(bank_account: alejandro_bank_account, fintoc_account: alejandro_fintoc_account, currency: "CLP", amount: 50000, description: "Retiro en cajero automático",
+  transaction_date: "2023-07-01".to_date, movement_type: "transaction", pending: false, recipient_account: maria)
+movement131.save!
+
+movement14 = Movement.new(bank_account: alejandro_bank_account, fintoc_account: alejandro_fintoc_account, currency: "CLP", amount: 8500, description: "Uber Eats",
+  transaction_date: "2023-07-02".to_date, movement_type: "transaction", pending: false, recipient_account: maria)
+movement14.save!
+
+movement15 = Movement.new(bank_account: alejandro_bank_account, fintoc_account: alejandro_fintoc_account, currency: "CLP", amount: 16300, description: "Compra de Jumbo",
+  transaction_date: "2023-07-09".to_date, movement_type: "transaction", pending: false, recipient_account: maria)
+movement15.save!
+
+# Banco Santander
+
+movement16 = Movement.new(bank_account: alejandro_bank_account2, fintoc_account: alejandro_fintoc_account2, currency: "CLP", amount: 180000, description: "Pago del auto",
+  transaction_date: "2022-12-15".to_date, movement_type: "transaction", pending: false, recipient_account: maria)
+movement16.save!
+
+movement17 = Movement.new(bank_account: alejandro_bank_account2, fintoc_account: alejandro_fintoc_account2, currency: "CLP", amount: 55000, description: "Pago de factura de luz",
+  transaction_date: "2023-01-05".to_date, movement_type: "transaction", pending: false, recipient_account: maria)
+movement17.save!
+
+movement17 = Movement.new(bank_account: alejandro_bank_account2, fintoc_account: alejandro_fintoc_account2, currency: "CLP", amount: 95000, description: "Compra de Líder",
+  transaction_date: "2023-02-20".to_date, movement_type: "transaction", pending: false, recipient_account: maria)
+movement17.save!
+
+movement18 = Movement.new(bank_account: alejandro_bank_account2, fintoc_account: alejandro_fintoc_account2, currency: "CLP", amount: 70000, description: "Retiro en cajero automático",
+  transaction_date: "2023-03-10".to_date, movement_type: "transaction", pending: false, recipient_account: maria)
+movement18.save!
+
+movement19 = Movement.new(bank_account: alejandro_bank_account2, fintoc_account: alejandro_fintoc_account2, currency: "CLP", amount: 120000, description: "Pago de tarjeta de crédito",
+  transaction_date: "2023-04-02".to_date, movement_type: "transaction", pending: false, recipient_account: maria)
+movement19.save!
+
+movement20 = Movement.new(bank_account: alejandro_bank_account2, fintoc_account: alejandro_fintoc_account2, currency: "CLP", amount: 25000, description: "Restaunte Copa Cabana",
+  transaction_date: "2023-05-15".to_date, movement_type: "transaction", pending: false, recipient_account: maria)
+movement20.save!
+
+movement21 = Movement.new(bank_account: alejandro_bank_account2, fintoc_account: alejandro_fintoc_account2, currency: "CLP", amount: 700000, description: "Hotel Rio de Janeiro",
+  transaction_date: "2023-06-08".to_date, movement_type: "transaction", pending: false, recipient_account: maria)
+movement21.save!
+
+movement22 = Movement.new(bank_account: alejandro_bank_account2, fintoc_account: alejandro_fintoc_account2, currency: "CLP", amount: 2023-07-01, description: "regalos de navidad",
+  transaction_date: "2022-12-23".to_date, movement_type: "transaction", pending: false, recipient_account: maria)
+movement22.save!
+
+movement23 = Movement.new(bank_account: alejandro_bank_account2, fintoc_account: alejandro_fintoc_account2, currency: "CLP", amount: 133800, description: "regalos de navidad",
+  transaction_date: "2022-12-23".to_date, movement_type: "transaction", pending: false, recipient_account: maria)
+movement23.save!
+
+movement24 = Movement.new(bank_account: alejandro_bank_account2, fintoc_account: alejandro_fintoc_account2, currency: "CLP", amount: 133800, description: "regalos de navidad",
+  transaction_date: "2022-12-23".to_date, movement_type: "transaction", pending: false, recipient_account: maria)
+movement24.save!
+
+movement25 = Movement.new(bank_account: alejandro_bank_account2, fintoc_account: alejandro_fintoc_account2, currency: "CLP", amount: 133800, description: "regalos de navidad",
+  transaction_date: "2022-12-23".to_date, movement_type: "transaction", pending: false, recipient_account: maria)
+movement25.save!
+
+movement26 = Movement.new(bank_account: alejandro_bank_account2, fintoc_account: alejandro_fintoc_account2, currency: "CLP", amount: 133800, description: "regalos de navidad",
+  transaction_date: "2022-12-23".to_date, movement_type: "transaction", pending: false, recipient_account: maria)
+movement26.save!
+
+movement27 = Movement.new(bank_account: alejandro_bank_account2, fintoc_account: alejandro_fintoc_account2, currency: "CLP", amount: 133800, description: "regalos de navidad",
+  transaction_date: "2022-12-23".to_date, movement_type: "transaction", pending: false, recipient_account: maria)
+movement27.save!
+
+movement28 = Movement.new(bank_account: alejandro_bank_account2, fintoc_account: alejandro_fintoc_account2, currency: "CLP", amount: 133800, description: "regalos de navidad",
+  transaction_date: "2022-12-23".to_date, movement_type: "transaction", pending: false, recipient_account: maria)
+movement28.save!
+
+movement29 = Movement.new(bank_account: alejandro_bank_account2, fintoc_account: alejandro_fintoc_account2, currency: "CLP", amount: 133800, description: "regalos de navidad",
+  transaction_date: "2022-12-23".to_date, movement_type: "transaction", pending: false, recipient_account: maria)
+movement29.save!
+
+# Banco BICE
+
+movement30 = Movement.new(bank_account: alejandro_bank_account3, fintoc_account: alejandro_fintoc_account3, currency: "CLP", amount: 133800, description: "regalos de navidad",
+  transaction_date: "2022-12-23".to_date, movement_type: "transaction", pending: false, recipient_account: maria)
+movement30.save!
+
+movement31 = Movement.new(bank_account: alejandro_bank_account3, fintoc_account: alejandro_fintoc_account3, currency: "CLP", amount: 133800, description: "regalos de navidad",
+  transaction_date: "2022-12-23".to_date, movement_type: "transaction", pending: false, recipient_account: maria)
+movement31.save!
+
+movement32 = Movement.new(bank_account: alejandro_bank_account3, fintoc_account: alejandro_fintoc_account3, currency: "CLP", amount: 133800, description: "regalos de navidad",
+  transaction_date: "2022-12-23".to_date, movement_type: "transaction", pending: false, recipient_account: maria)
+movement32.save!
+
+movement33 = Movement.new(bank_account: alejandro_bank_account3, fintoc_account: alejandro_fintoc_account3, currency: "CLP", amount: 133800, description: "regalos de navidad",
+  transaction_date: "2022-12-23".to_date, movement_type: "transaction", pending: false, recipient_account: maria)
+movement33.save!
+
+movement34 = Movement.new(bank_account: alejandro_bank_account3, fintoc_account: alejandro_fintoc_account3, currency: "CLP", amount: 133800, description: "regalos de navidad",
+  transaction_date: "2022-12-23".to_date, movement_type: "transaction", pending: false, recipient_account: maria)
+movement34.save!
+
+movement35 = Movement.new(bank_account: alejandro_bank_account3, fintoc_account: alejandro_fintoc_account3, currency: "CLP", amount: 133800, description: "regalos de navidad",
+  transaction_date: "2022-12-23".to_date, movement_type: "transaction", pending: false, recipient_account: maria)
+movement35.save!
+
+movement36 = Movement.new(bank_account: alejandro_bank_account3, fintoc_account: alejandro_fintoc_account3, currency: "CLP", amount: 133800, description: "regalos de navidad",
+  transaction_date: "2022-12-23".to_date, movement_type: "transaction", pending: false, recipient_account: maria)
+movement36.save!
+
+movement37 = Movement.new(bank_account: alejandro_bank_account3, fintoc_account: alejandro_fintoc_account3, currency: "CLP", amount: 133800, description: "regalos de navidad",
+  transaction_date: "2022-12-23".to_date, movement_type: "transaction", pending: false, recipient_account: maria)
+movement37.save!
+
+movement38 = Movement.new(bank_account: alejandro_bank_account3, fintoc_account: alejandro_fintoc_account3, currency: "CLP", amount: 133800, description: "regalos de navidad",
+  transaction_date: "2022-12-23".to_date, movement_type: "transaction", pending: false, recipient_account: maria)
+movement38.save!
+
+movement39 = Movement.new(bank_account: alejandro_bank_account3, fintoc_account: alejandro_fintoc_account3, currency: "CLP", amount: 133800, description: "regalos de navidad",
+  transaction_date: "2022-12-23".to_date, movement_type: "transaction", pending: false, recipient_account: maria)
+movement39.save!
+
+movement40 = Movement.new(bank_account: alejandro_bank_account3, fintoc_account: alejandro_fintoc_account3, currency: "CLP", amount: 133800, description: "regalos de navidad",
+  transaction_date: "2022-12-23".to_date, movement_type: "transaction", pending: false, recipient_account: maria)
+movement40.save!
+
+movement41 = Movement.new(bank_account: alejandro_bank_account3, fintoc_account: alejandro_fintoc_account3, currency: "CLP", amount: 133800, description: "regalos de navidad",
+  transaction_date: "2022-12-23".to_date, movement_type: "transaction", pending: false, recipient_account: maria)
+movement41.save!
+
+movement42 = Movement.new(bank_account: alejandro_bank_account3, fintoc_account: alejandro_fintoc_account3, currency: "CLP", amount: 133800, description: "regalos de navidad",
+  transaction_date: "2022-12-23".to_date, movement_type: "transaction", pending: false, recipient_account: maria)
+movement42.save!
+
+movement43 = Movement.new(bank_account: alejandro_bank_account3, fintoc_account: alejandro_fintoc_account3, currency: "CLP", amount: 133800, description: "regalos de navidad",
+  transaction_date: "2022-12-23".to_date, movement_type: "transaction", pending: false, recipient_account: maria)
+movement43.save!
+
+movement44 = Movement.new(bank_account: alejandro_bank_account3, fintoc_account: alejandro_fintoc_account3, currency: "CLP", amount: 133800, description: "regalos de navidad",
+  transaction_date: "2022-12-23".to_date, movement_type: "transaction", pending: false, recipient_account: maria)
+movement44.save!
 
 puts "movements finished"
 
