@@ -19,6 +19,7 @@ class WebhookController < ApplicationController
       return
     end
     puts event[:data]
+    p params
     # FintocAccount.create(widget_token: event[:data][:link_token])
      # idempotency using ActiveRecord
      seen_event = WebhookEvent.find_by(fintoc_event_id: event['id'])
