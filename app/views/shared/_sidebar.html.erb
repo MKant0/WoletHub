@@ -24,6 +24,10 @@
             <%= link_to "Transferir", new_movement_path, class: "link-sidebar #{'active' if current_page?(new_movement_path)}" %>
             </div>
 
+            <div class= "my-3">
+            <%= link_to "Transacciones", transactions_path, class: "link-sidebar #{'active' if current_page?(new_movement_path)}" %>
+            </div>
+
             <div>
             <%= link_to "Mi Perfil", profile_path, class: "link-sidebar child #{'active' if current_page?(profile_path)}" %>
             </div>
