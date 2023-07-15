@@ -8,29 +8,14 @@ class WebhookController < ApplicationController
   def data_fintoc
     payload = request.body.read
     event = nil
-    puts payload['data']['link_token']
-    puts payload
-    link_token = payload['data']['link_token']
+    puts  params[:data][:link_token]
+    FintocAccount.create(widget_token: link_token)
     begin
-      event = JSON.parse(payload, symbolize_names: true)
-      puts params[:data]
-      id = params[:data][:id]
-      name = params[:data][:name]
-      number = params[:data][:number]
-      account_type = params[:data][:type]
-      widget_token = params[:data][:link_token]
-      official_name = params[:data][:official_name]
-      holder_id = params[:data][:holder_id]
-      holder_name = params[:data][:holder_name]
-      FintocAccount.create(widget_token: link_token, name: name, number: number, account_type: account_type, official_name: official_name, holder_id: holder_id, holder_name: holder_name)
-      p" p de params#{params[:data][:link_token]}"
     rescue JSON::ParserError => e
       # Invalid payload
       render json: { error: 'Invalid payload' }, status: 400
       return
     end
-    # FintocAccount.create(widget_token: event[:data][:link_token])
-     # idempotency using ActiveRecord
      seen_event = WebhookEvent.find_by(fintoc_event_id: event['id'])
      if seen_event
        render json: { message: 'Event already processed' }, status: 200
