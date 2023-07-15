@@ -1,7 +1,7 @@
 class WebhookController < ApplicationController
 
-  skip_before_action :verify_authenticity_token, only: [:data_fintoc]
-  skip_before_action :authenticate_user!, only: [:data_fintoc]
+  skip_before_action :verify_authenticity_token, only: [:send_test_webhook_event]
+  skip_before_action :authenticate_user!, only: [:send_test_webhook_event]
 
   require 'json'
   require 'net/http'
