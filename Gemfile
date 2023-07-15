@@ -83,3 +83,5 @@ gem "chartkick", "~> 5.0"
 
 
 gem "fintoc", "~> 0.1.0"
+
+gem "kaminari", "~> 1.2.1"

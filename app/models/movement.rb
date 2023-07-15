@@ -4,6 +4,8 @@ class Movement < ApplicationRecord
   belongs_to :bank_account
 
   validates :bank_account, :fintoc_account, :amount, :recipient_account, presence: true
+
+  paginates_per 10
   # forgein_key :
 
   def self.recent_transactions(user)
