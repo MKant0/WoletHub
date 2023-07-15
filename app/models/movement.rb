@@ -32,4 +32,11 @@ class Movement < ApplicationRecord
     all = Movement.joins(fintoc_account: { bank_account: :user }).where(users: { id: user.id })
     all.reverse()
   end
+
+  include PgSearch::Model
+  pg_search_scope :search_movements,
+  against: [ :amount, :description, :transaction_date ],
+  using: {
+    tsearch: { prefix: true } 
+  }
 end
