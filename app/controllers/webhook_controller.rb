@@ -13,17 +13,17 @@ class WebhookController < ApplicationController
     link_token = payload['data']['link_token']
     begin
       event = JSON.parse(payload, symbolize_names: true)
-      puts event[:data]
-      id = event[:data][:id]
-      name = event[:data][:name]
-      amount = event[:data][:account][:balance][:available]
-      currency = event[:data][:balance][:currency]
-      number = event[:data][:number]
-      account_type = event[:data][:type]
+      puts params[:data]
+      id = params[:data][:id]
+      name = params[:data][:name]
+      amount = params[:data][:account][:balance][:available]
+      currency = params[:data][:balance][:currency]
+      number = params[:data][:number]
+      account_type = params[:data][:type]
       widget_token = params[:data][:link_token]
-      official_name = event[:data][:official_name]
-      holder_id = event[:data][:holder_id]
-      holder_name = event[:data][:holder_name]
+      official_name = params[:data][:official_name]
+      holder_id = params[:data][:holder_id]
+      holder_name = params[:data][:holder_name]
       p link_token
       p name
       p amount
