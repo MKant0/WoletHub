@@ -16,7 +16,6 @@ class WebhookController < ApplicationController
       puts params[:data]
       id = params[:data][:id]
       name = params[:data][:name]
-      currency = params[:data][:balance][:currency]
       number = params[:data][:number]
       account_type = params[:data][:type]
       widget_token = params[:data][:link_token]
