@@ -1,9 +1,15 @@
 class TransactionsController < ApplicationController
 
   def index
-    @movements = Movement.all_transactions(current_user)
     @sidebar = true
     @movements = Movement.order(created_at: :desc).page params[:page]
+    # if params[:query].present?
+    #   @movements = Movement.search_movements(params[:query])
+    # else
+    #   # @movements = Movement.order(created_at: :desc).page params[:page]
+    #   @movements = Movement.all_transactions(current_user).page params[:page]
+    # end
+
     respond_to do |format|
       format.xlsx {
         response.headers[
