@@ -19,8 +19,8 @@ class Movement < ApplicationRecord
     # recent.last(3)
     # # Movement.where(user_id: user.id).last(3)
     # # return recent
-    recent = Movement.joins(fintoc_account: { bank_account: :user }).where(users: { id: user.id }).last(3)
-    recent.reverse()
+    recent = Movement.joins(fintoc_account: { bank_account: :user }).where(users: { id: user.id }).order('transaction_date DESC').first(3)
+    recent
   end
 
   def self.all_movements(user, fintoc)
@@ -37,6 +37,6 @@ class Movement < ApplicationRecord
   pg_search_scope :search_movements,
   against: [ :amount, :description, :transaction_date ],
   using: {
-    tsearch: { prefix: true } 
+    tsearch: { prefix: true }
   }
 end
