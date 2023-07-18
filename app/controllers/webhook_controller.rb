@@ -10,6 +10,10 @@ class WebhookController < ApplicationController
     event = nil
     link_token = params[:data][:link_token]
     puts link_token
+    fintoc_account = nil
+    fintoc_account = FintocAccount.new(widget_token: link_token)
+    puts fintoc_account
+
     begin
       # Parse JSON payload
       event = JSON.parse(payload)
