@@ -6,28 +6,59 @@ class WebhookController < ApplicationController
   require 'json'
 
   def data_fintoc
-    data = JSON.parse(request.body.read)
-    link_id = data["data"]["id"]
-    link_token = data["data"]["link_token"] # obteniendo el link_token directamente de los datos del webhook
+    payload = request.body.read
+    event = nil
+    link_token = params[:data][:link_token]
+    puts link_token
+    fintoc_account = nil
+    fintoc_account = FintocAccount.create(widget_token: link_token)
+    puts fintoc_account
 
-    if data["type"] == "link.created"
-      link_id = data["data"]["id"]
-      accounts = data["data"]["accounts"]
-      accounts.each do |account|
-        FintocAccount.create(
-          name: account["name"],
-          number: account["number"],
-          account_type: account["type"],
-          widget_token: link_token,
-          official_name: account["official_name"],
-          holder_id: account["holder_id"],
-          holder_name: account["holder_name"],
-          refreshed_at: account["refreshed_at"]
-        )
-      end
-      render json: { message: "account created successfully" }, status: :ok
-    else
-      render json: { message: "invalid data" }, status: :bad_request
+    begin
+      # Parse JSON payload
+      event = JSON.parse(payload)
+    rescue JSON::ParserError => e
+      # Invalid payload
+      render json: { error: 'Invalid payload' }, status: 400
+      return
     end
+
+    seen_event = WebhookEvent.find_by(fintoc_event_id: event['id'])
+    if seen_event
+      render json: { message: 'Event already processed' }, status: 200
+      return
+    end
+
+    # save new event for idempotency
+    new_event = WebhookEvent.create!(
+      fintoc_event_id: event['id'],
+    )
+
+    # Handle the event
+    case event['type']
+    when 'link.created'
+      if link_token
+        fintoc_account = FintocAccount.create(widget_token: link_token)
+        if fintoc_account.errors.any?
+          puts fintoc_account.errors.full_messages
+        end
+      else
+        puts "No link_token in the event"
+      end
+    when 'link.credentials_changed'
+      link_id = event['data']['id']
+      # Then define and call a method to handle the event.
+    when 'link.refresh_intent.succeeded'
+      link_id = event['data']['refreshed_object_id']
+      # Then define and call a method to handle the link refreshed event.
+    when 'account.refresh_intent.succeeded'
+      account_id = event['data']['refreshed_object_id']
+      # Then define and call a method to handle the account refreshed event.
+    else
+      # Unexpected event type
+      puts "Unhandled event type: #{event['type']}"
+    end
+
+    render json: { message: 'Webhook received' }, status: 200
   end
 end
