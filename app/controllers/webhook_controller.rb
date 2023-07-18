@@ -56,4 +56,30 @@ class WebhookController < ApplicationController
 
     render json: { message: 'Webhook received' }, status: 200
   end
+
+  # Crea un hash para almacenar los datos requeridos
+data = {
+  links_created: 0,
+  refresh_intent_succeeded: 0,
+  accounts_refreshed: 0,
+  new_movements: 0
+}
+
+# Itera sobre las líneas del log
+log.each_line do |line|
+  if line.include?("link.created")
+    data[:links_created] += 1
+  elsif line.include?("account.refresh_intent.succeeded")
+    data[:refresh_intent_succeeded] += 1
+    data[:accounts_refreshed] += 1
+    match = line.match(/"new_movements"=>(\d+)/)
+    data[:new_movements] += match[1].to_i if match
+  end
+end
+
+puts "Número de links creados: #{data[:links_created]}"
+puts "Número de refresh_intent_succeeded: #{data[:refresh_intent_succeeded]}"
+puts "Número de cuentas actualizadas: #{data[:accounts_refreshed]}"
+puts "Total de nuevos movimientos: #{data[:new_movements]}"
+
 end
