@@ -1,5 +1,4 @@
 class WebhookController < ApplicationController
-
   skip_before_action :verify_authenticity_token, only: [:data_fintoc]
   skip_before_action :authenticate_user!, only: [:data_fintoc]
 
@@ -8,11 +7,10 @@ class WebhookController < ApplicationController
   def data_fintoc
     payload = request.body.read
     event = nil
-    link_token = params[:data][:link_token]
+    link_token = params.dig(:data, :link_token)
     puts link_token
-    fintoc_account = nil
     fintoc_account = FintocAccount.create(widget_token: link_token)
-    puts fintoc_account
+    puts fintoc_account.inspect
 
     begin
       # Parse JSON payload
@@ -29,30 +27,28 @@ class WebhookController < ApplicationController
       return
     end
 
-    # save new event for idempotency
-    new_event = WebhookEvent.create!(
-      fintoc_event_id: event['id'],
-    )
+    # Save new event for idempotency
+    new_event = WebhookEvent.create!(fintoc_event_id: event['id'])
 
     # Handle the event
     case event['type']
     when 'link.created'
-      if link_token
+      if link_token.present?
         if fintoc_account.errors.any?
           puts fintoc_account.errors.full_messages
         end
       else
-        puts "No link_token in the event"
+        puts 'No link_token in the event'
       end
     when 'link.credentials_changed'
-      link_id = event['data']['id']
-      # Then define and call a method to handle the event.
+      link_id = event.dig('data', 'id')
+      # Define and call a method to handle the event.
     when 'link.refresh_intent.succeeded'
-      link_id = event['data']['refreshed_object_id']
-      # Then define and call a method to handle the link refreshed event.
+      link_id = event.dig('data', 'refreshed_object_id')
+      # Define and call a method to handle the link refreshed event.
     when 'account.refresh_intent.succeeded'
-      account_id = event['data']['refreshed_object_id']
-      # Then define and call a method to handle the account refreshed event.
+      account_id = event.dig('data', 'refreshed_object_id')
+      # Define and call a method to handle the account refreshed event.
     else
       # Unexpected event type
       puts "Unhandled event type: #{event['type']}"
