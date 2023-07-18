@@ -2,7 +2,7 @@ class TransactionsController < ApplicationController
 
   def index
     @sidebar = true
-    @movements = Movement.order(created_at: :desc).page params[:page]
+    @movements = Movement.order(transaction_date: :desc).page params[:page]
     # if params[:query].present?
     #   @movements = Movement.search_movements(params[:query])
     # else
