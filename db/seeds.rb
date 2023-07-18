@@ -162,7 +162,7 @@ hrnosvaldez.save!
 tiendaelectrica = RecipientAccount.new(holder_id: "21.098.765-4", holder_name: "Electrónicos Centro", number: "2109876543210987", institution: "Banco Austral")
 tiendaelectrica.save!
 
-mama = RecipientAccount.new(holder_id: "21.098.765-4", holder_name: "Ana Susana Martínez", number: "2109876543210987", institution: "Banco Austral")
+mama = RecipientAccount.new(holder_id: "21.098.765-4", holder_name: "Ana Susana Martínez - Mama", number: "2109876543210987", institution: "Banco Austral")
 mama.save!
 
 credito = RecipientAccount.new(holder_id: "21.098.765-4", holder_name: "Tarjeta de Crédito Entel", number: "2109876543210987", institution: "Banco Austral")
@@ -421,13 +421,13 @@ fav1.save!
 fav2 = FavoriteRecipientAccount.new(user: alejandro, recipient_account: maria)
 fav2.save!
 
-fav3 = FavoriteRecipientAccount.new(user: alejandro, recipient_account: jimena)
+fav3 = FavoriteRecipientAccount.new(user: alejandro, recipient_account: julian)
 fav3.save!
 
-fav4 = FavoriteRecipientAccount.new(user: alejandro, recipient_account: jimena)
+fav4 = FavoriteRecipientAccount.new(user: alejandro, recipient_account: juana)
 fav4.save!
 
-fav5 = FavoriteRecipientAccount.new(user: alejandro, recipient_account: jimena)
+fav5 = FavoriteRecipientAccount.new(user: alejandro, recipient_account: sonia)
 fav5.save!
 
 fav6 = FavoriteRecipientAccount.new(user: alejandro, recipient_account: jimena)
