@@ -2,7 +2,7 @@
   background-color: white;
 }
 .first2 {
-  padding-left: 3px;
+  padding: 0px 10px 0px;
   margin: 0 3px;
   text-decoration: none;
   background-color: #cbcbcb;
@@ -21,7 +21,7 @@
 }
 .numeros {
   margin: 0 3px;
-  padding-left: 3px;
+  padding: 0px 10px 0px;
   color: white;
   text-decoration: none;
 
@@ -37,5 +37,16 @@
 }
 .pagmar {
   padding-right: 3px;
-  margin: 3px;
+
+}
+.btn-descargarExcel {
+  background-color: #8E43ED;
+  color: white;
+  border-color: #8E43ED;
+  border-radius: 5px;
+
+  &:hover {
+    background-color: #6a37ac;
+    color: white;
+  }
 }
