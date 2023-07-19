@@ -14,8 +14,10 @@ class MovementsController < ApplicationController
   def create
     @movement = Movement.new(movement_params)
     @movement.bank_account = BankAccount.find(params[:movement][:bank_account_id].to_i)
+    @movement.currency = "CLP"
+    @movement.transaction_date = Time.now.to_date
     @movement.amount = @movement.amount.gsub(/[.]/, '')
-    @movement.amount = @movement.amount.to_i
+    @movement.amount = @movement.amount.to_f
     if @movement.save
       # amountformatted = @movement.amount.to_s.gsub(/[.]/, "")
       bd = BigDecimal(@movement.amount)
@@ -65,9 +67,9 @@ class MovementsController < ApplicationController
     movements = account.get_movements.to_a
     return movements
     # puts "Movements: #{movements}"
-    #guardarlo en @movements
-    #una vez guardado en la variable, pasarlo a lo que tengo en la bbdd, su tabla con un each do.
-    #y ahi guardarlo en la bbdd
-    #y luego mostrarlo en la vista
+    # guardarlo en @movements
+    # una vez guardado en la variable, pasarlo a lo que tengo en la bbdd, su tabla con un each do.
+    # y ahi guardarlo en la bbdd
+    # y luego mostrarlo en la vista
   end
 end

@@ -1,67 +1,71 @@
-<div class="container">
+<div class="container puntitos-sin-100vh d-flex flex-column justify-content-center align-items-center">
   <!-- <a href=" https://webview.fintoc.com/widget?public_key=pk_test_xwUGiHD3-zsftKEioAvCGjAk6qQrTS65&holder_type=individual&product=payments&country=cl&widget_token=pi_eXp1RgSrrpXzwWbo_sec_243qdULijvvD9Tc4fo6FGz6F -->
   <!-- ">Pagar transacción</a> -->
+  <div class="container-custom-outline-profile bg-white mt-5 col-8">
+    <div id="pie_chart" class="mx-auto my-4">
+      <!-- <%=  area_chart @balances_data %> -->
+      <%= pie_chart @balances_data,
+                    thousands: ".",
+                    prefix: "$",
+                    legend: true,
+                    dataset: {borderWidth: 4,
+                            borderRadius: 10,
+                            hoverBorderWidth: -10,
+                            hoverBorderColor: "#fff"},
+                    loading: "Cargando informacion...",
+                    empty: "No hay informacion disponible",
+                    colors: ["#8E43ED", "#a468f0", "#bb8ef4", "#d1b3f7", "#e8d9fb"]
+                    %>
+    </div>
 
-  <div id="pie_chart" class="mx-auto my-4">
-    <!-- <%=  area_chart @balances_data %> -->
-    <%= pie_chart @balances_data,
-                  thousands: ".",
-                  prefix: "$",
-                  legend: true,
-                  dataset: {borderWidth: 4,
-                          borderRadius: 10,
-                          hoverBorderWidth: -10,
-                          hoverBorderColor: "#fff"},
-                  loading: "Cargando informacion...",
-                  empty: "No hay informacion disponible",
-                  colors: ["#8E43ED", "#a468f0", "#bb8ef4", "#d1b3f7", "#e8d9fb"]
-                  %>
-  </div>
-
-  <div class="my-4">
-    <% @banks.each do |bank| %>
-      <%= link_to bank_accounts_path(bank), class: "link-black" do %>
-        <div class="baige-rounded-box d-flex justify-between mx-auto" data-controller="clickableDiv">
-          <div>
-            <h5><%= bank.name %></h5>
-        </div>
-          <div>
-            <% bank.fintoc_accounts.each do |fintoc| %>
-              <h5>$<%= number_with_delimiter(try_integer(fintoc.balance.available), delimiter: ".", separator: ",") %></h5>
-            <% end %>
+    <div class="my-4">
+      <% @banks.each do |bank| %>
+        <%= link_to bank_account_path(bank), class: "link-black" do %>
+          <div class="baige-rounded-box d-flex justify-between mx-auto" data-controller="clickableDiv">
+            <div>
+              <h5><%= bank.name %></h5>
           </div>
-        </div>
+            <div>
+              <% bank.fintoc_accounts.each do |fintoc| %>
+                <h5>$<%= number_with_delimiter(try_integer(fintoc.balance.available), delimiter: ".", separator: ",") %></h5>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
   </div>
-</div>
 
-<div class="container">
-  <div class="my-4 col-10">
-    <div class="ml-5">
-      <h5>Transacciones Recientes</h5>
-    </div>
-    <div class="col-8 my-4 table-responsive d-flex justify-content-center">
-      <table class="table table-striped table-sm">
-        <thead>
-          <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Monto</th>
-            <th scope="col">Moneda</th>
-            <th scope="col">Descripción</th>
-          </tr>
-        </thead>
-        <tbody>
-            <% @recent.each do |movement| %>
-              <tr>
-                <td><%= movement['id'] %></td>
-                <td>$<%= number_with_delimiter(try_integer(movement['amount'].to_s.gsub(/[.]/, "")), delimiter: ".", separator: ",") %></td>
-                <td><%= movement['currency'] %></td>
-                <td><%= movement['description'] %></td>
-              </tr>
-            <% end %>
-        </tbody>
-      </table>
+  <div class="container-custom-outline-profile bg-white m-5 col-10">
+   <div class="d-flex flex-column mx-auto align-items-center my-4 col-10">
+      <div class="ml-5">
+        <h5>Transacciones Recientes</h5>
+      </div>
+      <div class="col-8 my-4 table-responsive d-flex justify-content-center">
+        <table class="table table-striped table-sm">
+          <thead>
+            <tr>
+              <th scope="col">Fecha</th>
+              <th scope="col">Descripción</th>
+              <th scope="col">Monto</th>
+              <th scope="col">Moneda</th>
+              <th scope="col">Destinatario</th>
+            </tr>
+          </thead>
+          <tbody>
+              <% @recent.each do |movement| %>
+                <tr>
+                  <td><%= movement['transaction_date'].strftime('%d-%m-%Y') %></td>
+                  <td><%= movement['description'] %></td>
+                  <td>$<%= number_with_delimiter(try_integer(movement['amount']), delimiter: ".", separator: ",") %></td>
+                  <td><%= movement['currency'] %></td>
+                  <td><%= movement.recipient_account.holder_name %></td>
+                </tr>
+              <% end %>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
+
 </div>

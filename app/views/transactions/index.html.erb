@@ -1,0 +1,43 @@
+<div class="container" style="background: radial-gradient(circle, #cbcbcb 10%, transparent 11%);
+        background-size: 1em 1em;
+        background-color: #ffffff;
+        opacity: 1;
+        height: 100vh;">
+  <div class="container-bg col-8 px-5 container-custom-outline-profile">
+
+  <div class="row justify-content-center">
+    <div class="col-sm-8 my-3">
+      <%= form_with url: transactions_path, method: :get, class: "d-flex" do %>
+        <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Buscar Transacción" %>
+        <%= submit_tag "Buscar", class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+
+    <div class="my-4 table-responsive d-flex justify-content-center">
+      <table class="table table-striped table-sm">
+        <thead>
+          <tr>
+            <th scope="col">Fecha</th>
+            <th scope="col">Descripción</th>
+            <th scope="col">Monto</th>
+            <th scope="col">Moneda</th>
+            <th scope="col">Destinatario</th>
+          </tr>
+        </thead>
+        <tbody>
+            <% @movements.each do |movement| %>
+              <tr>
+                <td><%= movement['transaction_date'].strftime('%d-%m-%Y') %></td>
+                <td><%= movement['description'] %></td>
+                <td>$<%= number_with_delimiter(try_integer(movement['amount'].to_s.gsub(/[.]/, "")), delimiter: ".", separator: ",") %></td>
+                <td><%= movement['currency'] %></td>
+                <td><%= movement.recipient_account.holder_name %></td>
+              </tr>
+            <% end %>
+        </tbody>
+      </table>
+  </div>
+  <%= paginate @movements %>
+  <%= link_to "Descargar excel", transactions_path(format: :xlsx), class: "btn btn-primary btn-descargarExcel" %>
+</div>

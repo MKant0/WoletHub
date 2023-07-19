@@ -30,10 +30,12 @@ class FintocAccountsController < ApplicationController
     @fintoc_account = FintocAccount.find(params[:id])
     @bank_account = BankAccount.find(@fintoc_account.bank_account_id)
     @movements = Movement.where(fintoc_account_id: @fintoc_account.id)
+    @movements = @movements.order('transaction_date DESC')
+    # @movements = Movement.all_movements(current_user, @fintoc_account)
     @sidebar = true
-    @fintoc_access = FintocServices.get_account_info(link_token, ENV['FINTOC_API_KEY'])
-    @account_id = @fintoc_access[0].id
-    @fintoc_movement = FintocServices.get_movements(@account_id, link_token, ENV['FINTOC_API_KEY'])
+    # @fintoc_access = FintocService.get_account_info(link_token, ENV['FINTOC_API_KEY'])
+    # @account_id = @fintoc_access[0].id
+    # @fintoc_movement = FintocService.get_movements(@account_id, link_token, ENV['FINTOC_API_KEY'])
   end
 
   private
