@@ -201,7 +201,7 @@ llavero.save!
 campera = RecipientAccount.new(holder_id: "21.098.765-4", holder_name: "Polo Wear, Rio de Janeiro", number: "2109876543210987", institution: "Banco Austral")
 campera.save!
 
-esteban = RecipientAccount.new(holder_id: "17.659.563-9", holder_name: "Esteban Araya", number: "4321000005432109", institution: "Banco de la Argentina")
+esteban = RecipientAccount.new(holder_id: "17.659.563-9", holder_name: "Maximiliam Kaiser", number: "4321000005432109", institution: "Banco de la Argentina")
 esteban.save!
 
 hotelsaopaulo = RecipientAccount.new(holder_id: "21.098.765-4", holder_name: "Hotel Bê", number: "2109876543210987", institution: "Banco Austral")
