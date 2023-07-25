@@ -15,7 +15,12 @@ class WebhookController < ApplicationController
 
     case event['type']
     when 'link.created'
-      handle_link_created(link_token) if link_token
+      Rails.logger.info "Link created event received"
+      if link_token.present?
+        handle_link_created(link_token) if link_token
+      else
+        Rails.logger.info "No link_token in the event"
+      end
     when 'link.credentials_changed'
       handle_link_credentials_changed(event['data']['id'])
     when 'link.refresh_intent.succeeded'
