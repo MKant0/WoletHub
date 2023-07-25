@@ -7,6 +7,5 @@ class User < ApplicationRecord
   has_many :bank_accounts
   has_many :favorite_recipient_accounts
   has_many :recipient_accounts, through: :favorite_recipient_accounts
-
-
+  has_many :fintoc_accounts, through: :bank_accounts
 end

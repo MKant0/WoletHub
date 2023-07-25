@@ -19,6 +19,7 @@ class FintocAccountsController < ApplicationController
   def create
     @fintoc_data = FintocServices.get_account_info(link_token, ENV['FINTOC_API_KEY'])
     @fintoc_account = FintocAccount.new(fintoc_account_params)
+    @fintoc_account.bank_account = BankAccount.find(session[:bank_account_id]) # Asegúrate de que la sesión tenga el bank_account_id correcto
     if @fintoc_account.save
       render json: { id: @fintoc_account.id }
     else
