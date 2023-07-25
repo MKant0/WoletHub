@@ -8,6 +8,7 @@
     "bootstrap": "^5.3.0",
     "chart.js": "^3.0.0",
     "chartkick": "^5.0.1",
+    "fintoc": "^1.1.1",
     "webpack": "^5.87.0",
     "webpack-cli": "^5.1.4"
   },

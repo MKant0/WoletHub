@@ -1,58 +1,56 @@
 class WebhookController < ApplicationController
-
   skip_before_action :verify_authenticity_token, only: [:data_fintoc]
   skip_before_action :authenticate_user!, only: [:data_fintoc]
 
-  require 'json'
-
   def data_fintoc
-    payload = request.body.read
-    event = nil
-    link_token = params[:data][:link_token]
+    event = JSON.parse(request.body.read)
+    link_token = event.dig('data', 'link_token')
 
-    begin
-      # Parse JSON payload
-      event = JSON.parse(payload)
-    rescue JSON::ParserError => e
-      # Invalid payload
-      render json: { error: 'Invalid payload' }, status: 400
-      return
-    end
-
-    seen_event = WebhookEvent.find_by(fintoc_event_id: event['id'])
-    if seen_event
+    if WebhookEvent.exists?(fintoc_event_id: event['id'])
       render json: { message: 'Event already processed' }, status: 200
       return
     end
 
-    # save new event for idempotency
-    new_event = WebhookEvent.create!(
-      fintoc_event_id: event['id'],
-    )
-    # Handle the event
+    WebhookEvent.create!(fintoc_event_id: event['id'])
+
     case event['type']
     when 'link.created'
-      if link_token
-        if fintoc_account.errors.any?
-          puts fintoc_account.errors.full_messages
-        end
-      else
-        puts "No link_token in the event"
-      end
+      handle_link_created(link_token) if link_token
     when 'link.credentials_changed'
-      link_id = event['data']['id']
-      # Then define and call a method to handle the event.
+      handle_link_credentials_changed(event['data']['id'])
     when 'link.refresh_intent.succeeded'
-      link_id = event['data']['refreshed_object_id']
-      # Then define and call a method to handle the link refreshed event.
+      handle_link_refresh_intent_succeeded(event['data']['refreshed_object_id'])
     when 'account.refresh_intent.succeeded'
-      account_id = event['data']['refreshed_object_id']
-      # Then define and call a method to handle the account refreshed event.
+      handle_account_refresh_intent_succeeded(event['data']['refreshed_object_id'])
     else
-      # Unexpected event type
       puts "Unhandled event type: #{event['type']}"
     end
 
     render json: { message: 'Webhook received' }, status: 200
+  end
+
+  private
+
+  def handle_link_created(link_token)
+    # Define your logic for handling a link.created event here.
+    # For example, you might want to create a new FintocAccount:
+    fintoc_account = FintocAccount.new(link_token: link_token)
+    if fintoc_account.save
+      puts "FintocAccount created successfully"
+    else
+      puts fintoc_account.errors.full_messages
+    end
+  end
+
+  def handle_link_credentials_changed(link_id)
+    # Define your logic for handling a link.credentials_changed event here.
+  end
+
+  def handle_link_refresh_intent_succeeded(link_id)
+    # Define your logic for handling a link.refresh_intent.succeeded event here.
+  end
+
+  def handle_account_refresh_intent_succeeded(account_id)
+    # Define your logic for handling an account.refresh_intent.succeeded event here.
   end
 end
